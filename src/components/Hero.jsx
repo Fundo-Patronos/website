@@ -42,7 +42,7 @@ export default function Hero() {
         <div className="overflow-hidden">
           <div className="mx-auto max-w-7xl px-6 pt-20 pb-16 sm:pt-32 lg:px-8 lg:pt-24">
             <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-              <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
+              <div className="relative w-full lg:max-w-lg lg:shrink-0 xl:max-w-xl">
                 <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-6xl">
                   Transformando o futuro da educação superior no Brasil
                 </h1>
@@ -64,7 +64,7 @@ export default function Hero() {
                   </a>
                 </div>
               </div>
-              <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+              <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-4">
                 <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-0 xl:pt-80">
                   <div className="relative">
                     <img

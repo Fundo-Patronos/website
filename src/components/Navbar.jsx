@@ -34,8 +34,8 @@ import { ChevronDownIcon, PhoneIcon, HeartIcon } from '@heroicons/react/20/solid
 
 // Sobre Nós flyout menu items
 const aboutItems = [
-  { name: 'O Fundo', href: '#', icon: BuildingLibraryIcon },
-  { name: 'Transparência', href: '#', icon: ShieldCheckIcon },
+  { name: 'O Fundo', href: '/sobre-nos/fundo', icon: BuildingLibraryIcon, isRouter: true },
+  { name: 'Transparência', href: '/sobre-nos/transparencia', icon: ShieldCheckIcon, isRouter: true },
 ]
 
 const resourceItems = [
@@ -134,7 +134,7 @@ export default function Navbar() {
   }, [sobreNosTimeout, impactoTimeout])
 
   return (
-    <header className="bg-white relative">
+    <header className="bg-white relative z-50">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
@@ -245,14 +245,25 @@ export default function Navbar() {
                   </DisclosureButton>
                   <DisclosurePanel className="mt-2 space-y-2">
                     {[...aboutItems, ...resourceItems].map((item) => (
-                      <DisclosureButton
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </DisclosureButton>
+                      item.isRouter ? (
+                        <DisclosureButton
+                          key={item.name}
+                          as={Link}
+                          to={item.href}
+                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </DisclosureButton>
+                      ) : (
+                        <DisclosureButton
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </DisclosureButton>
+                      )
                     ))}
                   </DisclosurePanel>
                 </Disclosure>

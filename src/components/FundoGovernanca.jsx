@@ -67,13 +67,11 @@ export default function FundoGovernanca() {
               </dl>
             </div>
           </div>
-          <div className="flex items-start justify-end lg:order-first">
+          <div className="flex items-start lg:order-first">
             <img
               alt="Estrutura de governança do Fundo Patrimonial Patronos"
-              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1626&q=80"
-              width={2432}
-              height={1442}
-              className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+              src="/Illustrative Pictures/angela-bailey-GfUk_pFtjz0-unsplash.jpg"
+              className="w-full max-w-lg h-full object-cover rounded-xl shadow-xl ring-1 ring-gray-400/10"
             />
           </div>
         </div>

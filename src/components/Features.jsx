@@ -2,23 +2,23 @@ import { AcademicCapIcon, ChartBarIcon, UsersIcon } from '@heroicons/react/24/ou
 
 const features = [
   {
-    name: 'Educação de Excelência',
+    name: 'Inovação, Tecnologia e Pesquisa',
     description:
-      'Apoiamos programas educacionais inovadores na Unicamp, fortalecendo a formação de profissionais qualificados e preparados para os desafios do futuro.',
-    href: '#',
-    icon: AcademicCapIcon,
-  },
-  {
-    name: 'Pesquisa e Inovação',
-    description:
-      'Financiamos projetos de pesquisa de ponta que geram conhecimento científico e tecnológico, contribuindo para o desenvolvimento sustentável do Brasil.',
+      'Apoiamos causas importantes da humanidade como inteligência artificial, engenharia genética, exploração espacial, mudanças climáticas, descarbonização e reflorestamento.',
     href: '#',
     icon: ChartBarIcon,
   },
   {
-    name: 'Impacto Social',
+    name: 'Carreira',
     description:
-      'Promovemos iniciativas de extensão universitária que levam o conhecimento acadêmico para a sociedade, beneficiando comunidades em todo o país.',
+      'Oferecemos suporte ao desenvolvimento profissional dos estudantes, fortalecendo a formação de profissionais qualificados e preparados para os desafios do futuro.',
+    href: '#',
+    icon: AcademicCapIcon,
+  },
+  {
+    name: 'Acesso',
+    description:
+      'Promovemos a inclusão através de bolsas de estudo, laptops e cursos de inglês para alunos em vulnerabilidade social, garantindo oportunidades para todos.',
     href: '#',
     icon: UsersIcon,
   },
@@ -33,8 +33,7 @@ export default function Features() {
             Nossa Missão na Unicamp
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            O Fundo Patrimonial Patronos fortalece os três pilares fundamentais da universidade: ensino, pesquisa e extensão, 
-            criando um legado duradouro para as futuras gerações.
+            Acelere a missão acadêmica da Unicamp através do nosso apoio em três frentes principais que transformam o ensino, pesquisa e impacto social na universidade.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

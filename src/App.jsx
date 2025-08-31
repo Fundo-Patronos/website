@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import Fundo from './pages/Fundo'
+import Transparencia from './pages/Transparencia'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre-nos/fundo" element={<Fundo />} />
+          <Route path="/sobre-nos/transparencia" element={<Transparencia />} />
         </Routes>
       </MainLayout>
     </Router>

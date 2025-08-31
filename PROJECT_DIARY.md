@@ -17,6 +17,63 @@ Building a professional website for Fundo Patrimonial Patronos, the endowment fu
 - **Design**: Light mode only, professional appearance
 - **Brand Font**: Inter (all components standardized)
 
+## Social Media Links (Standard Reference)
+
+**IMPORTANT**: When adding social media icons across the website, always use these official links:
+- **Instagram**: https://www.instagram.com/fundopatronos/
+- **LinkedIn**: https://www.linkedin.com/company/fundo-patronos
+- **YouTube**: https://www.youtube.com/@FundoPatronos
+
+## Session 2 - August 31, 2025: Transparência Page Implementation & Content Updates
+
+### Major Features Completed
+
+#### 1. Transparência Page Development
+- **Created comprehensive transparency page** at `/sobre-nos/transparencia`
+- **Implemented 5 main sections:**
+  - TransparenciaHero: Main hero section introducing transparency commitment
+  - RelatoriosAnuais: Annual reports with download functionality (2021-2024)
+  - TransparenciaNewsletter: Newsletter signup component
+  - DocumentacoesInstitucionais: Institutional documents (Estatuto Social, Demonstrações Financeiras, Código de Conduta)
+  - TransparenciaFAQ: Comprehensive FAQ about endowment funds and Fundo Patronos operations
+
+#### 2. Navigation & Routing Updates
+- **Fixed navbar z-index issues** on Transparência page
+- **Updated SobreNosFlyout menu** to properly route to new transparency page
+- **Resolved React Router navigation** between regular links and router links
+
+#### 3. Content & Brand Alignment
+- **Updated FAQ content** with detailed information about:
+  - Endowment fund concepts and operations
+  - Three main impact areas: Innovation/Technology/Research, Career, Access
+  - Donation process and fiscal incentive limitations
+- **Aligned Features component** on homepage with same three impact areas
+- **Updated social media links** across Footer and SobreNosFlyout components
+
+#### 4. Design & Layout Improvements
+- **Standardized spacing** across all Transparência page sections (`py-12 sm:py-16`)
+- **Fixed Hero section width** on homepage for better alignment
+- **Updated FundoGovernanca image** alignment and replaced with custom photo
+- **Updated footer** with organization's formal information (CNPJ and address)
+
+#### 5. Asset Management
+- **Resolved file path issues** with special characters using URL encoding
+- **Updated image references** after file renaming to remove accents
+- **Added new governance photo** (`angela-bailey-GfUk_pFtjz0-unsplash.jpg`)
+
+### Technical Rules Established
+- **Social media links standardized** - always use documented Instagram, LinkedIn, YouTube URLs
+- **Consistent spacing** - use `py-12 sm:py-16` for section spacing alignment
+- **Component width alignment** - ensure components don't extend beyond standard layout boundaries
+- **URL encoding** for file paths with spaces or special characters
+- **Footer format** - single line organization info with pipe separators
+
+### Content Guidelines
+- **Three impact areas** consistently used: Innovation/Technology/Research, Career, Access
+- **Investment language** - avoid specific return guarantees, use general terms about generating returns
+- **FAQ structure** - focus on educational content about endowment fund concepts
+- **Portuguese localization** maintained throughout all new content
+
 ## Today's Accomplishments
 
 ### 1. Project Setup & Infrastructure
