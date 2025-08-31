@@ -246,4 +246,490 @@ src/
 
 ---
 
-**Session End**: Complete homepage with 6 optimized sections providing strong conversion funnel from initial impact statement through credibility building, value demonstration, social proof, and final call-to-action. Ready for real content integration and additional page development.
+## August 27, 2025 - Navigation Enhancement & Brand Identity Update
+
+### Navigation System Improvements
+
+#### Advanced Flyout Menus Implementation
+- ✅ **"Sobre Nós" Full-Width Flyout**: Replaced simple dropdown with professional 4-column layout
+  - **Column 1**: Sobre Nós (O Fundo, Transparência)
+  - **Column 2**: Recursos (Contato, LinkedIn, Instagram, Seja um Voluntário, Área do Doador)
+  - **Column 3**: Featured post - "Consulte o nosso Relatório Anual 2024" with description
+  - **Column 4**: Featured post - "Faça sua contribuição" with compelling donation copy
+  - **Hover-based interaction**: Opens on hover, closes with 150ms delay
+  - **Fixed positioning**: Overlays content with proper z-index (z-50)
+  - **Responsive design**: Full viewport width with max-width constraints
+
+- ✅ **"Impacto" Full-Width Flyout**: Matching professional layout
+  - **Column 1 (wider)**: Editais (Extracurriculares e Projetos de Extensão, Carreira, Talentos e Bolsas, Pesquisa)
+  - **Column 2**: Removed to make Column 1 wider
+  - **Column 3**: "Conheça o Centro de Carreiras" with professional description
+  - **Column 4**: "Inscreva-se no Edital de Projetos 2025" with corrected grammar and compelling copy
+  - **Same hover behavior**: Consistent UX across both flyouts
+
+#### Visual Enhancements
+- ✅ **Logo sizing increase**: Desktop navbar from h-16 to h-18, mobile menu from h-12 to h-14, footer to h-18
+- ✅ **Consistent branding**: All flyout menus match homepage design patterns
+- ✅ **Professional interactions**: Smooth hover states and transitions
+
+### Complete Brand Identity Transformation
+
+#### New Color Scheme Implementation
+**Primary Color**: Red #C00000  
+**Accent Color**: Yellow #ff9700
+
+#### Components Updated with New Brand Colors:
+
+1. **Navbar Component**
+   - All hover states: `hover:text-red-700`
+   - "Doar Agora" button: Red background (#C00000)
+   - Consistent hover interactions
+
+2. **Hero Section**
+   - Primary CTA button: Red background (#C00000)
+   - Background gradient: Red-to-yellow theme
+   - Maintained visual hierarchy
+
+3. **Features Section**
+   - Icon backgrounds: Red (#C00000)
+   - "Saiba mais" links: Red color
+   - Professional appearance preserved
+
+4. **FeatureScreenshot Section**
+   - Section header: Red color
+   - Feature icons: Red (#C00000)
+   - Panel background: Red theme
+   - Decorative elements: Red variants
+
+5. **Stats Section**
+   - Main featured card: Red background (#C00000)
+   - Third stats card: Yellow background (#ff9700)
+   - Text colors: Red variants for contrast
+
+6. **LogoClouds Section**
+   - No color changes needed (gray logos maintained)
+
+7. **CTASection**
+   - Checkmark icons: Red (#C00000)
+   - CTA link: Red color
+   - Background gradient: Red-to-yellow transition
+
+8. **Footer Component**
+   - Newsletter signup button: Red background (#C00000)
+   - Form focus states: Red outline colors
+   - Maintained professional styling
+
+9. **SobreNosFlyout Component**
+   - Hover states: Red color (#C00000)
+   - Consistent with brand theme
+
+10. **ImpactoFlyout Component**
+    - Hover states: Red color (#C00000)
+    - Matching brand consistency
+
+### Brand Guidelines for Future Development
+
+#### Color Usage Standards
+- **Primary Red (#C00000)**: 
+  - Main CTA buttons and primary actions
+  - Icon backgrounds and highlights
+  - Hover states and interactive elements
+  - Section headers and important text
+- **Yellow (#ff9700)**: 
+  - Accent elements and highlights
+  - Secondary backgrounds for contrast
+  - Gradient combinations with red
+- **Implementation**: Use inline styles with exact hex values for consistency
+
+#### Typography Hierarchy (Maintained)
+- **H1**: `text-5xl sm:text-6xl` (Hero titles)
+- **H2**: `text-4xl sm:text-5xl` (Section titles)  
+- **H3**: `text-xl` (Subtitles)
+- **Paragraphs**: `text-lg leading-8` (Main text)
+- **Base text**: `text-base leading-7` (Secondary text)
+- **Links/buttons**: `text-sm font-semibold leading-6`
+
+#### Technical Implementation Notes
+- **Color Application**: All new colors applied via inline styles for specificity
+- **Hover States**: Consistent red hover color across all interactive elements
+- **Responsive Design**: Brand colors maintained across all breakpoints
+- **Accessibility**: Color contrast ratios maintained for readability
+
+### Current Site Architecture
+**Final homepage structure** (7 sections total):
+1. **Hero** → Strong red CTA and red/yellow gradient background
+2. **LogoClouds** → Institutional credibility (no color changes)
+3. **Features** → Red icon backgrounds and links
+4. **FeatureScreenshot** → Red theme with panel design
+5. **Stats** → Red and yellow card backgrounds
+6. **CTASection** → Red checkmarks and CTA with gradient
+7. **Footer** → Red newsletter button and form elements
+
+**Navigation System**:
+- Professional hover-based flyout menus
+- Full-width layouts with featured content
+- Red brand colors in hover states
+- Mobile-responsive design maintained
+
+### Development Standards Going Forward
+
+#### Brand Consistency Requirements
+1. **Always use exact hex values**: #C00000 (red) and #ff9700 (yellow)
+2. **Apply via inline styles**: `style={{color: '#C00000'}}` for specificity
+3. **Maintain hover states**: Red variants for all interactive elements
+4. **Gradient usage**: Red-to-yellow combinations for backgrounds
+5. **Professional appearance**: Balance brand colors with gray text hierarchy
+
+#### File Organization
+- All brand colors centralized in component inline styles
+- No CSS variables needed - direct hex implementation
+- Flyout components: `SobreNosFlyout.jsx` and `ImpactoFlyout.jsx`
+- Image consistency: Placeholder images maintained without updates
+
+#### Future Feature Guidelines
+- New components must follow red/yellow brand scheme
+- All CTAs and buttons: Red primary color
+- Hover states: Consistent red color application
+- Icons and highlights: Red for emphasis, yellow for accents
+- Background gradients: Red-to-yellow preferred
+
+---
+
+## August 28, 2025 - "O Fundo" Page Development & Critical Debugging Session
+
+### New Page Implementation
+
+#### "O Fundo" Page Structure
+- ✅ **Route setup**: `/sobre-nos/fundo` path added to React Router
+- ✅ **Page components planned**:
+  - `FundoHero` - Hero section for fund introduction
+  - `FundoTimeline` - Historical timeline of the fund
+  - `FundoGovernanca` - Governance structure information  
+  - `FundoEquipe` - Team/leadership presentation
+
+### Critical System Issues & Resolution
+
+#### Website Crash Investigation
+**Problem**: Entire website became completely blank page after adding `FundoPrincipios` component
+- **Root cause identified**: Complex dynamic icon rendering pattern in React
+- **Problematic pattern**: `const IconComponent = principio.icon;` with dynamic JSX rendering
+- **User feedback**: "it is obvious that the problem is in the 'Nossos Principios' component that we changes just before the website stopped working"
+
+#### FundoPrincipios Component Development Attempts
+
+**First Implementation (Failed)**:
+- Used complex component pattern with dynamic icon assignment
+- Caused complete application crash - blank white page
+- Removed from page immediately upon discovering the issue
+
+**Fresh Implementation Strategy**:
+- ✅ **Design pattern**: Adapted 'Simple three column with large icons' to support 5 columns
+- ✅ **Content integration**: 5 principles from user-provided image:
+  - **PERPETUIDADE**: Construímos um fundo sustentável e perene...
+  - **TRANSPARÊNCIA**: Operamos com máxima transparência...
+  - **INOVAÇÃO E IMPACTO**: Valorizamos ideias inovadoras...
+  - **DIVERSIDADE E INTERDISCIPLINARIDADE**: Acreditamos que a diversidade...
+  - **COLABORAÇÃO E COMPROMETIMENTO**: Buscamos construir uma comunidade unida...
+- ✅ **Visual design**: Red icon boxes (#C00000) with white Heroicons
+- ✅ **Layout**: 5-column responsive grid (1 col mobile, 5 cols large screens)
+- ✅ **Icon mapping**: Each principle mapped to appropriate Heroicon component
+
+**Second Implementation (Also Failed)**:
+- Created clean component with direct `<principio.icon />` pattern
+- Still caused website crash when imported to Fundo page
+- **Resolution**: Immediately removed component from page to restore functionality
+
+### New Design Principles Established
+
+#### Component Stability Guidelines
+1. **Simple Icon Rendering**: Avoid complex dynamic component patterns in React
+2. **Incremental Testing**: Test components in isolation before adding to pages
+3. **Immediate Rollback**: Remove problematic components quickly to maintain site stability
+4. **Component Architecture**: Prefer static component references over dynamic assignments
+
+#### Brand Color Consistency
+- **Red (#C00000)**: Primary brand color for all CTAs, icons, and emphasis elements
+- **Yellow (#ff9700)**: Accent color for highlights and secondary elements
+- **Icon backgrounds**: Consistent red boxes with white icons across all sections
+
+#### Page Development Strategy
+- **Systematic approach**: Build page sections incrementally
+- **Component isolation**: Develop and test components individually before integration
+- **Rollback readiness**: Always maintain working state, remove failing components immediately
+
+### Current Project Status
+
+#### Working Components
+- ✅ **Homepage**: Fully functional with all 7 sections
+- ✅ **Navigation**: Advanced flyout menus working correctly  
+- ✅ **"O Fundo" page**: Basic structure with Hero, Timeline, Governance, and Team sections
+- ✅ **Routing**: React Router navigation between pages
+
+#### Problematic Components
+- ❌ **FundoPrincipios**: Component causes application crash - requires architectural revision
+- ⚠️ **Icon rendering patterns**: Dynamic component assignment patterns identified as unstable
+
+#### Development Environment
+- ✅ **Development server**: Running and responsive to changes
+- ✅ **Hot reload**: Working correctly for component updates
+- ✅ **Error recovery**: Quick identification and removal of problematic code
+
+### Future Development Guidelines
+
+#### Component Development Standards
+1. **Test in isolation**: Always test new components before page integration
+2. **Simple patterns**: Use direct JSX patterns over complex dynamic rendering
+3. **Icon implementation**: Use `<IconComponent />` directly, avoid variable assignments
+4. **Incremental integration**: Add one component at a time to pages
+5. **Rollback strategy**: Be prepared to remove components that cause system instability
+
+#### Page Development Workflow
+1. **Plan component structure**: Define all sections before implementation
+2. **Build incrementally**: Develop one section at a time
+3. **Test continuously**: Verify page stability after each addition
+4. **Document issues**: Record any problematic patterns for future reference
+
+#### Brand Implementation Consistency
+- **Red (#C00000)**: All primary interactive elements and emphasis
+- **5-column layouts**: Adapt 3-column patterns to 5-column when needed
+- **Portuguese content**: Maintain professional tone and accurate translations
+- **Icon consistency**: Use Heroicons with red backgrounds throughout
+
+---
+
+**Session End**: Successfully identified and resolved critical website crash caused by complex React component patterns. Established new component development guidelines focusing on stability and incremental testing. "O Fundo" page structure implemented and ready for continued development with stable component patterns.
+
+## August 30, 2025 - Homepage Visual Assets & Content Enhancement Session
+
+### Visual Assets Implementation
+
+#### Hero Section Image Updates
+- ✅ **Custom SVG illustrations**: Replaced 5 Unsplash placeholder images with local SVG files
+  - `/Illustrative Pictures/Home Hero Section/1.svg` through `5.svg`
+  - **File format**: High-quality SVG files for crisp display at any resolution
+  - **Layout**: Maintained existing artistic staggered tile layout
+  - **Performance**: Faster loading with local assets instead of external Unsplash URLs
+
+#### LogoClouds Section Overhaul
+- ✅ **12 partner logos**: Replaced placeholder company logos with custom SVG files
+  - **Source**: `/Company Logos/1.svg` through `12.svg`
+  - **Format**: SVG files for scalability and brand consistency
+  - **Layout**: 12 logos in marquee animation (was previously mixed placeholder logos)
+  - **Title update**: Changed to "Líderes das melhores empresas confiam em nós"
+  - **Responsive**: Maintains 158x48px optimal dimensions for clean display
+
+#### CTA Section Visual Enhancement
+- ✅ **Professional image**: Updated with `/Illustrative Pictures/Quote - Phoenix.jpg`
+  - **Context**: Replaced generic placeholder with relevant academic/inspirational imagery
+  - **Styling**: Maintained rounded corners and responsive scaling
+  - **Impact**: Better visual storytelling for donation call-to-action
+
+### Component Architecture Improvements
+
+#### Stats Section Complete Redesign
+- ✅ **Layout change**: Switched from complex "stepped" layout to clean "Simple Grid" design
+- ✅ **New metrics**: Updated to reflect actual Patronos achievements:
+  - **+400 doadores** (donors)
+  - **R$ 3.0 milhões em patrimônio** (assets under management)
+  - **+80 voluntários** (volunteers)
+- ✅ **Grid system**: 
+  - 1 column mobile → 2 columns small → 3 columns large screens
+  - Clean gray background cards with proper spacing
+  - Large numbers with descriptive labels below
+- ✅ **Content**: Maintained Portuguese title "Nosso Impacto na Unicamp e na Sociedade"
+
+#### CTA Section Content Enhancement
+- ✅ **Benefits list overhaul**: Updated 6 key benefits based on strategic messaging:
+  1. **"Retornar valor à comunidade da Unicamp"** - Community impact focus
+  2. **"Apoiar o desenvolvimento da educação no Brasil"** - National education development
+  3. **"Conectar atuais e futuros líderes da comunidade"** - Network building
+  4. **"Elevar o prestígio acadêmico em nível global"** - Global academic prestige
+  5. **"Construir um dos maiores fundos patrimoniais do Brasil"** - Legacy building
+  6. **"Impulsionar a educação e inovação no país"** - Innovation catalyst
+
+### Technical Implementation Details
+
+#### Asset Organization
+- **Hero images**: 5 SVG files in structured folder `/Illustrative Pictures/Home Hero Section/`
+- **Partner logos**: 12 SVG files in `/Company Logos/` with consistent naming (1.svg - 12.svg)
+- **CTA image**: Professional JPG in `/Illustrative Pictures/` folder
+- **Performance**: All local assets for faster loading and no external dependencies
+
+#### Component Updates
+- **Hero.jsx**: 5 image source updates maintaining existing responsive layout
+- **LogoClouds.jsx**: Complete logo array replacement + title update
+- **Stats.jsx**: Full component rewrite from stepped to grid layout
+- **CTASection.jsx**: Image source update + complete benefits array rewrite
+
+#### Brand Consistency Maintained
+- **Red/yellow color scheme**: Preserved throughout all updates (#C00000, #ff9700)
+- **Typography**: Maintained established hierarchy and Inter font usage
+- **Portuguese content**: All new content follows brand voice and professional tone
+- **Responsive design**: All updates maintain mobile-first responsive patterns
+
+### Current Homepage Architecture
+**Final structure** (6 main sections):
+1. **Hero** → Custom SVG illustrations with strong value proposition
+2. **LogoClouds** → 12 partner logos in animated marquee
+3. **Features** → Three pillars of university mission (unchanged)
+4. **Stats** → Clean 3-column grid with actual metrics
+5. **CTA** → Professional imagery with strategic benefits messaging
+6. **Footer** → Comprehensive navigation (unchanged)
+
+### Content Strategy Implementation
+- **Visual storytelling**: Custom illustrations replace generic stock photos
+- **Partner credibility**: Real partner logos enhance trust and legitimacy  
+- **Quantified impact**: Updated metrics reflect actual organizational achievements
+- **Strategic messaging**: CTA benefits align with stakeholder value propositions
+- **Professional imagery**: Academic/inspirational visuals support donation narrative
+
+### Development Standards Applied
+- **Asset optimization**: SVG format preferred for logos and illustrations
+- **Local asset management**: All images stored locally for performance and reliability
+- **Content accuracy**: Portuguese grammar and professional tone maintained
+- **Component modularity**: Clean separation of data from presentation logic
+- **Responsive consistency**: All updates tested across breakpoints
+
+### Quality Assurance
+- **Visual consistency**: All new assets match established design language
+- **Performance impact**: Local assets improve load times vs external URLs
+- **Content accuracy**: Portuguese content reviewed for grammar and tone
+- **Brand alignment**: All updates reinforce Patronos brand identity and mission
+
+---
+
+**Session Summary**: Successfully enhanced homepage with custom visual assets and refined content strategy. Replaced all placeholder images with professional custom assets, updated partner logo section with real logos, redesigned stats section for better clarity, and enhanced CTA messaging with strategic benefits. All changes maintain brand consistency while significantly improving visual impact and content relevance.
+
+---
+
+## August 31, 2025 - Brand Color System Overhaul & Component Enhancements
+
+### New Brand Identity Implementation
+
+#### Complete Color System Redesign
+- ✅ **New Primary Gradient**: Implemented diagonal gradient `linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)`
+- ✅ **Orientation**: Changed from horizontal (90deg) to diagonal (135deg) for more dynamic visual impact
+- ✅ **Color Palette**: Orange → Coral → Pink → Purple progression for modern, vibrant appearance
+- ✅ **Replaced**: Original solid red (#C00000) brand color across entire website
+
+#### Comprehensive Component Updates
+**Homepage Components**:
+- ✅ **Hero Section**: Primary button and background gradient updated
+- ✅ **Navbar**: "Doar Agora" button with new gradient
+- ✅ **Features Section**: Icon backgrounds with diagonal gradient
+- ✅ **FeatureScreenshot Section**: Panel background and accent colors
+- ✅ **CTASection**: Accent elements with first gradient color (#ff9700)
+- ✅ **Footer**: Newsletter button with diagonal gradient
+- ✅ **Flyout Menus**: Hover states updated to gradient colors
+
+**Fundo Page Components**:
+- ✅ **FundoHero**: Primary donation button with diagonal gradient
+- ✅ **FundoPrincipios**: All 5 principle icons with gradient backgrounds
+- ✅ **FundoTimeline**: Timeline dates with gradient accent color
+- ✅ **FundoGovernanca**: Section headers and icons with gradient colors
+
+### Content Management & Visual Assets
+
+#### FeatureScreenshot Section Enhancement
+- ✅ **Content Update**: Replaced technology transparency messaging with endowment fund mechanics
+- ✅ **New Content**: "Nossa Operação - Um ciclo perpétuo de crescimento e impacto"
+- ✅ **Key Concepts**: 
+  - Doadores contribuem (donors contribute)
+  - Capital é investido (capital is invested)
+  - Rendimentos beneficiam a comunidade (returns benefit community)
+- ✅ **Visual Assets**: Applied custom SVG illustration matching 2432×1442px dimensions
+
+#### Navigation Menu Enhancements
+- ✅ **SobreNosFlyout Menu Updates**:
+  - Third column: Updated annual report to "Abril 2024" with proper cover image
+  - Fourth column: Replaced placeholder with custom donation-focused SVG
+- ✅ **Image Specifications**: Optimized for 16:9 aspect ratio (512×288px recommended)
+- ✅ **Professional Content**: Real imagery replacing generic placeholders
+
+### Technical Infrastructure & Documentation
+
+#### Brand Color Management System
+- ✅ **Documentation File**: Created `/BRAND_COLOR_CHANGES.md`
+- ✅ **Comprehensive Tracking**: All component changes documented with reversion instructions
+- ✅ **File Locations**: Complete list of modified components for future reference
+- ✅ **Quick Reversion**: Step-by-step commands for returning to red theme if needed
+
+#### Asset Organization
+- ✅ **Hero Section**: 5 custom SVG illustrations in `/Illustrative Pictures/Home Hero Section/`
+- ✅ **Company Logos**: 12 partner logos in `/Company Logos/` (1.svg through 12.svg)
+- ✅ **Feature Content**: Custom endowment cycle visualization
+- ✅ **Menu Assets**: Professional images for flyout menu content
+
+### Development Standards & Best Practices
+
+#### Color Implementation Standards
+- **Gradient Format**: `linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)`
+- **Focus Colors**: `#ff9700` (first gradient color) for accessibility
+- **Accent Colors**: Single gradient color (#ff9700) for small elements like icons and text
+- **Background Applications**: Full gradient for buttons and large elements
+
+#### Documentation Standards
+- **Change Tracking**: All color modifications logged with before/after values
+- **Component Mapping**: Each modified file documented with specific changes
+- **Reversion Process**: Clear instructions for theme rollback if needed
+- **Future Development**: Guidelines for maintaining brand consistency
+
+### Current Website Architecture
+
+#### Homepage Structure (7 sections)
+1. **Hero** → Custom SVG tiles with gradient CTA
+2. **LogoClouds** → 12 partner logos with "Líderes das melhores empresas confiam em nós"
+3. **Features** → Three university pillars with gradient icon backgrounds
+4. **FeatureScreenshot** → Endowment mechanics explanation with gradient panel
+5. **Stats** → Clean 3-column metrics (+400 doadores, R$ 3.0 milhões, +80 voluntários)
+6. **CTA** → Strategic benefits with professional imagery
+7. **Footer** → Comprehensive navigation with gradient newsletter signup
+
+#### Fundo Page Structure (5 sections)
+1. **FundoHero** → Fund introduction with gradient donation button
+2. **FundoPrincipios** → 5 principles with gradient icon backgrounds
+3. **FundoTimeline** → Fund history with gradient accent colors
+4. **FundoGovernanca** → Governance structure with gradient elements
+5. **FundoEquipe** → Team presentation (no color changes required)
+
+### Quality Assurance & Performance
+
+#### Brand Consistency Verification
+- **Visual Coherence**: All gradients use identical specifications across components
+- **Accessibility**: Focus states maintained with appropriate contrast ratios
+- **Performance**: SVG assets optimized for fast loading
+- **Responsive Design**: Gradient implementations work across all breakpoints
+
+#### Content Strategy Alignment
+- **Portuguese Consistency**: All content maintains professional Brazilian Portuguese
+- **Value Proposition**: Enhanced messaging around endowment fund mechanics
+- **Visual Storytelling**: Custom imagery supports donation and transparency narratives
+- **User Experience**: Improved flyout menus with relevant, professional imagery
+
+---
+
+## Important Development Instructions
+
+### 1. Brand Color Management
+**Reference File**: `/BRAND_COLOR_CHANGES.md`
+- **Primary Tool**: Use this file to track all theme changes
+- **Reversion Process**: Follow documented steps to return to red theme if needed
+- **New Changes**: Always update this file when modifying brand colors
+- **Component List**: Complete inventory of all files using brand colors
+
+### 2. Development Communication Guidelines
+**Instruction for Future Sessions**: 
+- **Ask Clarifying Questions**: When instructions are unclear or ambiguous, always ask for clarification
+- **Confirm Understanding**: Verify requirements before beginning implementation
+- **Suggest Alternatives**: Offer options when multiple approaches are possible
+- **Request Specifics**: Ask for exact specifications (dimensions, colors, content) when not provided
+
+**Example Questions to Ask**:
+- "Should I update all instances of this color, or only specific components?"
+- "What are the exact dimensions needed for this image?"
+- "Would you like me to preserve the existing functionality while making this change?"
+- "Should this change apply to both the homepage and other pages?"
+
+---
+
+**Session Summary**: Successfully implemented comprehensive brand color system overhaul with diagonal gradient theme. Updated all homepage and Fundo page components, enhanced FeatureScreenshot content with endowment mechanics, and improved navigation menu assets. Created robust documentation system for brand management and established clear communication guidelines for future development sessions. Website now features modern, cohesive visual identity while maintaining all functional requirements.

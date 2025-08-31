@@ -42,7 +42,7 @@ export default function Features() {
             {features.map((feature) => (
               <div key={feature.name} className="flex flex-col">
                 <dt className="text-xl font-semibold text-gray-900">
-                  <div className="mb-6 flex size-10 items-center justify-center rounded-lg bg-blue-900">
+                  <div className="mb-6 flex size-10 items-center justify-center rounded-lg" style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)'}}>
                     <feature.icon aria-hidden="true" className="size-6 text-white" />
                   </div>
                   {feature.name}
@@ -50,7 +50,7 @@ export default function Features() {
                 <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
                   <p className="flex-auto">{feature.description}</p>
                   <p className="mt-6">
-                    <a href={feature.href} className="text-sm font-semibold leading-6 text-blue-900 hover:text-blue-800">
+                    <a href={feature.href} className="text-sm font-semibold leading-6" style={{color: '#ff9700'}}>
                       Saiba mais <span aria-hidden="true">→</span>
                     </a>
                   </p>

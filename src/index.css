@@ -3,3 +3,78 @@
 @import '@fontsource/inter/600.css';
 @import '@fontsource/inter/700.css';
 @import "tailwindcss";
+
+/* Patronos Brand Colors */
+:root {
+  --color-primary: #C00000;
+  --color-accent: #ff9700;
+  --color-primary-hover: #A00000;
+  --color-accent-hover: #e6870d;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 40s) infinite linear;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) infinite linear;
+}
+
+/* Launch UI Pro Animation Utilities */
+@keyframes pulse-fade {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse-hover {
+  0% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.5; transform: translateY(-1rem); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wiggle {
+  0%, 16.67%, 33.33%, 50% { transform: rotate(-15deg); }
+  8.33%, 25%, 41.67% { transform: rotate(15deg); }
+  50%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes appear-slide {
+  0% { opacity: 0; transform: translateY(3rem) scale(0.5); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shiny-text {
+  0% { background-position: calc(-100% - 200px) 0; }
+  100% { background-position: calc(100% + 200px) 0; }
+}
+
+@keyframes reveal {
+  0% { filter: blur(10px); opacity: 0; }
+  100% { filter: blur(0px); opacity: 1; }
+}
+
+.animate-pulse-fade { animation: pulse-fade 6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-pulse-hover { animation: pulse-hover 6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
+.animate-appear-slide { animation: appear-slide 0.5s forwards cubic-bezier(0.4, 0.18, 0.52, 1.6); }
+.animate-shiny-text { animation: shiny-text 2.5s infinite; }
+.animate-reveal { animation: reveal 3s forwards; }
