@@ -24,6 +24,11 @@ const faqs = [
     answer:
       'Atualmente, devido à legislação brasileira, não podemos oferecer incentivos fiscais para doadores do Fundo Patronos. No entanto, estamos trabalhando ativamente com outros fundos patrimoniais e representantes no Congresso Nacional para alterar essa legislação e oferecer esse benefício no futuro.',
   },
+  {
+    question: 'As pessoas que trabalham no Fundo Patronos são remuneradas?',
+    answer:
+      'Todas as pessoas que trabalham no Fundo Patronos são voluntárias e não recebem remuneração. Trabalhamos no Fundo porque nos sentimos alinhados com a missão e o propósito da organização, dedicando nosso tempo e expertise para fortalecer a educação superior no Brasil e apoiar a comunidade acadêmica da Unicamp.',
+  },
 ]
 
 export default function TransparenciaFAQ() {

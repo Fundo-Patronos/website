@@ -1,8 +1,8 @@
 export default function TransparenciaHero() {
   return (
     <div className="bg-white">
-      <div className="relative isolate px-6 pt-20 pb-16 sm:pt-32 lg:px-8 lg:pt-24">
-        <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:py-32">
+      <div className="relative isolate px-6 pt-14 lg:px-8">
+        <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-24">
           <div className="text-center">
             <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
               Transparência Total em Todas as Nossas Operações

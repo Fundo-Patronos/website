@@ -3,6 +3,7 @@ import RelatoriosAnuais from '../components/RelatoriosAnuais'
 import TransparenciaNewsletter from '../components/TransparenciaNewsletter'
 import DocumentacoesInstitucionais from '../components/DocumentacoesInstitucionais'
 import TransparenciaFAQ from '../components/TransparenciaFAQ'
+import DoacaoCTA from '../components/DoacaoCTA'
 
 export default function Transparencia() {
   return (
@@ -12,6 +13,7 @@ export default function Transparencia() {
       <TransparenciaNewsletter />
       <DocumentacoesInstitucionais />
       <TransparenciaFAQ />
+      <DoacaoCTA />
     </>
   )
 }

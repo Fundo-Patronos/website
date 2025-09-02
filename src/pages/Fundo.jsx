@@ -3,6 +3,7 @@ import FundoPrincipios from '../components/FundoPrincipios'
 import FundoTimeline from '../components/FundoTimeline'
 import FundoGovernanca from '../components/FundoGovernanca'
 import FundoEquipe from '../components/FundoEquipe'
+import DoacaoCTA from '../components/DoacaoCTA'
 
 export default function Fundo() {
   return (
@@ -12,6 +13,7 @@ export default function Fundo() {
       <FundoTimeline />
       <FundoGovernanca />
       <FundoEquipe />
+      <DoacaoCTA />
     </>
   )
 }

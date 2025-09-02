@@ -11,13 +11,13 @@ const posts = [
   },
   {
     id: 2,
-    title: 'Demonstrações Financeiras',
-    href: '/Docs%20Institucionais/Fundo%20Patronos%20-%20Demonstrativo%20Financeiro.pdf',
-    description: 'Relatórios financeiros auditados que apresentam de forma transparente a situação patrimonial, resultado das operações e fluxo de caixa do fundo.',
+    title: 'Política de Investimentos',
+    href: '/Docs%20Institucionais/Politica%20de%20Investimentos%20-%20Fundo%20Patronos.pdf',
+    description: 'Documento que estabelece os princípios, diretrizes e estratégias para gestão e alocação dos recursos do fundo, garantindo transparência e sustentabilidade dos investimentos.',
     imageUrl: '/Illustrative%20Pictures/Docs%20Institucionais/di-2.jpg',
     date: '2024',
     datetime: '2024',
-    category: { title: 'Financeiro', href: '#' },
+    category: { title: 'Investimentos', href: '#' },
   },
   {
     id: 3,

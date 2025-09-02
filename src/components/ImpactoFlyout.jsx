@@ -6,10 +6,10 @@ import {
 } from '@heroicons/react/24/outline'
 
 const editaisItems = [
-  { name: 'Extracurriculares e Projetos de Extensão', href: '#', icon: AcademicCapIcon },
-  { name: 'Carreira', href: '#', icon: BriefcaseIcon },
-  { name: 'Talentos e Bolsas', href: '#', icon: TrophyIcon },
-  { name: 'Pesquisa', href: '#', icon: BeakerIcon },
+  { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon },
+  { name: 'Carreira', href: '/impacto/carreira', icon: BriefcaseIcon },
+  { name: 'Talentos e Bolsas', href: '/impacto/talentos', icon: TrophyIcon },
+  { name: 'Pesquisa', href: '/impacto/pesquisa', icon: BeakerIcon },
 ]
 
 const featuredPosts = [

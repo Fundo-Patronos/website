@@ -40,9 +40,10 @@ export default function Hero() {
           />
         </div>
         <div className="overflow-hidden">
-          <div className="mx-auto max-w-7xl px-6 pt-20 pb-16 sm:pt-32 lg:px-8 lg:pt-24">
+          <div className="mx-auto max-w-7xl px-6 pt-14 pb-16 sm:pt-24 lg:px-8 lg:pt-18">
             <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
               <div className="relative w-full lg:max-w-lg lg:shrink-0 xl:max-w-xl">
+                <div className="-mt-8 sm:-mt-12 lg:-mt-10">
                 <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-6xl">
                   Transformando o futuro da educação superior no Brasil
                 </h1>
@@ -62,6 +63,7 @@ export default function Hero() {
                   <a href="#" className="text-sm/6 font-semibold text-gray-900">
                     Conheça nosso impacto <span aria-hidden="true">→</span>
                   </a>
+                </div>
                 </div>
               </div>
               <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-4">
