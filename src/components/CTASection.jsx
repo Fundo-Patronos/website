@@ -22,7 +22,7 @@ export default function CTASection() {
             />
             <div className="w-full flex-auto">
               <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
-                Transforme o futuro com sua doação
+                Por que contribuir com o Fundo Patronos
               </h2>
               <p className="mt-6 text-lg leading-8 text-pretty text-gray-600">
                 Sua contribuição ao Fundo Patrimonial Patronos fortalece a Unicamp e amplia seu impacto na sociedade brasileira através da educação, pesquisa e inovação.
