@@ -2,14 +2,14 @@ import ImpactoHero from '../components/ImpactoHero'
 import ImpactoAbout from '../components/ImpactoAbout'
 import EscopoExtracurriculares from '../components/EscopoExtracurriculares'
 import CriteriosAvaliacao from '../components/CriteriosAvaliacao'
+import ExtrasCronograma from '../components/ExtrasCronograma'
 import ImpactoFAQ from '../components/ImpactoFAQ'
 
 function Extras() {
   const stats = [
-    { label: 'Projetos Apoiados', value: '45+' },
-    { label: 'Estudantes Impactados', value: '800+' },
-    { label: 'Áreas de Atuação', value: '12' },
-    { label: 'Investimento Total', value: 'R$ 2M' },
+    { label: 'Projetos Apoiados', value: '30+' },
+    { label: 'Estudantes Impactados', value: '2,700' },
+    { label: 'Áreas do Conhecimento', value: 'Todas' },
   ]
 
   const paragraphs = [
@@ -20,20 +20,36 @@ function Extras() {
 
   const faqs = [
     {
-      question: "Como posso inscrever meu projeto extracurricular?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. Placeholder text para explicar o processo de inscrição de projetos extracurriculares."
+      question: "O que é o Edital Decola Extras?",
+      answer: "É um programa destinado a organizações extracurriculares e de extensão que buscam apoio financeiro ou institucional para executar projetos relacionados a qualquer área de atuação, com impacto positivo na Unicamp e na sociedade em geral."
     },
     {
-      question: "Quais são os critérios de seleção?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Placeholder text sobre critérios de seleção."
+      question: "Quanto de investimento pode ser solicitado?",
+      answer: "Os projetos podem solicitar o valor que considerarem necessário, limitado ao teto de R$ 7.500 por projeto. É importante destacar que o apoio financeiro será concedido por meio de um sistema de reembolso. Isso significa que as equipes deverão inicialmente cobrir os custos com recursos próprios e, posteriormente, solicitar o reembolso dentro do valor aprovado. O reembolso é obrigatório como forma de repasse dos recursos, e o valor solicitado não poderá ultrapassar R$ 7.500. Equipes de projetos não selecionados serão contempladas com um treinamento exclusivo como forma de reconhecimento e capacitação para futuras oportunidades."
     },
     {
-      question: "Qual é o valor do apoio financeiro?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem. Placeholder text sobre valores de apoio."
+      question: "Qual o período de duração do programa?",
+      answer: "O programa tem duração de 1 (um) ano, iniciando após a divulgação dos selecionados. Os projetos podem ter qualquer duração dentro deste período estabelecido."
     },
     {
-      question: "Quando são divulgados os resultados?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. Placeholder text sobre cronograma de divulgação de resultados."
+      question: "Quem pode participar?",
+      answer: "Organizações extracurriculares ou de extensão são consideradas aquelas sem cunho político-partidário e fins lucrativos, atuando em áreas como cultura, educação, esporte, inovação, social, ambiental, saúde, jornadas profissionais ou outras alinhadas aos pilares do Patronos. São exemplos: Centros Acadêmicos, Atléticas, Ligas, Grupos, Semanas Acadêmicas, Associações, Conjuntos, Comissões e Times. Os quadros de membros e dos conselhos das organizações devem ser majoritariamente compostos por pessoas da comunidade da Unicamp (alunos de graduação, pós-graduação stricto sensu, funcionários e/ou docentes). As organizações devem ser reconhecidamente pertencentes e vinculadas à Unicamp, sendo isso verificável mediante consulta a membros da comunidade."
+    },
+    {
+      question: "Quem deve enviar o projeto?",
+      answer: "O representante legal ou qualquer membro ou conselheiro da organização extracurricular ou de extensão designado para essa responsabilidade."
+    },
+    {
+      question: "Que tipo de projetos podem ser inscritos?",
+      answer: "O programa tem como premissa ser amplo e abrangente. Serão aceitos projetos cujas iniciativas sejam de cunho social, educacional, esportivo, cultural, ambiental, voltado à saúde, atividades de inovação e empreendedorismo, ou outras que estimulem e impactem positivamente a Unicamp e a sociedade."
+    },
+    {
+      question: "Quantos projetos serão selecionados?",
+      answer: "A quantidade de projetos selecionados limita-se aos recursos financeiros disponíveis e à decisão da banca avaliadora. Durante a etapa de avaliação, as propostas serão selecionadas para apresentar um pitch do seu projeto à banca avaliadora. Após a avaliação pela banca, será realizada a seleção final dos projetos que receberão apoio financeiro mediante análise e aprovação do Conselho de Administração do Patronos, a partir das informações do processo seletivo e da banca examinadora."
+    },
+    {
+      question: "Quais as responsabilidades dos selecionados?",
+      answer: "A execução dos projetos deve ser realizada visando a entrega dos resultados esperados pactuados na contratação, zelando pelos princípios da legalidade, ética, impessoalidade, moralidade, economicidade e eficiência. Relatórios parciais e finais sobre a execução física dos projetos deverão ser entregues pelas organizações, bem como relatórios de prestação de contas sobre o uso dos recursos financeiros. Cabe também aos selecionados utilizarem da imagem institucional Patronos na divulgação da parceria e dos resultados do projeto."
     }
   ]
 
@@ -46,7 +62,7 @@ function Extras() {
         description="Apoiamos iniciativas estudantis que promovem inovação, empreendedorismo e impacto social na comunidade universitária da Unicamp."
         primaryButtonText="Inscrever Projeto"
         primaryButtonLink="#"
-        secondaryButtonText="Ver Editais"
+        secondaryButtonText="Ver Regulamento"
         secondaryButtonLink="#"
       />
       <ImpactoAbout
@@ -54,11 +70,11 @@ function Extras() {
         title="Transformando ideias em impacto real"
         paragraphs={paragraphs}
         stats={stats}
-        learnMoreText="Conheça todos os projetos apoiados"
-        learnMoreLink="#"
+        imageUrl="/Escopo Extracurriculares/Baja 3 -Filtrada.jpg"
       />
       <EscopoExtracurriculares />
       <CriteriosAvaliacao />
+      <ExtrasCronograma />
       <ImpactoFAQ faqs={faqs} title="Perguntas Frequentes" />
     </div>
   )

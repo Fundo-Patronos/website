@@ -790,3 +790,184 @@ src/
 ---
 
 **Session Summary**: Successfully implemented comprehensive brand color system overhaul with diagonal gradient theme. Updated all homepage and Fundo page components, enhanced FeatureScreenshot content with endowment mechanics, and improved navigation menu assets. Created robust documentation system for brand management and established clear communication guidelines for future development sessions. Website now features modern, cohesive visual identity while maintaining all functional requirements.
+
+---
+
+## September 3, 2025 - UX Improvements & Content Refinements
+
+### User Experience Enhancements
+
+#### CTA Section Title Update
+- ✅ **Homepage CTA Enhancement**: Updated CTA section title from "Transforme o futuro com sua doação" to "Por que contribuir com o Fundo Patronos"
+- ✅ **Grammar Correction**: Improved clarity and grammatical correctness of the call-to-action
+- ✅ **Content Strategy**: Better aligns with educational approach focusing on reasons to contribute
+
+#### Social Media Links UX Improvement
+- ✅ **External Link Behavior**: Updated social media links to open in new tabs instead of same tab
+- ✅ **Components Updated**:
+  - **Footer**: Added `target="_blank" rel="noopener noreferrer"` to all social media links (Instagram, LinkedIn, YouTube)
+  - **SobreNosFlyout**: Added conditional targeting for social media links (LinkedIn, Instagram, YouTube) while keeping other links in same tab
+- ✅ **Security Best Practices**: Implemented `rel="noopener noreferrer"` for external links
+- ✅ **User Experience**: Preserves Patronos website session while allowing social media exploration
+
+### Technical Implementation Details
+
+#### CTA Section Changes
+- **File**: `/src/components/CTASection.jsx`
+- **Change**: Line 25 title update
+- **Impact**: Improved user messaging and content clarity
+
+#### Social Media Link Updates
+- **Footer Component** (`/src/components/Footer.jsx`):
+  - Added `target="_blank" rel="noopener noreferrer"` to social media navigation array
+- **SobreNosFlyout Component** (`/src/components/SobreNosFlyout.jsx`):
+  - Added conditional targeting based on link name (LinkedIn, Instagram, YouTube)
+  - Maintained same-tab behavior for internal links (Contato, Seja um Voluntário, Área do Doador)
+
+### Quality Assurance & Standards
+
+#### Link Behavior Consistency
+- **Social Media**: All external social platforms open in new tabs
+- **Internal Navigation**: All internal links remain in same tab
+- **Security**: External links include proper `rel` attributes for security
+
+#### Content Standards Maintained
+- **Portuguese Language**: All content remains in professional Brazilian Portuguese
+- **Brand Consistency**: No changes to visual design or color scheme
+- **Responsive Design**: All changes work across all device breakpoints
+
+### Current Project Status
+
+#### Fully Functional Features
+- ✅ **Homepage**: Complete with all 7 sections and refined CTA messaging
+- ✅ **Fundo Page**: Complete "O Fundo" page with all sections
+- ✅ **Navigation**: Advanced flyout menus with proper external link handling
+- ✅ **Social Media Integration**: Professional links with improved UX behavior
+- ✅ **Brand Identity**: Consistent gradient color system throughout
+
+#### Recent Improvements
+- **Content Quality**: Better CTA messaging for user engagement
+- **User Experience**: Enhanced link behavior for social media exploration
+- **Technical Standards**: Security best practices for external links
+- **Professional Polish**: Small details that improve overall site experience
+
+---
+
+**Session Summary**: Successfully enhanced user experience with improved CTA messaging and social media link behavior. Updated homepage call-to-action title for better clarity and grammatical correctness. Implemented proper external link handling for social media platforms while maintaining internal navigation behavior. All changes maintain brand consistency and follow technical best practices for security and user experience.
+
+---
+
+## September 8, 2025 - Extras Page Enhancement & Timeline Component Development
+
+### Major Features Completed
+
+#### 1. FAQ Section Complete Overhaul
+- ✅ **Updated all FAQ questions and answers** with comprehensive Edital Decola Extras content
+- ✅ **8 detailed Q&A items** covering:
+  - Program definition and purpose (O que é o Edital Decola Extras?)
+  - Investment limits and reimbursement system (Quanto de investimento pode ser solicitado?)
+  - Program duration (Qual o período de duração do programa?)
+  - Eligibility criteria for organizations (Quem pode participar?)
+  - Project submission requirements (Quem deve enviar o projeto?)
+  - Acceptable project types (Que tipo de projetos podem ser inscritos?)
+  - Selection process (Quantos projetos serão selecionados?)
+  - Responsibilities of selected projects (Quais as responsabilidades dos selecionados?)
+- ✅ **Content improvements**: Enhanced clarity and grammar while maintaining professional Portuguese
+- ✅ **Real program information**: Replaced placeholder content with actual Edital Decola Extras details
+
+#### 2. Hero Section Enhancements
+- ✅ **Secondary button text update**: Changed from "Ver Editais" to "Ver Regulamento"
+- ✅ **Maintained brand consistency** with existing design patterns
+
+#### 3. ImpactoAbout Component Visual Updates
+- ✅ **Image replacement**: Updated from placeholder to custom project image (`/Escopo Extracurriculares/Baja 3 -Filtrada.jpg`)
+- ✅ **Link removal**: Eliminated "Conheça todos os projetos apoiados →" link for cleaner design
+- ✅ **Stats optimization**: Reduced from 4 to 3 statistics with updated data:
+  - Projetos Apoiados: 30+ (was 45+)
+  - Estudantes Impactados: 2,700 (was 800+)
+  - Áreas do Conhecimento: Todas (was Áreas de Atuação: 12)
+- ✅ **Layout adjustment**: Modified grid from 4 columns to 3 columns for better spacing
+
+#### 4. Horizontal Timeline Component Development
+- ✅ **Created ExtrasCronograma component** with 6 timeline steps:
+  1. 01/09 - Início das inscrições
+  2. 10/09 - Prazo das inscrições dos projetos com revisão
+  3. 16/09 - Live de Q&A
+  4. 22/09 - Fim das inscrições
+  5. 06/10 - Divulgação selecionados para o pitch
+  6. Novembro - Realização dos pitches
+- ✅ **Design implementation**: Horizontal timeline with gradient circles and connecting lines
+- ✅ **Brand consistency**: Applied website gradient theme (`linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)`)
+- ✅ **Alignment perfection**: Fixed circle alignment issues caused by varying text heights
+- ✅ **Responsive design**: Horizontal scrolling support for mobile devices
+
+#### 5. Reusable HorizontalTimeline Component
+- ✅ **Created standardized component** (`/src/components/HorizontalTimeline.jsx`)
+- ✅ **Flexible props system**: Accepts title, description, steps array, and optional className
+- ✅ **Reusability**: Can be used across different pages for various timeline needs
+- ✅ **Consistent styling**: Maintains brand gradient colors and responsive behavior
+
+### Technical Implementation Details
+
+#### Component Architecture
+- **ExtrasCronograma**: Specific timeline for Edital Decola Extras dates
+- **HorizontalTimeline**: Generic reusable timeline component
+- **Enhanced ImpactoAbout**: Updated component grid system from 4 to 3 columns
+
+#### Visual Design Improvements
+- **Circle design**: Gradient border with gradient center dot using website theme
+- **Text alignment**: Fixed height containers (h-12) ensure consistent circle positioning
+- **Connecting lines**: Horizontal lines properly aligned between all circles
+- **Gradient text**: Timeline dates use gradient text effect for brand consistency
+
+#### Content Strategy
+- **Real project data**: Updated statistics reflect actual program achievements
+- **Comprehensive information**: FAQ provides complete guidance for applicants
+- **Visual storytelling**: Custom project imagery enhances credibility
+- **Professional presentation**: All content maintains formal Brazilian Portuguese
+
+### Current Extras Page Architecture
+
+**Final page structure** (6 main sections):
+1. **ImpactoHero** → Program introduction with updated secondary button
+2. **ImpactoAbout** → Enhanced with custom image, 3 statistics, and removed link
+3. **EscopoExtracurriculares** → Project scope information (unchanged)
+4. **CriteriosAvaliacao** → Evaluation criteria (unchanged)
+5. **ExtrasCronograma** → New horizontal timeline with 6 program dates
+6. **ImpactoFAQ** → Comprehensive 8-question FAQ with real program content
+
+### Development Standards Applied
+
+#### Brand Consistency
+- **Gradient colors**: Consistent use of website theme across all new elements
+- **Typography**: Maintained established hierarchy and Inter font usage
+- **Portuguese content**: All updates follow professional Brazilian Portuguese standards
+- **Component patterns**: Aligned with existing design system conventions
+
+#### Technical Quality
+- **Responsive design**: All components work across all device breakpoints
+- **Component reusability**: Created standardized HorizontalTimeline for future use
+- **Performance optimization**: Efficient rendering with proper key props and styling
+- **Accessibility**: Proper ARIA labels and semantic HTML structure
+
+#### Content Accuracy
+- **Program information**: All FAQ content reflects actual Edital Decola Extras requirements
+- **Updated statistics**: Numbers reflect current program achievements
+- **Clear messaging**: Enhanced clarity without losing informational depth
+- **User guidance**: Comprehensive information for potential applicants
+
+### Future Development Opportunities
+
+#### Component Library Expansion
+- Additional timeline variations (vertical, curved, milestone-based)
+- FAQ component variations for different content types
+- Enhanced image gallery components for project showcases
+
+#### Content Enhancements
+- Real project case studies for ImpactoAbout sections
+- Interactive timeline elements with modal details
+- Downloadable regulation documents linked from "Ver Regulamento" button
+
+---
+
+**Session Summary**: Successfully enhanced the Extras page with comprehensive content updates, visual improvements, and a new horizontal timeline component. Implemented complete FAQ overhaul with real program information, updated statistics and imagery, and created a reusable timeline component for future use. All changes maintain brand consistency while significantly improving user experience and information accessibility for Edital Decola Extras applicants.
