@@ -1,9 +1,9 @@
 import ImpactoHero from '../components/ImpactoHero'
 import ImpactoAbout from '../components/ImpactoAbout'
-import CarreiraGrid from '../components/CarreiraGrid'
 import SelecaoAvaliacao from '../components/SelecaoAvaliacao'
-import CarreiraTestimonial from '../components/CarreiraTestimonial'
+import TrilhaTestimonial from '../components/TrilhaTestimonial'
 import ImpactoFAQ from '../components/ImpactoFAQ'
+import CentroCTA from '../components/CentroCTA'
 
 function TrilhaDeCarreiras() {
   const stats = [
@@ -56,10 +56,10 @@ function TrilhaDeCarreiras() {
         paragraphs={paragraphs}
         stats={stats}
       />
-      <CarreiraGrid />
       <SelecaoAvaliacao />
-      <CarreiraTestimonial />
+      <TrilhaTestimonial />
       <ImpactoFAQ faqs={faqs} title="Perguntas Frequentes" />
+      <CentroCTA />
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import ImpactoHero from '../components/ImpactoHero'
 import ImpactoAbout from '../components/ImpactoAbout'
-import CarreiraGrid from '../components/CarreiraGrid'
-import SelecaoAvaliacao from '../components/SelecaoAvaliacao'
-import CarreiraTestimonial from '../components/CarreiraTestimonial'
+import CentroComoFunciona from '../components/CentroComoFunciona'
+import CentroTestimonial from '../components/CentroTestimonial'
 import ImpactoFAQ from '../components/ImpactoFAQ'
+import TrilhaCTA from '../components/TrilhaCTA'
 
 function CentroDeCarreiras() {
   const paragraphs = [
@@ -55,7 +55,7 @@ function CentroDeCarreiras() {
   return (
     <div className="min-h-screen">
       <ImpactoHero
-        announcementText="Centro de Carreiras sempre disponível"
+        announcementText="Centro de Carreiras está sempre disponível"
         title="Centro de Carreiras"
         description="Conectamos talentos da Unicamp com oportunidades profissionais e oferecemos recursos para desenvolvimento de carreira e networking."
         primaryButtonText="Acessar Centro de Carreiras"
@@ -71,10 +71,10 @@ function CentroDeCarreiras() {
         learnMoreText="Acessar Centro de Carreiras"
         learnMoreLink="https://carreiras.patronos.org/"
       />
-      <CarreiraGrid />
-      <SelecaoAvaliacao />
-      <CarreiraTestimonial />
+      <CentroComoFunciona />
+      <CentroTestimonial />
       <ImpactoFAQ faqs={faqs} title="Perguntas Frequentes" />
+      <TrilhaCTA />
     </div>
   )
 }
