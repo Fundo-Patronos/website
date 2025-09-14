@@ -22,7 +22,7 @@ export default function ImpactoFAQ({ faqs, title = "Perguntas Frequentes" }) {
                   </DisclosureButton>
                 </dt>
                 <DisclosurePanel as="dd" className="mt-2 pr-12">
-                  <p className="text-base/7 text-gray-600">{faq.answer}</p>
+                  <div className="text-base/7 text-gray-600">{faq.answer}</div>
                 </DisclosurePanel>
               </Disclosure>
             ))}

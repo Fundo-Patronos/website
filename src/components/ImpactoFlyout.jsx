@@ -3,11 +3,14 @@ import {
   BriefcaseIcon,
   TrophyIcon,
   BeakerIcon,
+  UserGroupIcon,
+  BuildingOfficeIcon,
 } from '@heroicons/react/24/outline'
 
 const editaisItems = [
   { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon },
-  { name: 'Carreira', href: '/impacto/carreira', icon: BriefcaseIcon },
+  { name: 'Trilha de Carreiras', href: '/impacto/trilhas', icon: UserGroupIcon },
+  { name: 'Centro de Carreiras', href: '/impacto/centro', icon: BuildingOfficeIcon },
   { name: 'Talentos e Bolsas', href: '/impacto/talentos', icon: TrophyIcon },
   { name: 'Pesquisa', href: '/impacto/pesquisa', icon: BeakerIcon },
 ]

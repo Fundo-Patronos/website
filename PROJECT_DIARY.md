@@ -971,3 +971,116 @@ src/
 ---
 
 **Session Summary**: Successfully enhanced the Extras page with comprehensive content updates, visual improvements, and a new horizontal timeline component. Implemented complete FAQ overhaul with real program information, updated statistics and imagery, and created a reusable timeline component for future use. All changes maintain brand consistency while significantly improving user experience and information accessibility for Edital Decola Extras applicants.
+
+---
+
+## September 14, 2025 - Centro de Carreiras Page Enhancement & Content Updates
+
+### Major Features Completed
+
+#### 1. CarreiraTestimonial Component Design Update
+- ✅ **Complete layout redesign**: Changed from gradient background to clean white testimonial design
+- ✅ **Grid-based responsive layout**: Implemented professional testimonial structure with proper image positioning
+- ✅ **Updated testimonial content**: Featured real student story from Josiane Aragão
+- ✅ **Professional imagery**: Added custom photo `/Centro de Carreiras/josiane-profile-pic.jpeg`
+- ✅ **Authentic quote**: Inspiring testimonial about education, opportunities, and Fundo Patronos impact
+
+#### 2. ImpactoAbout Section Content Overhaul
+- ✅ **Real Centro de Carreiras description**: Based on screenshot information provided
+- ✅ **Comprehensive platform explanation**: Detailed description of digital platform capabilities
+- ✅ **Key features highlighted**:
+  - Access to resident mentors from all expertise areas and industries
+  - Unlimited connections and meetings with mentors
+  - Global careers, post-graduate opportunities, and entrepreneurship focus
+  - 24/7/365 platform availability
+- ✅ **Statistics removed**: Clean content focus without numerical distractions
+- ✅ **Visual enhancement**: Added Centro de Carreiras platform screenshot (`/centro_carreiras_screenshot.png`)
+- ✅ **Updated title**: Changed to "Centro de Carreiras da Unicamp" (removed temporal references)
+
+#### 3. Hero Component Improvements
+- ✅ **Secondary button update**: Changed to "Inscrição de Mentores" with Airtable form link
+- ✅ **Link integration**: Connected to mentor registration form (https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form)
+- ✅ **Removed announcement link**: Cleaned up "Centro de Carreiras sempre disponível" as informational banner
+
+#### 4. "Como Funciona" Section Implementation
+- ✅ **Complete SelecaoAvaliacao transformation**: Changed from generic process to Centro de Carreiras workflow
+- ✅ **4-step process creation**:
+  1. **Registro na Plataforma**: Unicamp-exclusive access with DAC email recommendation
+  2. **Exploração de Oportunidades**: Finding specialized mentors across industries
+  3. **Conexão com Mentores**: Platform networking tools utilization
+  4. **Desenvolvimento de Carreira**: Strategic conversations and mentoring sessions
+- ✅ **Professional Portuguese content**: Enhanced wording and clear process explanation
+
+#### 5. Comprehensive FAQ Development
+- ✅ **6 detailed questions and answers** covering all Centro de Carreiras aspects:
+  - Eligibility (Unicamp undergraduate/graduate students, all courses)
+  - Mentoring process (30-minute meetings, unlimited connections)
+  - Platform availability (24/7/365 access)
+  - Mentor registration process (with embedded link)
+  - Platform use cases (career discovery, networking, interview prep)
+  - Mentor diversity (all expertise areas and industries)
+- ✅ **Embedded link functionality**: "aqui" clickable link to mentor registration form
+- ✅ **ImpactoFAQ component enhancement**: Updated to support JSX content for links
+
+#### 6. Link Integration & Platform Access
+- ✅ **All Centro de Carreiras access links updated** to https://carreiras.patronos.org/:
+  - Hero section primary button
+  - ImpactoAbout section learn more link
+  - CarreiraGrid component Centro de Carreiras card
+- ✅ **External link security**: Proper `target="_blank" rel="noopener noreferrer"` attributes
+
+### Technical Implementation Details
+
+#### Component Updates
+- **CarreiraTestimonial.jsx**: Complete redesign with grid layout and real testimonial
+- **SelecaoAvaliacao.jsx**: Content transformation to "Como Funciona" workflow
+- **ImpactoFAQ.jsx**: Enhanced to support JSX content with links
+- **CarreiraGrid.jsx**: Updated Centro de Carreiras card link
+- **CentroDeCarreiras.jsx**: All content updates and link integrations
+
+#### Content Strategy Implementation
+- **Real student testimonials**: Authentic stories replacing generic content
+- **Platform visualization**: Screenshot integration for user preview
+- **Process clarity**: Step-by-step explanation of platform usage
+- **Professional accessibility**: All content in formal Brazilian Portuguese
+- **User guidance**: Comprehensive FAQ addressing all common questions
+
+#### Link Architecture
+- **Platform access**: Direct links to live Centro de Carreiras platform
+- **Mentor registration**: Streamlined process with Airtable form integration
+- **External link handling**: Secure practices with proper attributes
+- **User experience**: Clear call-to-action hierarchy throughout page
+
+### Current Centro de Carreiras Page Architecture
+
+**Final page structure** (6 main sections):
+1. **ImpactoHero** → Platform introduction with access and mentor registration CTAs
+2. **ImpactoAbout** → Comprehensive platform description with screenshot preview
+3. **CarreiraGrid** → Two career programs overview (linked to respective platforms)
+4. **SelecaoAvaliacao** → "Como Funciona" 4-step process explanation
+5. **CarreiraTestimonial** → Authentic student testimonial with professional imagery
+6. **ImpactoFAQ** → Complete 6-question FAQ with embedded links
+
+### Content Quality Standards Applied
+
+#### Authenticity & Relevance
+- **Real student testimonials**: Josiane Aragão's inspiring story about opportunities
+- **Platform visualization**: Actual Centro de Carreiras screenshot for user preview
+- **Comprehensive information**: All key platform features and processes explained
+- **Professional language**: Formal Brazilian Portuguese throughout
+
+#### User Experience Optimization
+- **Clear navigation**: Direct links to live platform and registration forms
+- **Process transparency**: Step-by-step workflow explanation
+- **Question anticipation**: FAQ addresses all common user concerns
+- **Visual storytelling**: Professional imagery supporting content narrative
+
+#### Technical Excellence
+- **Link functionality**: All CTAs connect to proper destinations
+- **Security practices**: External links with appropriate attributes
+- **Responsive design**: All components work across device breakpoints
+- **Component modularity**: Reusable patterns for future development
+
+---
+
+**Session Summary**: Successfully transformed the Centro de Carreiras page from placeholder content to a comprehensive, professional platform showcase. Implemented real student testimonials, detailed platform explanations, step-by-step user guidance, and complete FAQ section. All content now accurately represents the Centro de Carreiras as a 24/7 digital platform connecting Unicamp students with unlimited mentorship opportunities across all industries and expertise areas. Enhanced user experience with direct platform access links and streamlined mentor registration process.

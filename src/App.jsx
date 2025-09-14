@@ -5,6 +5,8 @@ import Fundo from './pages/Fundo'
 import Transparencia from './pages/Transparencia'
 import Extras from './pages/Extras'
 import Carreira from './pages/Carreira'
+import TrilhaDeCarreiras from './pages/TrilhaDeCarreiras'
+import CentroDeCarreiras from './pages/CentroDeCarreiras'
 import Talentos from './pages/Talentos'
 import Pesquisa from './pages/Pesquisa'
 
@@ -18,6 +20,8 @@ function App() {
           <Route path="/sobre-nos/transparencia" element={<Transparencia />} />
           <Route path="/impacto/extras" element={<Extras />} />
           <Route path="/impacto/carreira" element={<Carreira />} />
+          <Route path="/impacto/trilhas" element={<TrilhaDeCarreiras />} />
+          <Route path="/impacto/centro" element={<CentroDeCarreiras />} />
           <Route path="/impacto/talentos" element={<Talentos />} />
           <Route path="/impacto/pesquisa" element={<Pesquisa />} />
         </Routes>

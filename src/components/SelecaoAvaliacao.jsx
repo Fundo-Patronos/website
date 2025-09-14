@@ -1,31 +1,31 @@
 const timeline = [
   {
-    name: 'Critérios de Seleção',
+    name: 'Registro na Plataforma',
     description:
-      'De acordo com o regulamento do edital',
-    date: 'Etapa 1',
-    dateTime: 'etapa-1',
+      'Alunos se registram no Centro de Carreiras, exclusivo para estudantes da Unicamp. Recomendamos criar a conta com o email da DAC para validação automática',
+    date: 'Passo 1',
+    dateTime: 'passo-1',
   },
   {
-    name: 'Análise Eliminatória',
+    name: 'Exploração de Oportunidades',
     description:
-      'Serão analisadas apenas as aplicações que estejam completas',
-    date: 'Etapa 2',
-    dateTime: 'etapa-2',
+      'Encontram mentores especializados e oportunidades exclusivas dentro da plataforma, navegando por diferentes áreas de expertise e indústrias',
+    date: 'Passo 2',
+    dateTime: 'passo-2',
   },
   {
-    name: 'Matching',
+    name: 'Conexão com Mentores',
     description:
-      'Duplas de mentores e alunos serão formadas correspondendo objetivos de carreira e especialidades',
-    date: 'Etapa 3',
-    dateTime: 'etapa-3',
+      'Entram em contato com mentores residentes, parceiros ou empresas através do Centro de Carreiras, utilizando as ferramentas de networking da plataforma',
+    date: 'Passo 3',
+    dateTime: 'passo-3',
   },
   {
-    name: 'Divulgação das Duplas',
+    name: 'Desenvolvimento de Carreira',
     description:
-      'Realizada através do nosso portal e nossas redes sociais',
-    date: 'Etapa 4',
-    dateTime: 'etapa-4',
+      'Realizam conversas e sessões de mentoria para tomar decisões estratégicas e dar o próximo passo na carreira profissional',
+    date: 'Passo 4',
+    dateTime: 'passo-4',
   },
 ]
 
@@ -35,9 +35,9 @@ export default function SelecaoAvaliacao() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
-            Seleção e Avaliação
+            Como Funciona
           </h2>
-          <p className="mt-2 text-lg/8 text-gray-600">Processo estruturado para garantir o melhor matching entre mentores e estudantes.</p>
+          <p className="mt-2 text-lg/8 text-gray-600">Processo simples e intuitivo para conectar estudantes da Unicamp com mentores e oportunidades profissionais.</p>
         </div>
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {timeline.map((item) => (

@@ -16,7 +16,7 @@ const posts = [
   {
     id: 2,
     title: 'Centro de Carreiras',
-    href: '#',
+    href: 'https://carreiras.patronos.org/',
     description: 'Plataforma digital que conecta talentos da Unicamp com oportunidades exclusivas em empresas parceiras, oferecendo recursos de networking, mentoria e desenvolvimento profissional.',
     imageUrl: 'https://picsum.photos/800/600?random=22',
     date: 'Sempre disponível',
