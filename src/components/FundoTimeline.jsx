@@ -2,30 +2,30 @@ const timeline = [
   {
     name: 'Fundação do Fundo',
     description:
-      'Criação oficial do Fundo Patrimonial Patronos com o objetivo de fortalecer a pesquisa, ensino e extensão na Unicamp através de investimentos sustentáveis.',
-    date: 'Jan 2020',
-    dateTime: '2020-01',
+      'Equipe fundadora formada por 4 ex-alunos da Unicamp, veteranos em projetos extracurriculares e iniciativas institucionais na Universidade. Primeira doação histórica recebida de Fabricio Bloisi.',
+    date: 'Nov 2019',
+    dateTime: '2019-11',
   },
   {
-    name: 'Primeiros Projetos Apoiados',
+    name: 'Primeiro Marco de Captação',
     description:
-      'Início do financiamento de projetos inovadores em diversas áreas do conhecimento, beneficiando estudantes e pesquisadores da Unicamp.',
-    date: 'Ago 2020',
-    dateTime: '2020-08',
+      'Primeiro R$ 1 milhão captado com contribuições estratégicas de C-levels, empreendedores, sócios e executivos das maiores empresas do Brasil.',
+    date: 'Dez 2020',
+    dateTime: '2020-12',
   },
   {
-    name: 'R$ 10 Milhões Arrecadados',
+    name: 'Primeiros Editais Lançados',
     description:
-      'Marco importante na captação de recursos, demonstrando a confiança da sociedade no potencial transformador da educação superior.',
-    date: 'Mar 2022',
-    dateTime: '2022-03',
+      'Lançamento do primeiro edital de carreiras beneficiando 40 estudantes e primeiro edital de inovação, apoiando 5 projetos de pesquisa e desenvolvimento.',
+    date: 'Mar 2021',
+    dateTime: '2021-03',
   },
   {
-    name: 'Expansão dos Programas',
+    name: 'Consolidação Institucional',
     description:
-      'Ampliação dos programas de bolsas e apoio à infraestrutura, consolidando o Fundo como referência em investimento educacional no Brasil.',
-    date: 'Dez 2023',
-    dateTime: '2023-12',
+      'Expansão completa dos programas, consolidando os três pilares estratégicos - carreira, pesquisa e inovação - e estruturação da governança com os comitês de Administração, Fiscal e Investimentos.',
+    date: 'Jun 2022',
+    dateTime: '2022-06',
   },
 ]
 
