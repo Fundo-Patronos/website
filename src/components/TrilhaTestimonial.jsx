@@ -20,20 +20,20 @@ export default function TrilhaTestimonial() {
             </svg>
             <blockquote className="text-xl/8 font-semibold text-gray-900 sm:text-2xl/9">
               <p>
-                O programa de mentoria do Fundo Patronos foi transformador para minha carreira. Através do matching personalizado, fui conectado com um mentor experiente que me ajudou a navegar pelos desafios profissionais e acelerar meu desenvolvimento. A experiência foi além das minhas expectativas.
+                A oportunidade que o Patronos me deu com o Trilha de Carreiras foi única, estava no final da graduação e com receio do mercado de trabalho que estaria por vir. Coincidentemente, fui chamada para uma vaga de Analista durante o trilha e a mentoria foi mais certeira ainda. Tenho plena certeza que cheguei no cargo de Analista graças a essa oportunidade e outras oportunidades do Patronos.
               </p>
             </blockquote>
           </div>
           <div className="col-end-1 w-16 lg:row-span-4 lg:w-72">
             <img
               alt=""
-              src="/Illustrative%20Pictures/E-Racing%20Wix.avif"
+              src="/Iasmim Battisti.jpeg"
               className="rounded-xl bg-indigo-50 lg:rounded-3xl"
             />
           </div>
           <figcaption className="text-base lg:col-start-1 lg:row-start-3">
-            <div className="font-semibold text-gray-900">Maria Silva</div>
-            <div className="mt-1 text-gray-500">Ex-estudante da Unicamp, Engenheira de Software</div>
+            <div className="font-semibold text-gray-900">Iasmim Di Battisti</div>
+            <div className="mt-1 text-gray-500">Ex-aluna de Administração Pública</div>
           </figcaption>
         </figure>
       </div>

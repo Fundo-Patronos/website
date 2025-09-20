@@ -4,6 +4,7 @@ import EscopoExtracurriculares from '../components/EscopoExtracurriculares'
 import CriteriosAvaliacao from '../components/CriteriosAvaliacao'
 import ExtrasCronograma from '../components/ExtrasCronograma'
 import ImpactoFAQ from '../components/ImpactoFAQ'
+import ExtrasCTA from '../components/ExtrasCTA'
 
 function Extras() {
   const stats = [
@@ -61,9 +62,9 @@ function Extras() {
         title="Extracurriculares e Projetos de Extensão"
         description="Apoiamos iniciativas estudantis que promovem inovação, empreendedorismo e impacto social na comunidade universitária da Unicamp."
         primaryButtonText="Inscrever Projeto"
-        primaryButtonLink="#"
+        primaryButtonLink="https://tally.so/r/nr4bd5"
         secondaryButtonText="Ver Regulamento"
-        secondaryButtonLink="#"
+        secondaryButtonLink="/Regulamento Decola Extras 2026.pdf"
       />
       <ImpactoAbout
         categoryText="Empreendedorismo Estudantil"
@@ -76,6 +77,7 @@ function Extras() {
       <CriteriosAvaliacao />
       <ExtrasCronograma />
       <ImpactoFAQ faqs={faqs} title="Perguntas Frequentes" />
+      <ExtrasCTA />
     </div>
   )
 }

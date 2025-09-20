@@ -13,17 +13,14 @@ export default function TransparenciaHero() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="#documentos"
+                href="#newsletter"
                 className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                style={{ 
+                style={{
                   background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
                   focusVisibleOutlineColor: '#ff9700'
                 }}
               >
-                Ver Documentos
-              </a>
-              <a href="#relatorios" className="text-sm leading-6 font-semibold text-gray-900">
-                Relatórios Financeiros <span aria-hidden="true">→</span>
+                Assine nossa Newsletter
               </a>
             </div>
           </div>

@@ -37,7 +37,7 @@ const resourceItems = [
   { name: 'Instagram', href: 'https://www.instagram.com/fundopatronos/', icon: InstagramIcon },
   { name: 'YouTube', href: 'https://www.youtube.com/@FundoPatronos', icon: YouTubeIcon },
   { name: 'Seja um Voluntário', href: '#', icon: UserGroupIcon },
-  { name: 'Área do Doador', href: '#', icon: UsersIcon },
+  { name: 'Área do Doador', href: 'https://doador.doare.org/', icon: UsersIcon },
 ]
 
 const featuredPosts = [
@@ -117,8 +117,8 @@ export default function SobreNosFlyout({ isOpen, onClose, onMouseEnter, onMouseL
                         onClick={onClose}
                         className="flex gap-x-4 py-2 text-sm leading-6 font-semibold text-gray-900"
                         style={{'&:hover': {color: '#ff9700'}}}
-                        target={item.name === 'LinkedIn' || item.name === 'Instagram' || item.name === 'YouTube' ? '_blank' : '_self'}
-                        rel={item.name === 'LinkedIn' || item.name === 'Instagram' || item.name === 'YouTube' ? 'noopener noreferrer' : undefined}
+                        target={item.name === 'LinkedIn' || item.name === 'Instagram' || item.name === 'YouTube' || item.name === 'Área do Doador' ? '_blank' : '_self'}
+                        rel={item.name === 'LinkedIn' || item.name === 'Instagram' || item.name === 'YouTube' || item.name === 'Área do Doador' ? 'noopener noreferrer' : undefined}
                       >
                         <item.icon aria-hidden="true" className="size-6 flex-none text-gray-400" />
                         {item.name}

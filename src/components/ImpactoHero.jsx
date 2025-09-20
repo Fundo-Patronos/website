@@ -36,6 +36,8 @@ export default function ImpactoHero({
               {primaryButtonText && (
                 <a
                   href={primaryButtonLink}
+                  target={primaryButtonLink && primaryButtonLink.startsWith('http') ? '_blank' : '_self'}
+                  rel={primaryButtonLink && primaryButtonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
                   style={{
                     background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
@@ -46,7 +48,12 @@ export default function ImpactoHero({
                 </a>
               )}
               {secondaryButtonText && (
-                <a href={secondaryButtonLink} className="text-sm/6 font-semibold text-gray-900">
+                <a
+                  href={secondaryButtonLink}
+                  target={secondaryButtonLink && secondaryButtonLink.startsWith('http') ? '_blank' : '_self'}
+                  rel={secondaryButtonLink && secondaryButtonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="text-sm/6 font-semibold text-gray-900"
+                >
                   {secondaryButtonText} <span aria-hidden="true">→</span>
                 </a>
               )}

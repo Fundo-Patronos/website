@@ -12,8 +12,7 @@ export default function FundoHero() {
           </h1>
           <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
             <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-              O Fundo Patrimonial Patronos é uma iniciativa inovadora que conecta a sociedade à excelência acadêmica da Unicamp, 
-              fortalecendo a pesquisa, o ensino e a extensão através de investimentos sustentáveis e parcerias estratégicas.
+              O Patronos da Unicamp é o fundo patrimonial da Universidade Estadual de Campinas (Unicamp), dedicado a avançar a missão acadêmica da universidade. Apoiamos pesquisas pioneiras, empreendedorismo e iniciativas extracurriculares que enriquecem a experiência estudantil e impulsionam a inovação.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
               <a
@@ -25,7 +24,7 @@ export default function FundoHero() {
               >
                 Fazer Doação
               </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
+              <a href="#nossa-trajetoria" className="text-sm/6 font-semibold text-gray-900">
                 Nossa História <span aria-hidden="true">→</span>
               </a>
             </div>

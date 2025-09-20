@@ -21,20 +21,44 @@ function TrilhaDeCarreiras() {
 
   const faqs = [
     {
-      question: "Como escolher a trilha ideal para meu perfil?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. Placeholder text sobre processo de escolha e orientação personalizada."
+      question: "O que é o programa Trilha de Carreira?",
+      answer: "Uma jornada de cinco meses voltada a apoiar alunos com formação preferencialmente nos próximos 2 anos, na transição para o mercado de trabalho, preparando-os para processos seletivos e a tomada de decisões estruturadas e conscientes de carreira e desenvolvimento profissional. Nosso processo de formação de duplas é otimizado para unir alunos da Unicamp com ex-alunos que enfrentaram os mesmos desafios em sua jornada profissional."
     },
     {
-      question: "Qual a duração média de cada trilha?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Placeholder text sobre cronograma e duração das trilhas."
+      question: "Como é feita a formação das duplas?",
+      answer: "A dupla de mentoria será formada a fim de garantir a melhor afinidade e compatibilidade entre mentor e mentorado através de questões presentes no formulário de inscrição. Ele nos ajudará a procurar a combinação ideal para cada dupla."
     },
     {
-      question: "Posso participar de mais de uma trilha simultaneamente?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem. Placeholder text sobre participação múltipla."
+      question: "Como serão feitas as sessões de mentoria?",
+      answer: "O programa de mentoria contará com sessões mensais (cinco ao todo), onde cada dupla terá a liberdade de agendar a melhor data de acordo com as disponibilidades de agenda, respeitando a sugestão de datas do cronograma do regulamento. Os agendamentos das sessões serão sugeridos pelo time do Patronos, sendo que antes de cada sessão os mentores e mentorados terão acesso a um material que os ajudarão a se aprofundar no tema e ter uma sessão mais produtiva."
     },
     {
-      question: "As trilhas oferecem certificação?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. Placeholder text sobre certificação e reconhecimento das trilhas."
+      question: "Quem pode participar?",
+      answer: "Poderão participar alunas e alunos matriculados em quaisquer cursos de graduação e pós-graduação da Unicamp, com conclusão prevista para nos próximos 2 anos."
+    },
+    {
+      question: "Como é feita a seleção?",
+      answer: "1) Análise Eliminatória: baseado no cumprimento das condições mínimas de participação do edital. Apenas aplicações completas serão analisadas. 2) Análise Classificatória: baseado na análise de perfil, trajetória e motivações do candidato expostas no formulário de inscrição."
+    },
+    {
+      question: "Quais as responsabilidades e a dedicação mínima no programa?",
+      answer: "1) Responder ao questionário que servirá de base para a formação de duplas; 2) Ter participação de 100% nas atividades do Trilha de Carreiras, sendo necessária a presença em todas as sessões de mentoria individual. 3) Os participantes que não engajarem conforme os requisitos acima serão devidamente notificados sobre seu rendimento para que as devidas ações sejam tomadas."
+    },
+    {
+      question: "O que acontece caso o aluno desista do programa?",
+      answer: "Em caso de desistência, o Patronos deverá ser comunicado pelo aluno por e-mail com 7 (sete) dias de antecedência, esclarecendo os motivos do abandono do programa. A vaga poderá ser preenchida por alunos da lista de espera, a depender do andamento do programa e compatibilidade com a base de mentores disponíveis."
+    },
+    {
+      question: "Qual o compromisso que assumirei? (Para Mentores)",
+      answer: "Os mentores deverão ter sessões mensais de aproximadamente 1h com seus mentorados nos meses de Julho a Dezembro (5 sessões no total)."
+    },
+    {
+      question: "O que deverá ser abordado na mentoria? (Para Mentores)",
+      answer: "As sessões de mentoria estarão focadas no autoconhecimento e planejamento de carreira dos mentorados. Antes de cada sessão as duplas receberão materiais de apoio que deverão ser usados como base e lhes auxiliarão durante as conversas."
+    },
+    {
+      question: "Se eu me inscrever é certeza que participarei como mentor? (Para Mentores)",
+      answer: "Não. É possível que haja mais mentores inscritos do que necessário para a formação das duplas. Assim, existe a possibilidade da não participação. Mas o teu perfil ficará no banco de mentores para outras oportunidades no Patronos."
     }
   ]
 
@@ -45,16 +69,17 @@ function TrilhaDeCarreiras() {
         announcementLink="#"
         title="Trilha de Carreiras"
         description="Desenvolva suas competências através de trilhas estruturadas e personalizadas, desenhadas para impulsionar sua carreira profissional."
-        primaryButtonText="Explorar Trilhas"
-        primaryButtonLink="#"
-        secondaryButtonText="Inscrever-se Agora"
-        secondaryButtonLink="#"
+        primaryButtonText="Inscrição de Estudantes"
+        primaryButtonLink="https://tally.so/r/mYxxxB"
+        secondaryButtonText="Inscrição de Mentores"
+        secondaryButtonLink="https://tally.so/r/wokkkP"
       />
       <ImpactoAbout
         categoryText="Desenvolvimento Estruturado"
         title="Mentoria estratégica com matching inteligente"
         paragraphs={paragraphs}
         stats={stats}
+        imageUrl="/Illustrative Pictures/Trilha de Carreiras.jpg"
       />
       <SelecaoAvaliacao />
       <TrilhaTestimonial />

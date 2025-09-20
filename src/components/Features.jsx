@@ -4,7 +4,7 @@ const features = [
   {
     name: 'Inovação, Tecnologia e Pesquisa',
     description:
-      'Apoiamos causas importantes da humanidade como inteligência artificial, engenharia genética, exploração espacial, mudanças climáticas, descarbonização e reflorestamento.',
+      'Apoiamos as causas mais importantes da humanidade como inteligência artificial, engenharia genética, exploração espacial, mudanças climáticas, descarbonização, software e mais, através do apoio a pesquisa e extracurriculares.',
     href: '#',
     icon: ChartBarIcon,
   },
