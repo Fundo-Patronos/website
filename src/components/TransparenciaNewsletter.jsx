@@ -10,30 +10,19 @@ export default function TransparenciaNewsletter() {
             <p className="mt-4 text-lg text-gray-600">
               Receba nossa newsletter e fique por dentro de nossas novidades, projetos apoiados e impactos gerados na comunidade acadêmica.
             </p>
-            <div className="mt-6 flex max-w-md gap-x-4">
-              <label htmlFor="email-address" className="sr-only">
-                Endereço de email
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                required
-                placeholder="Digite seu email"
-                autoComplete="email"
-                className="min-w-0 flex-auto rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6"
-                style={{ focusOutlineColor: '#ff9700' }}
-              />
-              <button
-                type="submit"
-                className="flex-none rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 transition-all"
-                style={{ 
+            <div className="mt-6">
+              <a
+                href="https://tally.so/r/wvkW18"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md px-6 py-2.5 text-sm font-semibold text-white shadow-xs hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 transition-all"
+                style={{
                   background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
                   focusVisibleOutlineColor: '#ff9700'
                 }}
               >
                 Inscrever-se
-              </button>
+              </a>
             </div>
           </div>
           <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
