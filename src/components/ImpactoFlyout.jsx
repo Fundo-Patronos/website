@@ -11,29 +11,29 @@ const editaisItems = [
   { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon },
   { name: 'Trilha de Carreiras', href: '/impacto/trilhas', icon: UserGroupIcon },
   { name: 'Centro de Carreiras', href: '/impacto/centro', icon: BuildingOfficeIcon },
-  { name: 'Talentos e Bolsas', href: '/impacto/talentos', icon: TrophyIcon },
-  { name: 'Pesquisa', href: '/impacto/pesquisa', icon: BeakerIcon },
+  { name: 'Talentos e Bolsas', href: '#', icon: TrophyIcon, label: 'Em breve', disabled: true },
+  { name: 'Pesquisa', href: '#', icon: BeakerIcon, label: 'Em breve', disabled: true },
 ]
 
 const featuredPosts = [
   {
     id: 1,
     title: 'Conheça o Centro de Carreiras',
-    href: '#',
+    href: '/impacto/centro',
     date: 'Sempre disponível',
     datetime: '2024',
-    category: { title: 'Carreiras', href: '#' },
+    category: { title: 'Carreiras', href: '/impacto/centro' },
     imageUrl: '/centro_carreiras_screenshot.png',
     description: 'Acesse o nosso Centro de Carreiras para conectar-se com talentos que já passaram pela Unicamp e descubra oportunidades profissionais exclusivas.',
   },
   {
     id: 2,
     title: 'Inscreva-se no Edital de Projetos 2025',
-    href: '#',
+    href: '/impacto/extras',
     date: 'Inscrições abertas',
     datetime: '2025',
-    category: { title: 'Editais', href: '#' },
-    imageUrl: 'https://picsum.photos/400/200?random=6',
+    category: { title: 'Editais', href: '/impacto/extras' },
+    imageUrl: '/Illustrative Pictures/E Racing Workshop.webp',
     description: 'Inscreva sua equipe extracurricular ou grupo de extensão para receber apoio financeiro e treinamentos especializados para o desenvolvimento de projetos inovadores.',
   },
 ]
@@ -56,16 +56,31 @@ export default function ImpactoFlyout({ isOpen, onClose, onMouseEnter, onMouseLe
               <div className="mt-6 flow-root">
                 <div className="-my-2">
                   {editaisItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      onClick={onClose}
-                      className="flex gap-x-4 py-2 text-sm leading-6 font-semibold text-gray-900"
-                      style={{'&:hover': {color: '#ff9700'}}}
-                    >
-                      <item.icon aria-hidden="true" className="size-6 flex-none text-gray-400" />
-                      {item.name}
-                    </a>
+                    item.disabled ? (
+                      <div
+                        key={item.name}
+                        className="flex gap-x-4 py-2 text-sm leading-6 font-semibold text-gray-400 cursor-not-allowed"
+                      >
+                        <item.icon aria-hidden="true" className="size-6 flex-none text-gray-400" />
+                        <div className="flex items-center gap-x-2">
+                          {item.name}
+                          <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+                            {item.label}
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        onClick={onClose}
+                        className="flex gap-x-4 py-2 text-sm leading-6 font-semibold text-gray-900"
+                        style={{'&:hover': {color: '#ff9700'}}}
+                      >
+                        <item.icon aria-hidden="true" className="size-6 flex-none text-gray-400" />
+                        {item.name}
+                      </a>
+                    )
                   ))}
                 </div>
               </div>
