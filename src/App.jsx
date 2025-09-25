@@ -10,6 +10,7 @@ import TrilhaDeCarreiras from './pages/TrilhaDeCarreiras'
 import CentroDeCarreiras from './pages/CentroDeCarreiras'
 import Talentos from './pages/Talentos'
 import Pesquisa from './pages/Pesquisa'
+import Parceiros from './pages/Parceiros'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/impacto/centro" element={<CentroDeCarreiras />} />
           <Route path="/impacto/talentos" element={<Talentos />} />
           <Route path="/impacto/pesquisa" element={<Pesquisa />} />
+          <Route path="/parceiros" element={<Parceiros />} />
         </Routes>
       </MainLayout>
       <SpeedInsights />
