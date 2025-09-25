@@ -79,21 +79,6 @@ export default function ParceiroGrid() {
           </ul>
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-lg text-gray-600 mb-8">
-            Interessado em se tornar um parceiro do Fundo Patronos?
-          </p>
-          <a
-            href="#"
-            className="inline-flex items-center rounded-md px-6 py-3 text-sm font-semibold text-white shadow-sm hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 transition-all"
-            style={{
-              background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
-              focusVisibleOutlineColor: '#ff9700'
-            }}
-          >
-            Entre em Contato
-          </a>
-        </div>
       </div>
     </div>
   )
