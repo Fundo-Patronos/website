@@ -1,3 +1,4 @@
+// Test comment for Vercel auto-deployment verification
 const navigation = {
   sobre: [
     { name: 'Nossa História', href: '#' },
