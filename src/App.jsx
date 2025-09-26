@@ -11,6 +11,7 @@ import CentroDeCarreiras from './pages/CentroDeCarreiras'
 import Talentos from './pages/Talentos'
 import Pesquisa from './pages/Pesquisa'
 import Parceiros from './pages/Parceiros'
+import Contato from './pages/Contato'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sobre-nos/fundo" element={<Fundo />} />
           <Route path="/sobre-nos/transparencia" element={<Transparencia />} />
+          <Route path="/sobre-nos/contato" element={<Contato />} />
           <Route path="/impacto/extras" element={<Extras />} />
           <Route path="/impacto/carreira" element={<Carreira />} />
           <Route path="/impacto/trilhas" element={<TrilhaDeCarreiras />} />

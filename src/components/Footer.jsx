@@ -1,29 +1,22 @@
 // Test comment for Vercel auto-deployment verification
 const navigation = {
   sobre: [
-    { name: 'Nossa História', href: '#' },
-    { name: 'Missão e Visão', href: '#' },
-    { name: 'Equipe', href: '#' },
-    { name: 'Governança', href: '#' },
-    { name: 'Relatórios Anuais', href: '#' },
+    { name: 'O Fundo', href: '/sobre-nos/fundo' },
+    { name: 'Transparência', href: '/sobre-nos/transparencia' },
+    { name: 'Contato', href: '/sobre-nos/contato' },
   ],
   impacto: [
-    { name: 'Projetos Apoiados', href: '#' },
-    { name: 'Resultados', href: '#' },
-    { name: 'Beneficiários', href: '#' },
-    { name: 'Relatórios de Impacto', href: '#' },
+    { name: 'Projetos Extracurriculares', href: '/impacto/extras' },
+    { name: 'Trilha de Carreiras', href: '/impacto/trilhas' },
+    { name: 'Centro de Carreiras', href: '/impacto/centro' },
   ],
   apoio: [
-    { name: 'Como Doar', href: '#' },
-    { name: 'Formas de Contribuição', href: '#' },
-    { name: 'Parceiros Corporativos', href: '#' },
-    { name: 'Reconhecimentos', href: '#' },
+    { name: 'Parceiros', href: '/parceiros' },
+    { name: 'Seja Voluntário', href: '/sobre-nos/contato' },
+    { name: 'Área do Doador', href: 'https://doador.doare.org/' },
   ],
   legal: [
-    { name: 'Termos de Uso', href: '#' },
-    { name: 'Política de Privacidade', href: '#' },
-    { name: 'Transparência', href: '#' },
-    { name: 'Prestação de Contas', href: '#' },
+    { name: 'Transparência', href: '/sobre-nos/transparencia' },
   ],
   social: [
     {
@@ -119,7 +112,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm leading-6 font-semibold text-gray-900">Transparência</h3>
+                <h3 className="text-sm leading-6 font-semibold text-gray-900">Legal</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>

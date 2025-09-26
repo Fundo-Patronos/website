@@ -1,43 +1,91 @@
 const partners = [
+  // Row 1
   {
-    name: 'Parceiro Premium 1',
-    category: 'Premium',
-    logo: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    name: 'VRB',
+    logo: '/parceiros/VRB.svg',
+    website: 'https://vrb.org.br/',
   },
   {
-    name: 'Parceiro Premium 2',
-    category: 'Premium',
-    logo: 'https://images.unsplash.com/photo-1614926857083-7be149266cda?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=512&q=80',
+    name: 'IDIS',
+    logo: '/parceiros/IDIS.svg',
+    website: 'https://www.idis.org.br/',
   },
   {
-    name: 'Parceiro Estratégico 1',
-    category: 'Estratégico',
-    logo: 'https://images.unsplash.com/photo-1614705827065-62c3dc488f40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    name: 'Rio Endowment',
+    logo: '/parceiros/Rio Endowment.svg',
+    website: 'https://www.rioendowment.com/',
   },
   {
-    name: 'Parceiro Estratégico 2',
-    category: 'Estratégico',
-    logo: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    name: 'Instituto Reditus',
+    logo: '/parceiros/Instituto Reditus.svg',
+    website: 'https://www.reditus.org.br/',
   },
   {
-    name: 'Parceiro Apoiador 1',
-    category: 'Apoiador',
-    logo: 'https://images.unsplash.com/photo-1586348943529-beaae6c28db9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    name: 'SempreFEA',
+    logo: '/parceiros/SempreFEA.svg',
+    website: 'https://semprefea.org.br/',
   },
   {
-    name: 'Parceiro Apoiador 2',
-    category: 'Apoiador',
-    logo: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=512&q=80',
+    name: 'UniAngels',
+    logo: '/parceiros/UniAngels.svg',
+    website: null,
   },
   {
-    name: 'Parceiro Institucional 1',
-    category: 'Institucional',
-    logo: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    name: 'Sweetmix',
+    logo: '/parceiros/Sweetmix.svg',
+    website: 'https://www.sweetmix.com.br/',
+  },
+  // Row 2
+  {
+    name: 'Maltagri Consultoria',
+    logo: '/parceiros/Maltagri Consultoria.svg',
+    website: null,
   },
   {
-    name: 'Parceiro Institucional 2',
-    category: 'Institucional',
-    logo: 'https://images.unsplash.com/photo-1492724724894-7464c27d0ceb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+    name: 'Noviga',
+    logo: '/parceiros/Noviga.svg',
+    website: 'https://novigapartner.com.br/',
+  },
+  {
+    name: 'Brazil Foundation',
+    logo: '/parceiros/Brazil Foundation.svg',
+    website: 'https://brazilfoundation.org/saiba-mais/como-apoiamos/fundo-patrimonial-patronos/',
+  },
+  {
+    name: 'Grand Cru',
+    logo: '/parceiros/Grand Cru.svg',
+    website: 'https://www.grandcru.com.br/',
+  },
+  {
+    name: 'JF Granja',
+    logo: '/parceiros/JF Granja.svg',
+    website: 'https://jfgranja.com.br/',
+  },
+  {
+    name: 'XP Investimentos',
+    logo: '/parceiros/XP Investimentos.svg',
+    website: 'https://www.xpi.com.br/',
+  },
+  {
+    name: 'Santander',
+    logo: '/parceiros/Santander.svg',
+    website: 'https://www.santander.com.br/',
+  },
+  // Row 3
+  {
+    name: 'Doare',
+    logo: '/parceiros/Doare.svg',
+    website: 'https://doare.org/',
+  },
+  {
+    name: 'Hootsuite',
+    logo: '/parceiros/Hootsuite.svg',
+    website: 'https://hootsuite.com',
+  },
+  {
+    name: 'Google',
+    logo: '/parceiros/Google.svg',
+    website: 'https://google.com',
   },
 ]
 
@@ -58,21 +106,30 @@ export default function ParceiroGrid() {
           <ul role="list" className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
             {partners.map((partner) => (
               <li key={partner.logo} className="relative">
-                <div className="group overflow-hidden rounded-lg bg-gray-100 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-indigo-600">
-                  <img
-                    alt={`Logo ${partner.name}`}
-                    src={partner.logo}
-                    className="pointer-events-none aspect-square w-full rounded-lg object-cover outline -outline-offset-1 outline-black/5 group-hover:opacity-75 transition-opacity"
-                  />
-                  <button type="button" className="absolute inset-0 focus:outline-hidden">
-                    <span className="sr-only">Ver detalhes de {partner.name}</span>
-                  </button>
-                </div>
-                <p className="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
+                {partner.website ? (
+                  <a
+                    href={partner.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block overflow-hidden rounded-lg bg-white focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-indigo-600"
+                  >
+                    <img
+                      alt={`Logo ${partner.name}`}
+                      src={partner.logo}
+                      className="aspect-square w-full rounded-lg object-cover outline -outline-offset-1 outline-black/5 group-hover:opacity-75 transition-opacity"
+                    />
+                  </a>
+                ) : (
+                  <div className="group overflow-hidden rounded-lg bg-white">
+                    <img
+                      alt={`Logo ${partner.name}`}
+                      src={partner.logo}
+                      className="aspect-square w-full rounded-lg object-cover outline -outline-offset-1 outline-black/5"
+                    />
+                  </div>
+                )}
+                <p className="mt-2 block truncate text-sm font-medium text-gray-900">
                   {partner.name}
-                </p>
-                <p className="pointer-events-none block text-sm font-medium text-gray-500">
-                  {partner.category}
                 </p>
               </li>
             ))}

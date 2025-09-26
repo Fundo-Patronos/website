@@ -8,9 +8,9 @@ export default function ParceirosCTA() {
         <p className="mt-6 max-w-xl text-lg text-gray-600">
           Torne-se um parceiro do Fundo Patronos e faça parte de uma rede de organizações comprometidas com o desenvolvimento da Unicamp e o avanço da educação no país.
         </p>
-        <div className="mt-10 flex items-center gap-x-6">
+        <div className="mt-10">
           <a
-            href="#"
+            href="/sobre-nos/contato"
             className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{
               background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
@@ -18,12 +18,6 @@ export default function ParceirosCTA() {
             }}
           >
             Torne-se Parceiro
-          </a>
-          <a
-            href="#"
-            className="text-sm/6 font-semibold text-gray-900"
-          >
-            Saiba mais sobre parcerias <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
