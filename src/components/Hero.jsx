@@ -60,8 +60,8 @@ export default function Hero() {
                   >
                     Fazer Doação
                   </a>
-                  <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                    Conheça nosso impacto <span aria-hidden="true">→</span>
+                  <a href="/sobre-nos/fundo" className="text-sm/6 font-semibold text-gray-900">
+                    Conheça o Fundo <span aria-hidden="true">→</span>
                   </a>
                 </div>
                 </div>
