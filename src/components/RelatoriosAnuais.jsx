@@ -29,7 +29,7 @@ const posts = [
   {
     id: 4,
     title: 'Relatório Anual 2024',
-    href: '#',
+    href: '/Relatorios%20Anuais/Fundo%20Patronos%20-%20Relatorio%20Anual%202024.pdf',
     date: 'Abril 2025',
     datetime: '2025-04',
     category: { title: 'Relatório', href: '#' },

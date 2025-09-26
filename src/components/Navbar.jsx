@@ -69,12 +69,13 @@ const featuredPosts = [
   },
 ]
 
-// Impacto submenu items
+// Impacto submenu items - matching desktop flyout
 const impactItems = [
-  { name: 'Projetos Apoiados', description: 'Iniciativas que transformamos em realidade', href: '#', icon: ChartPieIcon },
-  { name: 'Resultados', description: 'Números e conquistas alcançadas', href: '#', icon: ChartBarIcon },
-  { name: 'Beneficiários', description: 'Quem é impactado pelo nosso trabalho', href: '#', icon: UsersIcon },
-  { name: 'Relatórios', description: 'Transparência em nossas ações', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon, isRouter: true },
+  { name: 'Trilha de Carreiras', href: '/impacto/trilhas', icon: UserGroupIcon, isRouter: true },
+  { name: 'Centro de Carreiras', href: '/impacto/centro', icon: BuildingLibraryIcon, isRouter: true },
+  { name: 'Talentos e Bolsas', href: '#', icon: UsersIcon, disabled: true },
+  { name: 'Pesquisa', href: '#', icon: ChartBarIcon, disabled: true },
 ]
 
 const callsToAction = [
@@ -275,14 +276,32 @@ export default function Navbar() {
                   </DisclosureButton>
                   <DisclosurePanel className="mt-2 space-y-2">
                     {[...impactItems, ...callsToAction].map((item) => (
-                      <DisclosureButton
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </DisclosureButton>
+                      item.disabled ? (
+                        <div
+                          key={item.name}
+                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-400 cursor-not-allowed"
+                        >
+                          {item.name} <span className="text-xs">(Em breve)</span>
+                        </div>
+                      ) : item.isRouter ? (
+                        <DisclosureButton
+                          key={item.name}
+                          as={Link}
+                          to={item.href}
+                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </DisclosureButton>
+                      ) : (
+                        <DisclosureButton
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </DisclosureButton>
+                      )
                     ))}
                   </DisclosurePanel>
                 </Disclosure>

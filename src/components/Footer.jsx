@@ -130,7 +130,7 @@ export default function Footer() {
           <div>
             <h3 className="text-sm leading-6 font-semibold text-gray-900">Receba nossas atualizações</h3>
             <p className="mt-2 text-sm leading-6 text-gray-600">
-              Notícias, impactos e oportunidades de doação enviados semanalmente.
+              Inscreva-se na nossa Newsletter com notícias, impactos e oportunidades de doação enviados mensalmente.
             </p>
           </div>
           <div className="mt-6 lg:mt-0">
