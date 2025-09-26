@@ -247,23 +247,23 @@ export default function Navbar() {
                   <DisclosurePanel className="mt-2 space-y-2">
                     {[...aboutItems, ...resourceItems].map((item) => (
                       item.isRouter ? (
-                        <DisclosureButton
+                        <Link
                           key={item.name}
-                          as={Link}
                           to={item.href}
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
-                        </DisclosureButton>
+                        </Link>
                       ) : (
-                        <DisclosureButton
+                        <a
                           key={item.name}
-                          as="a"
                           href={item.href}
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
-                        </DisclosureButton>
+                        </a>
                       )
                     ))}
                   </DisclosurePanel>
@@ -275,7 +275,7 @@ export default function Navbar() {
                     <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                   </DisclosureButton>
                   <DisclosurePanel className="mt-2 space-y-2">
-                    {[...impactItems, ...callsToAction].map((item) => (
+                    {impactItems.map((item) => (
                       item.disabled ? (
                         <div
                           key={item.name}
@@ -284,23 +284,23 @@ export default function Navbar() {
                           {item.name} <span className="text-xs">(Em breve)</span>
                         </div>
                       ) : item.isRouter ? (
-                        <DisclosureButton
+                        <Link
                           key={item.name}
-                          as={Link}
                           to={item.href}
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
-                        </DisclosureButton>
+                        </Link>
                       ) : (
-                        <DisclosureButton
+                        <a
                           key={item.name}
-                          as="a"
                           href={item.href}
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
-                        </DisclosureButton>
+                        </a>
                       )
                     ))}
                   </DisclosurePanel>

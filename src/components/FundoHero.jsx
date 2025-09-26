@@ -32,7 +32,7 @@ export default function FundoHero() {
           <img
             alt="Pesquisa e desenvolvimento na Unicamp"
             src="/Illustrative Pictures/Research.jpg"
-            className="aspect-6/5 w-full max-w-lg rounded-2xl object-cover object-center outline-1 -outline-offset-1 outline-black/5 lg:max-w-none xl:row-span-2 xl:row-end-2"
+            className="mt-10 aspect-6/5 w-full max-w-lg rounded-2xl object-cover object-center outline-1 -outline-offset-1 outline-black/5 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2"
           />
         </div>
       </div>
