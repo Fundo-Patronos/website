@@ -5,21 +5,21 @@ const features = [
     name: 'Inovação, Tecnologia e Pesquisa',
     description:
       'Apoiamos as causas mais importantes da humanidade como inteligência artificial, engenharia genética, exploração espacial, mudanças climáticas, descarbonização, software e mais, através do apoio a pesquisa e extracurriculares.',
-    href: '#',
+    href: '/impacto/extras',
     icon: ChartBarIcon,
   },
   {
     name: 'Carreira',
     description:
       'Oferecemos suporte ao desenvolvimento profissional dos estudantes, fortalecendo a formação de profissionais qualificados e preparados para os desafios do futuro.',
-    href: '#',
+    href: '/impacto/centro',
     icon: AcademicCapIcon,
   },
   {
     name: 'Acesso',
     description:
       'Promovemos a inclusão através de bolsas de estudo, laptops e cursos de inglês para alunos em vulnerabilidade social, garantindo oportunidades para todos.',
-    href: '#',
+    href: '/impacto/talentos',
     icon: UsersIcon,
   },
 ]
