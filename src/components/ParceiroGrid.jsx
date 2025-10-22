@@ -26,6 +26,21 @@ const partners = [
     website: 'https://semprefea.org.br/',
   },
   {
+    name: 'BeConfident',
+    logo: '/parceiros/BeConfident.svg',
+    website: 'https://beconfident.app/',
+  },
+  {
+    name: 'Matera',
+    logo: '/parceiros/Matera.svg',
+    website: 'https://www.matera.com/br/',
+  },
+  {
+    name: 'Avell',
+    logo: '/parceiros/Avell.svg',
+    website: 'https://avell.com.br/',
+  },
+  {
     name: 'UniAngels',
     logo: '/parceiros/UniAngels.svg',
     website: null,
