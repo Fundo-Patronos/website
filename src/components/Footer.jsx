@@ -4,6 +4,7 @@ const navigation = {
     { name: 'O Fundo', href: '/sobre-nos/fundo' },
     { name: 'Transparência', href: '/sobre-nos/transparencia' },
     { name: 'Contato', href: '/sobre-nos/contato' },
+    { name: 'Blog', href: '/blog' },
   ],
   impacto: [
     { name: 'Projetos Extracurriculares', href: '/impacto/extras' },

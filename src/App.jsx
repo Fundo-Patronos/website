@@ -13,6 +13,8 @@ import Talentos from './pages/Talentos'
 import Pesquisa from './pages/Pesquisa'
 import Parceiros from './pages/Parceiros'
 import Contato from './pages/Contato'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/impacto/talentos" element={<Talentos />} />
           <Route path="/impacto/pesquisa" element={<Pesquisa />} />
           <Route path="/parceiros" element={<Parceiros />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </MainLayout>
       <Analytics />
