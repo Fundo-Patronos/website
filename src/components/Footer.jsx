@@ -14,7 +14,7 @@ const navigation = {
   apoio: [
     { name: 'Parceiros', href: '/parceiros' },
     { name: 'Seja Voluntário', href: '/sobre-nos/contato' },
-    { name: 'Área do Doador', href: 'https://doador.doare.org/' },
+    { name: 'Área do Doador', href: '/doador' },
   ],
   legal: [
     { name: 'Transparência', href: '/sobre-nos/transparencia' },

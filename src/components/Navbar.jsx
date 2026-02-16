@@ -39,11 +39,11 @@ const aboutItems = [
 ]
 
 const resourceItems = [
-  { name: 'Contato', href: '#', icon: PhoneIcon },
-  { name: 'Linkedin', href: '#', icon: GlobeAltIcon },
-  { name: 'Instagram', href: '#', icon: GlobeAltIcon },
-  { name: 'Seja um Voluntário', href: '#', icon: UserGroupIcon },
-  { name: 'Área do Doador', href: '#', icon: UsersIcon },
+  { name: 'Contato', href: '/sobre-nos/contato', icon: PhoneIcon, isRouter: true },
+  { name: 'Linkedin', href: 'https://www.linkedin.com/company/fundo-patronos', icon: GlobeAltIcon },
+  { name: 'Instagram', href: 'https://www.instagram.com/fundopatronos/', icon: GlobeAltIcon },
+  { name: 'Seja um Voluntário', href: '/sobre-nos/contato', icon: UserGroupIcon, isRouter: true },
+  { name: 'Área do Doador', href: '/doador', icon: UsersIcon, isRouter: true },
 ]
 
 const featuredPosts = [
@@ -74,7 +74,7 @@ const impactItems = [
   { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon, isRouter: true },
   { name: 'Trilha de Carreiras', href: '/impacto/trilhas', icon: UserGroupIcon, isRouter: true },
   { name: 'Centro de Carreiras', href: '/impacto/centro', icon: BuildingLibraryIcon, isRouter: true },
-  { name: 'Talentos e Bolsas', href: '#', icon: UsersIcon, disabled: true },
+  { name: 'Talentos e Bolsas', href: '/impacto/talentos', icon: UsersIcon, isRouter: true },
   { name: 'Pesquisa', href: '#', icon: ChartBarIcon, disabled: true },
 ]
 
