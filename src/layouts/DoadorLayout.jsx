@@ -22,14 +22,14 @@ export default function DoadorLayout({ children }) {
             <img
               alt="Fundo Patrimonial Patronos"
               src="/Logo-Patronos-Completo.svg"
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
-          <div className="flex items-center gap-x-4">
-            <span className="text-sm text-gray-500">Area do Doador</span>
+          <div className="flex items-center gap-x-6">
+            <span className="text-sm font-semibold text-gray-900">Area do Doador</span>
             <button
               onClick={handleSignOut}
-              className="flex items-center gap-x-2 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+              className="flex items-center gap-x-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-700 hover:text-red-700 transition-colors"
             >
               <ArrowLeftOnRectangleIcon className="h-5 w-5" />
               Sair
@@ -40,10 +40,10 @@ export default function DoadorLayout({ children }) {
       <main className="flex-grow">
         {children}
       </main>
-      <footer className="bg-white border-t border-gray-200 py-6">
+      <footer className="bg-white border-t border-gray-200 py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-500">
-            Fundo Patrimonial Patronos - CNPJ: 40.418.520/0001-33
+          <p className="text-center text-sm leading-6 text-gray-600">
+            Associacao Fundo Patrimonial Patronos | CNPJ: 40.418.520/0001-33 | Jd. Nossa Senhora Auxiliadora, 257 - Campinas, SP
           </p>
         </div>
       </footer>

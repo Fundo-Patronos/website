@@ -18,10 +18,10 @@ export default function DoadorStats({ data }) {
 
   return (
     <div>
-      <h3 className="text-base font-semibold text-gray-900">Suas Contribuicoes</h3>
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Suas Contribuicoes</h3>
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
         {stats.map((item) => (
-          <div key={item.name} className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow-sm sm:p-6">
+          <div key={item.name} className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow-sm ring-1 ring-gray-900/5 sm:p-6">
             <dt className="truncate text-sm font-medium text-gray-500">{item.name}</dt>
             <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{item.stat}</dd>
           </div>
