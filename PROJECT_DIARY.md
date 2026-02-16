@@ -1439,3 +1439,184 @@ src/
 ---
 
 **Session Summary**: Successfully added 3 new partner logos (BeConfident, Matera, Avell) to the Parceiros page. All logos were already available in the public directory and were integrated through simple component array updates. Changes committed to git locally but not pushed to remote repository as requested. Partner portfolio now features enhanced diversity across technology, education, and professional development sectors.
+
+---
+
+## February 16, 2026 - Área do Doador (Donor Portal) Implementation
+
+### Major Features Completed
+
+#### 1. Complete Authentication System
+- ✅ **Firebase Authentication Integration**: Full authentication layer with three sign-in methods
+- ✅ **Google Sign-In**: OAuth authentication with Google accounts
+- ✅ **Email/Password**: Traditional registration and login with password reset
+- ✅ **Magic Link**: Passwordless email authentication using Firebase's `sendSignInLinkToEmail`
+- ✅ **Auth Context Provider**: Centralized authentication state management via React Context
+
+#### 2. Donor Dashboard Implementation
+- ✅ **Protected Routes**: Route guard component redirects unauthenticated users to login
+- ✅ **Donor Data Display**: Dashboard shows personalized donor information:
+  - Donor name with welcome message
+  - Category badge (Patrono, Associado, Amigo) with tier-specific styling
+  - Total contribution amount (formatted as R$ currency)
+  - Monthly subscription amount (for recurring donors)
+  - First donation date
+  - Contribution type (Pontual, Recorrente, Pontual/Recorrente)
+  - Subscription status (Ativa, Cancelada, N/A) with color coding
+
+#### 3. Backend API Development
+- ✅ **Vercel Serverless Function**: API route at `/api/donor-data.js`
+- ✅ **Google Sheets Integration**: Fetches donor data directly from spreadsheet
+- ✅ **Service Account Authentication**: JWT-based authentication with Google APIs
+- ✅ **Email-based Lookup**: Finds donor by email address (case-insensitive)
+- ✅ **Error Handling**: Proper 404 for not found, 500 for server errors
+
+#### 4. UI Components Created
+- ✅ **DoadorLogin.jsx**: Full-featured login page with:
+  - Google Sign-In button
+  - Email/Password form with register/login toggle
+  - Magic Link option
+  - Password reset flow
+  - Error message display
+  - Loading states
+- ✅ **DoadorDashboard.jsx**: Main dashboard page with data fetching
+- ✅ **DoadorLayout.jsx**: Simplified layout for donor area (header with logout, minimal footer)
+- ✅ **DoadorHero.jsx**: Welcome section with donor's first name
+- ✅ **DoadorStats.jsx**: Stats cards grid with:
+  - Category badge with tier-specific gradient styling
+  - Currency formatting for Brazilian Real
+  - Date formatting for Portuguese locale
+- ✅ **DoadorSubscriptionStatus.jsx**: Status display with:
+  - Color-coded icons (green=Ativa, red=Cancelada, gray=N/A)
+  - Contextual description messages
+  - Reactivation CTA for cancelled subscriptions
+- ✅ **ProtectedRoute.jsx**: Authentication guard with loading spinner
+
+### Technical Architecture
+
+#### Authentication Flow
+```
+User → DoadorLogin → Firebase Auth → Success → Redirect to /doador
+                                   → Failure → Display error message
+```
+
+#### Data Flow
+```
+DoadorDashboard → Fetch /api/donor-data?email=... → Vercel Function
+                                                  → Google Sheets API
+                                                  → Return donor JSON
+```
+
+#### File Structure Created
+```
+src/
+├── contexts/
+│   └── AuthContext.jsx         # Firebase auth provider
+├── hooks/
+│   └── useAuth.js              # Auth hook export
+├── lib/
+│   └── firebase.js             # Firebase initialization
+├── layouts/
+│   └── DoadorLayout.jsx        # Donor area layout
+├── pages/
+│   ├── DoadorLogin.jsx         # Login page
+│   └── DoadorDashboard.jsx     # Dashboard page
+├── components/
+│   ├── ProtectedRoute.jsx      # Route guard
+│   ├── DoadorHero.jsx          # Welcome section
+│   ├── DoadorStats.jsx         # Stats display
+│   └── DoadorSubscriptionStatus.jsx  # Status component
+api/
+└── donor-data.js               # Vercel serverless function
+```
+
+### Configuration & Setup
+
+#### Environment Variables Required
+**Client-side (VITE_ prefix)**:
+- `VITE_FIREBASE_API_KEY`
+- `VITE_FIREBASE_AUTH_DOMAIN`
+- `VITE_FIREBASE_PROJECT_ID`
+- `VITE_FIREBASE_STORAGE_BUCKET`
+- `VITE_FIREBASE_MESSAGING_SENDER_ID`
+- `VITE_FIREBASE_APP_ID`
+
+**Server-side (Vercel)**:
+- `GOOGLE_SHEETS_PRIVATE_KEY`
+- `GOOGLE_SHEETS_CLIENT_EMAIL`
+- `GOOGLE_SHEETS_SPREADSHEET_ID`
+
+#### Firebase Project Setup
+- **Project**: area-do-doador
+- **Auth Methods Enabled**: Google, Email/Password, Email Link
+- **Authorized Domains**: localhost, production domain
+
+#### Google Sheets Integration
+- **Service Account**: area-do-doador-sheets-sa@eng-form-487515-d1.iam.gserviceaccount.com
+- **Spreadsheet Access**: Viewer permission granted to service account
+- **Data Columns**: Email, Nome, Valor Total, Valor Assinatura, Categoria, Tipo, Data, Estado
+
+### Navigation Updates
+
+#### Links Updated to `/doador`
+- ✅ **Navbar.jsx**: Mobile menu "Área do Doador" link
+- ✅ **Footer.jsx**: "Área do Doador" in "Como Apoiar" section
+- ✅ **SobreNosFlyout.jsx**: "Área do Doador" in resources list (now uses React Router)
+
+### Routing Configuration
+
+#### New Routes Added to App.jsx
+- `/doador/login` → DoadorLogin (public)
+- `/doador` → ProtectedRoute → DoadorDashboard (authenticated)
+
+#### Vercel Configuration Updated
+- Added API route pass-through to prevent SPA rewrite interference
+- `/api/*` routes now correctly reach serverless functions
+
+### Design Specifications
+
+#### Category Badge Styling
+- **Patrono**: Full gradient background (orange→pink→purple)
+- **Associado**: Gradient border with white background, gradient text color
+- **Amigo**: Subtle gray background
+
+#### Subscription Status Colors
+- **Ativa**: Green (CheckCircleIcon)
+- **Cancelada**: Red (XCircleIcon)
+- **N/A**: Gray (MinusCircleIcon)
+
+#### Brand Consistency
+- Maintained website gradient: `linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)`
+- Inter font throughout
+- Consistent button and form styling
+- Portuguese language for all UI text
+
+### Dependencies Added
+- **firebase**: ^10.x.x (authentication SDK)
+
+### Security Considerations
+- ✅ **Credentials in .env.local**: Not committed to git (covered by `*.local` in .gitignore)
+- ✅ **Service account key deleted**: JSON file removed after extracting credentials
+- ✅ **Server-side API**: Google Sheets credentials never exposed to client
+- ✅ **Email-based access**: Users can only see their own donor data
+
+### Development vs Production
+
+#### Local Development
+- Use `vercel dev` instead of `npm run dev` to test API routes
+- `.env.local` provides credentials locally
+
+#### Production (Vercel)
+- Environment variables configured in Vercel dashboard
+- Firebase authorized domain added for production URL
+
+### Future Enhancements Possible
+- Email verification for new registrations
+- Donation history timeline
+- Receipt/certificate downloads
+- Profile editing capabilities
+- Payment method management integration
+
+---
+
+**Session Summary**: Successfully implemented a complete donor portal (Área do Doador) with Firebase Authentication supporting three sign-in methods (Google, Email/Password, Magic Link). Created a dashboard that displays personalized donor information fetched from Google Sheets via a Vercel serverless function. Updated all navigation links across the website to point to the new internal donor portal. Configured Firebase project, Google Sheets API access, and Vercel environment variables for production deployment.

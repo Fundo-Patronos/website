@@ -3,7 +3,8 @@ import { useAuth } from '../contexts/AuthContext'
 import DoadorLayout from '../layouts/DoadorLayout'
 import DoadorHero from '../components/DoadorHero'
 import DoadorStats from '../components/DoadorStats'
-import DoadorSubscriptionStatus from '../components/DoadorSubscriptionStatus'
+import DoadorInfo from '../components/DoadorInfo'
+import DoadorCTA from '../components/DoadorCTA'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 export default function DoadorDashboard() {
@@ -71,7 +72,7 @@ export default function DoadorDashboard() {
             </p>
             <a
               href="mailto:contato@fundopatronos.org.br"
-              className="mt-6 inline-block rounded-lg px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors"
+              className="mt-6 inline-block rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors"
               style={{ background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)' }}
             >
               Entrar em Contato
@@ -96,7 +97,7 @@ export default function DoadorDashboard() {
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-6 inline-block rounded-lg px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors"
+              className="mt-6 inline-block rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors"
               style={{ background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)' }}
             >
               Tentar Novamente
@@ -112,11 +113,8 @@ export default function DoadorDashboard() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <DoadorHero name={donorData.nome} />
         <DoadorStats data={donorData} />
-        <DoadorSubscriptionStatus
-          status={donorData.estadoAssinatura}
-          subscriptionValue={donorData.valorAssinatura}
-          contributionType={donorData.tipoContribuicao}
-        />
+        <DoadorInfo data={donorData} />
+        <DoadorCTA />
       </div>
     </DoadorLayout>
   )
