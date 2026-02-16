@@ -1620,3 +1620,96 @@ api/
 ---
 
 **Session Summary**: Successfully implemented a complete donor portal (Área do Doador) with Firebase Authentication supporting three sign-in methods (Google, Email/Password, Magic Link). Created a dashboard that displays personalized donor information fetched from Google Sheets via a Vercel serverless function. Updated all navigation links across the website to point to the new internal donor portal. Configured Firebase project, Google Sheets API access, and Vercel environment variables for production deployment.
+
+---
+
+## February 16, 2026 (Continued) - Dashboard UI Revamp & Styling Consistency
+
+### Dashboard Frontend Revamp
+
+#### New Component Architecture
+Replaced custom dashboard components with cleaner Tailwind UI patterns:
+
+1. **DoadorStats.jsx** - Simplified stats cards
+   - Clean card layout with `ring-1 ring-gray-900/5` borders
+   - Shows "Total Contribuido" (always) and "Assinatura Mensal" (recurring only)
+   - Large 3xl font for monetary values
+
+2. **DoadorInfo.jsx** - Description list pattern
+   - Displays donor details in organized rows
+   - Fields: Nome, Email, Categoria, Tipo de contribuicao, Primeira doacao
+   - Subscription status shown only for recurring donors
+   - Category badges with gradient styling (Patrono, Associado, Amigo)
+
+3. **DoadorCTA.jsx** - Donation call-to-action
+   - "Doar Agora" button linking to https://doa.re/patronos
+   - PIX key displayed: `operacoes@patronos.org`
+   - Clean card styling with shadow and ring border
+
+4. **DoadorHero.jsx** - Simplified welcome section
+   - Greeting with donor's first name
+   - Consistent typography with main website
+
+#### Removed Components
+- **DoadorSubscriptionStatus.jsx** - Functionality merged into DoadorInfo
+
+### Styling Consistency Updates
+
+Applied website font and color guidelines throughout Area do Doador:
+
+#### Layout (DoadorLayout.jsx)
+- Logo height: `h-16` (matching main navbar)
+- Header text: `font-semibold text-gray-900`
+- Logout button: `hover:text-red-700` transition
+- Footer: Full organization info matching main website format
+
+#### Typography Standards
+- Section headings: `text-base font-semibold leading-6 text-gray-900`
+- Body text: `text-sm leading-6 text-gray-500` or `text-gray-700`
+- Hero title: `text-3xl sm:text-4xl font-bold tracking-tight`
+- Hero subtitle: `text-lg leading-8 text-gray-600`
+
+#### Card Styling
+- Border: `ring-1 ring-gray-900/5`
+- Background: `bg-white`
+- Shadow: `shadow-sm`
+- Rounded corners: `rounded-lg` or `sm:rounded-lg`
+
+#### Brand Colors Applied
+- Gradient buttons: `linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)`
+- Link hover: `hover:text-red-700`
+- Category badges maintain tier-specific gradient styling
+
+### Bug Fix: Google Sheets Spreadsheet ID
+
+Resolved production 500 error caused by incorrect spreadsheet ID:
+- **Wrong ID**: `1JUzWdwrKy_neZ0DeU8IIdBsxu57n0C72Q-IjZ-9UK6I`
+- **Correct ID**: `1zCzaO298vWU8hrfuSwhi-yzS-wq0TuwVuNfxOv6agLI`
+- Updated in both `.env.local` and Vercel environment variables
+
+### Current Dashboard Structure
+
+```
+DoadorDashboard
+├── DoadorLayout (header + footer)
+│   ├── DoadorHero (welcome message)
+│   ├── DoadorStats (contribution amounts)
+│   ├── DoadorInfo (donor details list)
+│   └── DoadorCTA (donation button + PIX)
+```
+
+### Git Commits
+1. `ae26d99` - Add Area do Doador (Donor Portal) with Firebase Auth
+2. `8ae9fa9` - Revamp donor dashboard with cleaner Tailwind UI components
+3. `de410ec` - Apply website font and color guidelines to Area do Doador
+
+### Production Status
+- ✅ Authentication working (Google Sign-In tested)
+- ✅ Data fetching from Google Sheets working
+- ✅ Dashboard displaying donor information correctly
+- ✅ Styling consistent with main website
+- ✅ Donation CTA with PIX key visible
+
+---
+
+**Session Summary**: Completed dashboard UI revamp using Tailwind UI component patterns (stats cards, description lists, CTA sections). Fixed production bug with incorrect Google Sheets spreadsheet ID. Applied consistent font and color guidelines from the main website throughout the Area do Doador, including proper typography, hover states, card styling, and footer format. All changes deployed to production and verified working.
