@@ -13,12 +13,6 @@ const pessoas = [
     linkedinUrl: 'https://www.linkedin.com/in/alexoliveira/',
   },
   {
-    name: 'Érica Jannini',
-    role: 'Conselho de Administração',
-    imageUrl: '/Conselheiros/Erica Jannini.jpeg',
-    linkedinUrl: 'https://www.linkedin.com/in/ericajannini/',
-  },
-  {
     name: 'Newton Freire',
     role: 'Conselho de Administração',
     imageUrl: '/Conselheiros/Newton Freire.jpeg',
@@ -112,10 +106,16 @@ const pessoas = [
     linkedinUrl: 'https://www.linkedin.com/in/pedrolula/',
   },
   {
-    name: 'Silvio Fernandes',
-    role: 'Operações e TI',
-    imageUrl: '/Conselheiros/Silvio Fernandes.jpeg',
-    linkedinUrl: 'https://www.linkedin.com/in/silvio-fernandes/',
+    name: 'Murillo Cerqueira',
+    role: 'Diretor de Operações',
+    imageUrl: '/Conselheiros/Murillo Cerqueira.jpeg',
+    linkedinUrl: 'https://www.linkedin.com/in/murillocerqueira/',
+  },
+  {
+    name: 'Elita Abreu',
+    role: 'Diretora de Marketing',
+    imageUrl: '/Conselheiros/Elita Abreu.png',
+    linkedinUrl: null,
   },
 ]
 
@@ -135,20 +135,32 @@ export default function FundoEquipe() {
         >
           {pessoas.map((pessoa) => (
             <li key={pessoa.name}>
-              <a
-                href={pessoa.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block hover:opacity-80 transition-opacity duration-200"
-              >
-                <img
-                  alt={pessoa.name}
-                  src={pessoa.imageUrl}
-                  className="mx-auto size-24 rounded-full outline-1 -outline-offset-1 outline-black/5"
-                />
-                <h3 className="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">{pessoa.name}</h3>
-                <p className="text-sm/6 text-gray-600">{pessoa.role}</p>
-              </a>
+              {pessoa.linkedinUrl ? (
+                <a
+                  href={pessoa.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:opacity-80 transition-opacity duration-200"
+                >
+                  <img
+                    alt={pessoa.name}
+                    src={pessoa.imageUrl}
+                    className="mx-auto size-24 rounded-full outline-1 -outline-offset-1 outline-black/5"
+                  />
+                  <h3 className="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">{pessoa.name}</h3>
+                  <p className="text-sm/6 text-gray-600">{pessoa.role}</p>
+                </a>
+              ) : (
+                <div className="block">
+                  <img
+                    alt={pessoa.name}
+                    src={pessoa.imageUrl}
+                    className="mx-auto size-24 rounded-full outline-1 -outline-offset-1 outline-black/5"
+                  />
+                  <h3 className="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">{pessoa.name}</h3>
+                  <p className="text-sm/6 text-gray-600">{pessoa.role}</p>
+                </div>
+              )}
             </li>
           ))}
         </ul>
