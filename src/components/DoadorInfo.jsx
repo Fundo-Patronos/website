@@ -123,7 +123,7 @@ export default function DoadorInfo({ data }) {
                   {getStatusBadge(data.estadoAssinatura)}
                   {data.estadoAssinatura?.toLowerCase() === 'cancelada' && (
                     <a
-                      href="mailto:contato@fundopatronos.org.br?subject=Reativar%20Assinatura"
+                      href="mailto:contato@patronos.org?subject=Reativar%20Assinatura"
                       className="text-sm font-semibold text-red-700 hover:text-red-600 transition-colors"
                     >
                       Reativar assinatura

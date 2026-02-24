@@ -1713,3 +1713,13 @@ DoadorDashboard
 ---
 
 **Session Summary**: Completed dashboard UI revamp using Tailwind UI component patterns (stats cards, description lists, CTA sections). Fixed production bug with incorrect Google Sheets spreadsheet ID. Applied consistent font and color guidelines from the main website throughout the Area do Doador, including proper typography, hover states, card styling, and footer format. All changes deployed to production and verified working.
+
+---
+
+## Historical Reference Notes
+
+### Área do Doador - Previous External Link
+
+**Old Link**: https://doador.doare.org/
+
+Before the implementation of the Firebase Auth donor portal in February 2026, the "Área do Doador" navigation items linked to an external platform at `https://doador.doare.org/`. This was replaced with the internal `/doador` route when the custom donor portal was built with Firebase Authentication and Google Sheets integration.

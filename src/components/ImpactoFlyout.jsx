@@ -11,7 +11,7 @@ const editaisItems = [
   { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon },
   { name: 'Trilha de Carreiras', href: '/impacto/trilhas', icon: UserGroupIcon },
   { name: 'Centro de Carreiras', href: '/impacto/centro', icon: BuildingOfficeIcon },
-  { name: 'Talentos e Bolsas', href: '#', icon: TrophyIcon, label: 'Em breve', disabled: true },
+  { name: 'Talentos e Bolsas', href: '/impacto/talentos', icon: TrophyIcon },
   { name: 'Pesquisa', href: '#', icon: BeakerIcon, label: 'Em breve', disabled: true },
 ]
 

@@ -1,4 +1,4 @@
-export default function ImpactoHero({ 
+export default function ImpactoHero({
   announcementText,
   announcementLink,
   title,
@@ -6,7 +6,8 @@ export default function ImpactoHero({
   primaryButtonText,
   primaryButtonLink,
   secondaryButtonText,
-  secondaryButtonLink 
+  secondaryButtonLink,
+  primaryButtonDisabled = false
 }) {
   return (
     <div className="bg-white">
@@ -34,18 +35,29 @@ export default function ImpactoHero({
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               {primaryButtonText && (
-                <a
-                  href={primaryButtonLink}
-                  target={primaryButtonLink && primaryButtonLink.startsWith('http') ? '_blank' : '_self'}
-                  rel={primaryButtonLink && primaryButtonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
-                  style={{
-                    background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
-                    focusVisibleOutlineColor: '#ff9700'
-                  }}
-                >
-                  {primaryButtonText}
-                </a>
+                primaryButtonDisabled ? (
+                  <span
+                    className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs cursor-not-allowed opacity-60"
+                    style={{
+                      background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
+                    }}
+                  >
+                    {primaryButtonText}
+                  </span>
+                ) : (
+                  <a
+                    href={primaryButtonLink}
+                    target={primaryButtonLink && primaryButtonLink.startsWith('http') ? '_blank' : '_self'}
+                    rel={primaryButtonLink && primaryButtonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
+                    style={{
+                      background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
+                      focusVisibleOutlineColor: '#ff9700'
+                    }}
+                  >
+                    {primaryButtonText}
+                  </a>
+                )
               )}
               {secondaryButtonText && (
                 <a

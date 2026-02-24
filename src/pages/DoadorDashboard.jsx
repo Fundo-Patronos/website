@@ -71,7 +71,7 @@ export default function DoadorDashboard() {
               Se voce ja fez uma doacao, por favor entre em contato conosco para verificarmos seu cadastro.
             </p>
             <a
-              href="mailto:contato@fundopatronos.org.br"
+              href="mailto:contato@patronos.org"
               className="mt-6 inline-block rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors"
               style={{ background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)' }}
             >

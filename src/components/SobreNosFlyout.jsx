@@ -37,7 +37,7 @@ const resourceItems = [
   { name: 'Instagram', href: 'https://www.instagram.com/fundopatronos/', icon: InstagramIcon },
   { name: 'YouTube', href: 'https://www.youtube.com/@FundoPatronos', icon: YouTubeIcon },
   { name: 'Seja um Voluntário', href: '/sobre-nos/contato', icon: UserGroupIcon, isRouter: true },
-  { name: 'Área do Doador', href: '/doador', icon: UsersIcon, isRouter: true },
+  { name: 'Área do Doador', href: '/doador', icon: UsersIcon, isRouter: true, label: 'Em testes' },
 ]
 
 const featuredPosts = [
@@ -120,7 +120,14 @@ export default function SobreNosFlyout({ isOpen, onClose, onMouseEnter, onMouseL
                           style={{'&:hover': {color: '#ff9700'}}}
                         >
                           <item.icon aria-hidden="true" className="size-6 flex-none text-gray-400" />
-                          {item.name}
+                          <span className="flex items-center gap-x-2">
+                            {item.name}
+                            {item.label && (
+                              <span className="inline-flex items-center rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800">
+                                {item.label}
+                              </span>
+                            )}
+                          </span>
                         </Link>
                       ) : (
                         <a
