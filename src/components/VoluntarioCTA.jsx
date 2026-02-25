@@ -3,9 +3,7 @@ export default function VoluntarioCTA() {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:flex lg:items-center lg:justify-between lg:px-8">
         <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-          Faça a diferença na comunidade da Unicamp.
-          <br />
-          Seja um voluntário em nossa equipe.
+          Faça a diferença na comunidade da Unicamp. Seja um voluntário.
         </h2>
         <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:shrink-0">
           <a
