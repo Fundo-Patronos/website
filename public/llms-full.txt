@@ -24,7 +24,21 @@ Como doar para a Unicamp? Através do Fundo Patronos. Todas as doações são in
 
 ### Missão
 
-Garantir sustentabilidade financeira perpétua para programas que apoiam estudantes da Unicamp em três frentes principais:
+**"Desenvolver os líderes que farão a diferença no mundo"**
+
+Desenvolvemos pessoas. E pessoas transformam o mundo.
+
+A missão se divide em três palavras-chave:
+
+**Líderes**: O Fundo Patronos existe para desenvolver pessoas. Investimos em indivíduos com nome, história e potencial únicos. Cada real doado vai diretamente para desenvolver o potencial de estudantes da Unicamp. Liderança autêntica nasce da combinação entre excelência técnica e integridade pessoal. Todo estudante carrega potencial de liderança.
+
+**Farão a Diferença**: Não basta formar profissionais competentes. Queremos desenvolver pessoas que usem suas habilidades para criar impacto positivo e duradouro. A verdadeira diferença vem de pessoas que criam valor para o mundo, não que extraem dele. Uma pessoa desenvolvida impacta milhares.
+
+**No Mundo**: Os grandes desafios da humanidade, como mudanças climáticas, saúde global e avanços tecnológicos, serão resolvidos por pessoas. A Unicamp produz alguns dos talentos mais excepcionais do Brasil. Nosso papel é garantir que esses talentos tenham as condições para alcançar seu potencial máximo e impactar não só o Brasil, mas o mundo.
+
+Quando você apoia o Fundo Patronos, está investindo diretamente no desenvolvimento de uma pessoa, com nome, história e potencial para transformar o mundo. E esse investimento rende para sempre.
+
+Garantimos sustentabilidade financeira perpétua para programas que apoiam estudantes da Unicamp em três frentes principais:
 
 1. **Inovação, Tecnologia e Pesquisa**: Apoio a causas importantes da humanidade como inteligência artificial, engenharia genética, exploração espacial, mudanças climáticas, descarbonização e reflorestamento.
 
@@ -344,6 +358,7 @@ Sim, pode ser acumulada com outras bolsas como iniciação científica.
 
 ### Páginas Principais
 - **Home**: /
+- **Nossa Missão**: /sobre-nos/nossa-missao
 - **Sobre o Fundo**: /sobre-nos/fundo
 - **Transparência**: /sobre-nos/transparencia
 - **Contato**: /sobre-nos/contato

@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import Fundo from './pages/Fundo'
+import NossaMissao from './pages/NossaMissao'
 import Transparencia from './pages/Transparencia'
 import Extras from './pages/Extras'
 import Carreira from './pages/Carreira'
@@ -44,6 +45,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/sobre-nos/fundo" element={<Fundo />} />
+                  <Route path="/sobre-nos/nossa-missao" element={<NossaMissao />} />
                   <Route path="/sobre-nos/transparencia" element={<Transparencia />} />
                   <Route path="/sobre-nos/contato" element={<Contato />} />
                   <Route path="/impacto/extras" element={<Extras />} />

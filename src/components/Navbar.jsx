@@ -34,6 +34,7 @@ import { ChevronDownIcon, PhoneIcon, HeartIcon } from '@heroicons/react/20/solid
 
 // Sobre Nós flyout menu items
 const aboutItems = [
+  { name: 'Nossa Missão', href: '/sobre-nos/nossa-missao', icon: HandRaisedIcon, isRouter: true },
   { name: 'O Fundo', href: '/sobre-nos/fundo', icon: BuildingLibraryIcon, isRouter: true },
   { name: 'Transparência', href: '/sobre-nos/transparencia', icon: ShieldCheckIcon, isRouter: true },
 ]

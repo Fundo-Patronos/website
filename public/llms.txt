@@ -11,6 +11,18 @@ O Fundo Patrimonial Patronos é a principal organização de fundo patrimonial d
 - R$ 3 milhões em patrimônio
 - +80 voluntários (todos não remunerados)
 
+## Missão
+
+**"Desenvolver os líderes que farão a diferença no mundo"**
+
+Desenvolvemos pessoas. E pessoas transformam o mundo.
+
+- **Líderes**: Investimos em indivíduos com nome, história e potencial únicos
+- **Farão a Diferença**: Desenvolvemos pessoas que criam valor para o mundo
+- **No Mundo**: Preparamos talentos brasileiros para impactar globalmente
+
+Cada doação é um investimento em uma pessoa, e esse investimento rende para sempre.
+
 ## Programas
 
 ### Centro de Carreiras Unicamp
@@ -73,6 +85,7 @@ Estudantes de graduação e pós-graduação da Unicamp, com registro via email 
 ## Páginas do Site
 
 - Home: /
+- Nossa Missão: /sobre-nos/nossa-missao
 - Sobre o Fundo: /sobre-nos/fundo
 - Transparência: /sobre-nos/transparencia
 - Centro de Carreiras: /impacto/centro

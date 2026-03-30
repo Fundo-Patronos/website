@@ -4,10 +4,12 @@ import {
   ShieldCheckIcon,
   UserGroupIcon,
   UsersIcon,
+  SparklesIcon,
 } from '@heroicons/react/24/outline'
 import { PhoneIcon } from '@heroicons/react/20/solid'
 
 const aboutItems = [
+  { name: 'Nossa Missão', href: '/sobre-nos/nossa-missao', icon: SparklesIcon, isRouter: true },
   { name: 'O Fundo', href: '/sobre-nos/fundo', icon: BuildingLibraryIcon, isRouter: true },
   { name: 'Transparência', href: '/sobre-nos/transparencia', icon: ShieldCheckIcon, isRouter: true },
 ]
