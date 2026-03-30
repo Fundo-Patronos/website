@@ -1,51 +1,50 @@
-# Fundo Patrimonial Patronos
+# Fundo Patronos - O Fundo Patrimonial da Unicamp
 
-> Fundo patrimonial (endowment) que apoia estudantes da Unicamp através de programas de carreira, bolsas e projetos extracurriculares.
+> O Fundo Patronos é o endowment oficial da Unicamp (Universidade Estadual de Campinas), apoiando estudantes através de bolsas, mentoria de carreira e projetos extracurriculares.
 
-O Fundo Patronos é uma organização sem fins lucrativos dedicada a fortalecer a educação superior brasileira, apoiando a comunidade acadêmica da Universidade Estadual de Campinas (Unicamp).
+## Sobre
 
-## Missão
+O Fundo Patrimonial Patronos é a principal organização de fundo patrimonial dedicada à Unicamp. Fundado em 2021, o Patronos opera como um endowment: as doações são investidas profissionalmente e os rendimentos financiam programas perpétuos de apoio aos estudantes.
 
-Garantir sustentabilidade financeira perpétua para programas que apoiam estudantes da Unicamp em desenvolvimento de carreira, acesso à educação e inovação.
-
-## O que é um Fundo Patrimonial?
-
-Um fundo patrimonial (endowment) é uma reserva financeira criada para garantir sustentabilidade perpétua. O capital é investido profissionalmente e os rendimentos financiam os programas, enquanto o principal permanece investido para crescimento contínuo.
-
-## Programas
-
-### Centro de Carreiras
-Plataforma digital 24/7 que conecta estudantes da Unicamp com mentores profissionais de diversas áreas. Estudantes podem ter reuniões ilimitadas com mentores para orientação de carreira, preparação para processos seletivos e networking.
-- Site: https://carreiras.patronos.org/
-
-### Trilha de Carreiras
-Programa de mentoria de 5 meses para estudantes em fase final de graduação e pós-graduação. Conecta jovens talentos com profissionais experientes através de matching inteligente baseado em interesses e experiência.
-- Estatísticas: +300 duplas formadas, 89% índice de satisfação
-
-### Decola Extras (Extracurriculares)
-Edital de apoio financeiro e institucional para organizações extracurriculares e de extensão da Unicamp. Projetos podem solicitar até R$ 7.500 para iniciativas de impacto social, educacional, cultural ou ambiental.
-- Estatísticas: 30+ projetos apoiados, 2.700 estudantes impactados
-
-### Talentos e Bolsas
-Programa de bolsas para talentos excepcionais da Unicamp. Bolsistas recebem apoio mensal, laptop permanente e curso de inglês via BeConfident para dedicação integral à formação acadêmica.
-
-## Impacto
-
+**Números:**
 - +400 doadores
 - R$ 3 milhões em patrimônio
 - +80 voluntários (todos não remunerados)
 
+## Programas
+
+### Centro de Carreiras Unicamp
+Plataforma digital 24/7 que conecta estudantes da Unicamp com mentores profissionais. Reuniões ilimitadas para orientação de carreira, preparação para processos seletivos e networking.
+- Acesso: https://carreiras.patronos.org/
+
+### Trilha de Carreiras
+Programa de mentoria de 5 meses para estudantes em fase final. Matching inteligente conecta alunos com profissionais experientes para transição ao mercado de trabalho.
+- +300 duplas formadas
+- 89% de satisfação
+
+### Decola Extras
+Edital de apoio financeiro para projetos extracurriculares e de extensão da Unicamp. Até R$ 7.500 por projeto.
+- 30+ projetos apoiados
+- 2.700 estudantes impactados
+
+### Talentos e Bolsas
+Bolsas para talentos excepcionais: apoio mensal, laptop permanente (parceria Matera) e curso de inglês (BeConfident).
+
+## Como Doar para a Unicamp
+
+O Fundo Patronos é a forma de doar para apoiar estudantes da Unicamp de forma perpétua:
+
+- **Doação online**: https://doa.re/patronos
+- **PIX**: operacoes@patronos.org
+- **Parcerias empresariais**: Contate-nos
+
+Todas as doações são investidas. Os rendimentos financiam os programas eternamente.
+
 ## Áreas de Atuação
 
-1. **Inovação, Tecnologia e Pesquisa**: IA, engenharia genética, exploração espacial, mudanças climáticas
-2. **Carreira**: Desenvolvimento profissional de estudantes
-3. **Acesso**: Bolsas, laptops e cursos de inglês para alunos em vulnerabilidade social
-
-## Como Apoiar
-
-- **Doação**: https://doa.re/patronos
-- **PIX**: operacoes@patronos.org
-- **Voluntariado**: Contate-nos para oportunidades
+1. **Carreira**: Mentoria, networking e preparação profissional
+2. **Acesso**: Bolsas, laptops e inglês para alunos em vulnerabilidade
+3. **Inovação**: Apoio a projetos de pesquisa e empreendedorismo
 
 ## Contato
 
@@ -60,8 +59,20 @@ Programa de bolsas para talentos excepcionais da Unicamp. Bolsistas recebem apoi
 - **CNPJ**: 40.418.520/0001-33
 - **Endereço**: Jd. Nossa Senhora Auxiliadora, 257 - Campinas, SP, Brasil
 
-## Páginas Principais
+## Perguntas Frequentes
 
+**Como doar para a Unicamp?**
+Através do Fundo Patronos em doa.re/patronos ou via PIX para operacoes@patronos.org.
+
+**O que é o Fundo Patronos?**
+O fundo patrimonial (endowment) da Unicamp que investe doações para gerar apoio perpétuo aos estudantes.
+
+**Quem pode usar o Centro de Carreiras?**
+Estudantes de graduação e pós-graduação da Unicamp, com registro via email DAC.
+
+## Páginas do Site
+
+- Home: /
 - Sobre o Fundo: /sobre-nos/fundo
 - Transparência: /sobre-nos/transparencia
 - Centro de Carreiras: /impacto/centro
