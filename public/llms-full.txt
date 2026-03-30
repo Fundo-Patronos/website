@@ -1,0 +1,374 @@
+# Fundo Patrimonial Patronos - Documentação Completa
+
+> Fundo patrimonial (endowment) que apoia estudantes da Unicamp através de programas de carreira, bolsas e projetos extracurriculares.
+
+## Sumário
+
+1. [Sobre a Organização](#sobre-a-organização)
+2. [O que é um Fundo Patrimonial](#o-que-é-um-fundo-patrimonial)
+3. [Programas](#programas)
+4. [Impacto e Estatísticas](#impacto-e-estatísticas)
+5. [Perguntas Frequentes](#perguntas-frequentes)
+6. [Como Apoiar](#como-apoiar)
+7. [Governança](#governança)
+8. [Contato e Redes Sociais](#contato-e-redes-sociais)
+9. [Mapa do Site](#mapa-do-site)
+
+---
+
+## Sobre a Organização
+
+O Fundo Patrimonial Patronos é uma organização sem fins lucrativos dedicada a fortalecer a educação superior brasileira, apoiando a comunidade acadêmica da Universidade Estadual de Campinas (Unicamp).
+
+### Missão
+
+Garantir sustentabilidade financeira perpétua para programas que apoiam estudantes da Unicamp em três frentes principais:
+
+1. **Inovação, Tecnologia e Pesquisa**: Apoio a causas importantes da humanidade como inteligência artificial, engenharia genética, exploração espacial, mudanças climáticas, descarbonização e reflorestamento.
+
+2. **Carreira**: Suporte ao desenvolvimento profissional dos estudantes através de mentoria, networking e preparação para o mercado de trabalho.
+
+3. **Acesso**: Promoção da inclusão através de bolsas de estudo, laptops e cursos de inglês para alunos em vulnerabilidade social.
+
+### Informações Legais
+
+- **Razão Social**: Associação Fundo Patrimonial Patronos
+- **CNPJ**: 40.418.520/0001-33
+- **Endereço**: Jd. Nossa Senhora Auxiliadora, 257 - Campinas, SP, Brasil
+- **Site**: https://www.patronos.org
+
+---
+
+## O que é um Fundo Patrimonial
+
+Um fundo patrimonial, ou endowment, é uma reserva financeira criada por organizações sem fins lucrativos para garantir sua sustentabilidade. O dinheiro vem de doações e é investido para gerar rendimentos. Parte desses rendimentos é usada nas atividades da organização, enquanto o restante é reinvestido para manter o Fundo crescendo. Assim, mesmo sem novas doações, a organização continua tendo recursos de forma perpétua.
+
+### Diferencial do Modelo
+
+No modelo tradicional de filantropia, uma organização arrecada R$ 1 milhão em doações e gasta tudo em um ano. No ano seguinte, precisa captar tudo de novo para continuar funcionando.
+
+Com um fundo patrimonial, esse mesmo R$ 1 milhão é investido para gerar rendimentos. Uma parte desses rendimentos é usada para as atividades da organização, enquanto o principal permanece investido. Com o tempo, o Fundo cresce e garante renda contínua, mesmo sem novas doações.
+
+---
+
+## Programas
+
+### Centro de Carreiras
+
+**Descrição**: Plataforma digital que representa uma nova era na formação complementar dos alunos da Unicamp, ampliando significativamente o acesso a recursos de desenvolvimento profissional.
+
+**Como Funciona**:
+- Estudantes têm acesso a mentores residentes — profissionais experientes de diversas áreas de atuação
+- Discussões sobre o dia a dia de diferentes carreiras
+- Preparação para processos seletivos
+- Estratégias para expansão de redes de contato
+
+**Características**:
+- Disponível 24/7/365
+- Mentores de todas as áreas de expertise e indústrias
+- Inclui carreiras globais, pós-graduação e empreendedorismo
+- Conexões ilimitadas com mentores
+- Reuniões ilimitadas
+
+**Acesso**: https://carreiras.patronos.org/
+
+**Elegibilidade**: Estudantes de graduação e pós-graduação da Unicamp de todos os cursos. Registro com email da DAC para validação automática.
+
+**Inscrição de Mentores**: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+
+---
+
+### Trilha de Carreiras
+
+**Descrição**: Programa de mentoria de 5 meses para estudantes da Unicamp em fase final de graduação e pós-graduação. Conecta jovens talentos com profissionais experientes através de um processo sofisticado de matching, facilitando a transição do ambiente acadêmico para o mercado de trabalho.
+
+**Estatísticas**:
+- +300 duplas formadas
+- 5 sessões de mentoria
+- 89% índice de satisfação
+- Todas as áreas do conhecimento
+
+**Especialidades Cobertas** (12 áreas):
+- Tecnologia
+- Sustentabilidade
+- Liderança
+- Finanças
+- E outras 8 áreas
+
+**Indústrias Cobertas** (13 setores):
+- Startups
+- Mercado Financeiro
+- Setor Público
+- Terceiro Setor
+- E outros 9 setores
+
+**Características**:
+- Totalmente remoto
+- Acessível a todos os cursos da Unicamp
+- Algoritmo de pareamento baseado em interesses e experiência
+- Materiais de apoio antes de cada sessão
+
+**Elegibilidade**: Alunos matriculados em graduação ou pós-graduação da Unicamp com conclusão prevista para os próximos 2 anos.
+
+**Processo de Seleção**:
+1. Análise Eliminatória: cumprimento das condições mínimas de participação
+2. Análise Classificatória: análise de perfil, trajetória e motivações
+
+---
+
+### Decola Extras (Extracurriculares e Projetos de Extensão)
+
+**Descrição**: Programa destinado a organizações extracurriculares e de extensão que buscam apoio financeiro ou institucional para executar projetos relacionados a qualquer área de atuação, com impacto positivo na Unicamp e na sociedade.
+
+**Missão**: Fomentar o empreendedorismo estudantil e a inovação social na Unicamp. Apoiar iniciativas que vão além da sala de aula, conectando conhecimento acadêmico com impacto real na sociedade.
+
+**Estatísticas**:
+- 30+ projetos apoiados
+- 2.700 estudantes impactados
+- Todas as áreas do conhecimento
+
+**Investimento**: Até R$ 7.500 por projeto (sistema de reembolso)
+
+**Duração**: 1 ano após divulgação dos selecionados
+
+**Tipos de Projeto Aceitos**:
+- Cunho social
+- Educacional
+- Esportivo
+- Cultural
+- Ambiental
+- Voltado à saúde
+- Inovação e empreendedorismo
+- Outras iniciativas de impacto positivo
+
+**Organizações Elegíveis**:
+- Centros Acadêmicos
+- Atléticas
+- Ligas
+- Grupos
+- Semanas Acadêmicas
+- Associações
+- Conjuntos
+- Comissões
+- Times
+
+**Requisitos**:
+- Sem cunho político-partidário e fins lucrativos
+- Quadros majoritariamente compostos por pessoas da comunidade Unicamp
+- Reconhecidamente pertencentes e vinculadas à Unicamp
+
+---
+
+### Talentos e Bolsas
+
+**Descrição**: Programa de apoio a talentos excepcionais da Unicamp em todas as áreas do conhecimento. Identificamos estudantes com alto potencial e oferecemos condições para dedicação integral à formação acadêmica.
+
+**Benefícios**:
+1. **Bolsa Mensal**: Apoio financeiro para manutenção da vida universitária
+2. **Laptop**: Fornecido pela Matera, permanente (sem devolução)
+3. **Curso de Inglês**: Licença do aplicativo BeConfident
+
+**Duração**: 1 ano inicial, com possibilidade de extensão até a graduação
+
+**Parceiros**:
+- BeConfident (curso de inglês)
+- Matera (laptops)
+
+**Acúmulo de Bolsas**: Pode ser acumulada com outras bolsas (ex: iniciação científica)
+
+**Processo de Seleção**: Avalia necessidades individuais, conquistas acadêmicas, planos futuros e atividades na Universidade.
+
+---
+
+## Impacto e Estatísticas
+
+### Números Gerais
+- **+400 doadores** apoiando a causa
+- **R$ 3 milhões** em patrimônio acumulado
+- **+80 voluntários** trabalhando pela missão
+
+### Por Programa
+
+**Centro de Carreiras**:
+- Plataforma 24/7/365
+- Mentores de todas as áreas e indústrias
+
+**Trilha de Carreiras**:
+- +300 duplas formadas
+- 89% de satisfação
+
+**Decola Extras**:
+- 30+ projetos apoiados
+- 2.700 estudantes impactados
+
+**Talentos e Bolsas**:
+- Todas as áreas do conhecimento
+- Apoio de 1+ ano
+
+---
+
+## Perguntas Frequentes
+
+### Sobre o Fundo Patrimonial
+
+**O que é um Fundo Patrimonial?**
+Um fundo patrimonial, ou endowment, é uma reserva financeira criada por organizações sem fins lucrativos para garantir sua sustentabilidade. O dinheiro vem de doações e é investido para gerar rendimentos. Parte desses rendimentos é usada nas atividades da organização, enquanto o restante é reinvestido para manter o Fundo crescendo.
+
+**Como o Fundo Patronos opera e acelera a missão acadêmica da Unicamp?**
+O Fundo Patronos acelera a missão acadêmica da Unicamp através de um modelo sustentável de investimentos. Nosso capital é investido profissionalmente para gerar rendimentos ao longo do tempo. Com esses rendimentos, atuamos em três frentes: Inovação/Tecnologia/Pesquisa, Carreira e Acesso.
+
+**Qual o diferencial do modelo de Fundo Patrimonial?**
+No modelo tradicional, doações são gastas em um ano e precisam ser recaptadas. Com um fundo patrimonial, o capital é investido permanentemente, gerando rendimentos contínuos que financiam os programas enquanto o principal cresce.
+
+### Sobre Doações
+
+**Como posso apoiar o Fundo Patronos?**
+Qualquer pessoa ou empresa pode apoiar. Pessoas físicas podem doar valores determinados ou fazer doações recorrentes através do site https://doa.re/patronos. Empresas podem contribuir através de parcerias estratégicas.
+
+**As doações oferecem incentivos fiscais?**
+Atualmente, devido à legislação brasileira, não podemos oferecer incentivos fiscais. Estamos trabalhando ativamente com outros fundos patrimoniais e representantes no Congresso Nacional para alterar essa legislação.
+
+### Sobre a Equipe
+
+**As pessoas que trabalham no Fundo Patronos são remuneradas?**
+Não. Todas as pessoas que trabalham no Fundo Patronos são voluntárias e não recebem remuneração. Trabalhamos no Fundo porque nos sentimos alinhados com a missão e o propósito da organização.
+
+### Sobre o Centro de Carreiras
+
+**Quem pode utilizar o Centro de Carreiras?**
+Estudantes de graduação e pós-graduação da Unicamp de todos os cursos. Registro com email da DAC para validação automática.
+
+**Como funciona a mentoria?**
+Encontros de 30 minutos, agendados conforme disponibilidade do mentor. Conexões e reuniões ilimitadas.
+
+**Como posso me tornar um mentor residente?**
+Através do formulário: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+
+### Sobre a Trilha de Carreiras
+
+**O que é o programa Trilha de Carreira?**
+Uma jornada de cinco meses voltada a apoiar alunos com formação nos próximos 2 anos, na transição para o mercado de trabalho.
+
+**Como é feita a formação das duplas?**
+Através de questões no formulário de inscrição que garantem afinidade e compatibilidade entre mentor e mentorado.
+
+**Quem pode participar?**
+Alunos matriculados em graduação ou pós-graduação da Unicamp, com conclusão prevista para os próximos 2 anos.
+
+### Sobre o Decola Extras
+
+**Quanto de investimento pode ser solicitado?**
+Até R$ 7.500 por projeto, através de sistema de reembolso.
+
+**Quem pode participar?**
+Organizações extracurriculares ou de extensão sem cunho político-partidário e fins lucrativos, com quadros majoritariamente da comunidade Unicamp.
+
+### Sobre Talentos e Bolsas
+
+**Quais são os benefícios?**
+Bolsa mensal, laptop permanente e curso de inglês via BeConfident.
+
+**Preciso devolver o laptop?**
+Não. O laptop é do aluno permanentemente.
+
+**Posso acumular com outras bolsas?**
+Sim, pode ser acumulada com outras bolsas como iniciação científica.
+
+---
+
+## Como Apoiar
+
+### Doação Financeira
+- **Site de Doação**: https://doa.re/patronos
+- **PIX**: operacoes@patronos.org
+- Aceita doações únicas ou recorrentes
+- Pessoas físicas e jurídicas
+
+### Voluntariado
+- +80 voluntários ativos
+- Todas as posições são não remuneradas
+- Contato: https://www.patronos.org/sobre-nos/contato
+
+### Parcerias Empresariais
+- Parcerias estratégicas disponíveis
+- Contato através do site
+
+### Mentoria
+- Torne-se mentor no Centro de Carreiras
+- Inscrição: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+
+---
+
+## Governança
+
+### Estrutura
+- Organização sem fins lucrativos
+- Equipe 100% voluntária
+- Conselho de Administração
+
+### Transparência
+- Página dedicada: /sobre-nos/transparencia
+- Relatórios disponíveis publicamente
+- FAQ sobre governança no site
+
+---
+
+## Contato e Redes Sociais
+
+### Site
+- https://www.patronos.org
+
+### Redes Sociais
+- **Instagram**: https://www.instagram.com/fundopatronos/
+- **LinkedIn**: https://www.linkedin.com/company/fundo-patronos
+- **YouTube**: https://www.youtube.com/@FundoPatronos
+
+### Newsletter
+- Inscrição: https://tally.so/r/wvkW18
+- Notícias, impactos e oportunidades mensalmente
+
+### Contato Direto
+- Página de contato: /sobre-nos/contato
+
+---
+
+## Mapa do Site
+
+### Páginas Principais
+- **Home**: /
+- **Sobre o Fundo**: /sobre-nos/fundo
+- **Transparência**: /sobre-nos/transparencia
+- **Contato**: /sobre-nos/contato
+- **Blog**: /blog
+
+### Programas (Impacto)
+- **Centro de Carreiras**: /impacto/centro
+- **Trilha de Carreiras**: /impacto/trilhas
+- **Extracurriculares (Decola Extras)**: /impacto/extras
+- **Talentos e Bolsas**: /talentos
+
+### Apoio
+- **Parceiros**: /parceiros
+- **Área do Doador**: /doador (autenticado)
+
+### Links Externos
+- **Doação**: https://doa.re/patronos
+- **Centro de Carreiras (Plataforma)**: https://carreiras.patronos.org/
+- **Inscrição de Mentores**: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+- **Newsletter**: https://tally.so/r/wvkW18
+
+---
+
+## Metadados
+
+- **Idioma**: Português (PT-BR)
+- **País**: Brasil
+- **Cidade**: Campinas, SP
+- **Universidade Parceira**: Unicamp (Universidade Estadual de Campinas)
+- **Tipo de Organização**: Fundo Patrimonial / Endowment
+- **Status Legal**: Organização sem fins lucrativos
+- **Ano de Fundação**: Desde 2021 (programas ativos)
+
+---
+
+*Última atualização: 2025*

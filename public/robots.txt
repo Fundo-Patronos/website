@@ -1,0 +1,61 @@
+# robots.txt for Fundo Patrimonial Patronos
+# https://www.patronos.org
+
+# Allow all crawlers by default
+User-agent: *
+Allow: /
+Disallow: /doador/
+Disallow: /api/
+
+# AI Crawlers - Explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.patronos.org/sitemap.xml
+
+# LLM-readable documentation
+# See: https://www.patronos.org/llms.txt
+# See: https://www.patronos.org/llms-full.txt
