@@ -121,3 +121,26 @@ GOOGLE_SHEETS_SPREADSHEET_ID
 - **Patrono**: Full gradient background
 - **Associado**: Gradient border with white background, gradient text
 - **Amigo**: Subtle gray background
+
+## AI/LLM Documentation
+
+When making content changes to the website, **always update the LLM documentation files**:
+
+- `public/llms.txt` - Concise overview for AI crawlers
+- `public/llms-full.txt` - Comprehensive documentation
+- `index.html` - JSON-LD structured data and meta tags
+
+### What requires updates:
+- New programs or features
+- Changes to statistics (donors, patrimony, volunteers)
+- New FAQ questions
+- Changes to program descriptions
+- New pages or major content updates
+- Contact info or link changes
+
+### SEO Positioning
+The site is optimized for PT-BR searches positioning Patronos as "O Fundo Patrimonial da Unicamp". Maintain this positioning in all content updates. Key search terms to target:
+- "fundo patrimonial unicamp"
+- "doar unicamp" / "doação unicamp"
+- "bolsa unicamp"
+- "como doar para unicamp"
