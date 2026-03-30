@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Sensitive data - never commit
+*.csv
+Patronos_Base_Email_Doadores*.csv
+*database*.csv
