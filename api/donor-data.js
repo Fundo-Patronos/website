@@ -38,6 +38,9 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Lê do donor_summary (view): JOIN de donors (perfil manual) com
+    // SUM(donation_events) — valor_total, data_primeira_doacao e categoria
+    // são computados, não armazenados.
     const result = await pool.query(
       `SELECT
          email,
@@ -48,7 +51,7 @@ export default async function handler(req, res) {
          tipo_contribuicao,
          data_primeira_doacao,
          estado_assinatura
-       FROM donors
+       FROM donor_summary
        WHERE LOWER(email) = LOWER($1)
        LIMIT 1`,
       [email.trim()]
