@@ -90,12 +90,23 @@ async function main() {
       console.log('⊘ donors já no novo schema (sem valor_total) — nada a migrar');
     }
 
-    // 4. View donor_summary — JOIN profile + agregação de eventos + categoria computada
+    // 4. Garantir coluna `rm` na donors (Responsável pelo Relacionamento)
+    const hasRm = await tableHasColumn('donors', 'rm');
+    if (!hasRm) {
+      await client.query(`ALTER TABLE donors ADD COLUMN rm VARCHAR(255)`);
+      console.log('✓ Coluna `rm` adicionada em donors');
+    }
+
+    // 5. View donor_summary — JOIN profile + agregação de eventos + categoria computada
+    // (DROP + CREATE em vez de CREATE OR REPLACE porque a lista de colunas pode mudar
+    //  entre versões; OR REPLACE não permite alterar a lista de colunas.)
+    await client.query(`DROP VIEW IF EXISTS donor_summary`);
     await client.query(`
-      CREATE OR REPLACE VIEW donor_summary AS
+      CREATE VIEW donor_summary AS
       SELECT
         d.email,
         d.nome,
+        d.rm,
         d.tipo_contribuicao,
         d.estado_assinatura,
         d.valor_assinatura,
@@ -110,7 +121,7 @@ async function main() {
         END                                       AS categoria
       FROM donors d
       LEFT JOIN donation_events e ON LOWER(e.donor_email) = LOWER(d.email)
-      GROUP BY d.email, d.nome, d.tipo_contribuicao, d.estado_assinatura, d.valor_assinatura;
+      GROUP BY d.email, d.nome, d.rm, d.tipo_contribuicao, d.estado_assinatura, d.valor_assinatura;
     `);
     console.log('✓ View donor_summary criada/atualizada');
 

@@ -74,6 +74,7 @@ function DonorsTab({ donors, loading }) {
           <tr>
             <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
             <th className="px-4 py-3 text-left font-semibold text-gray-700">Nome</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">RM</th>
             <th className="px-4 py-3 text-right font-semibold text-gray-700">Valor Total</th>
             <th className="px-4 py-3 text-right font-semibold text-gray-700">Assinatura</th>
             <th className="px-4 py-3 text-left font-semibold text-gray-700">Categoria</th>
@@ -87,6 +88,7 @@ function DonorsTab({ donors, loading }) {
             <tr key={d.email} className="hover:bg-gray-50">
               <td className="px-4 py-3 font-mono text-xs text-gray-700">{d.email}</td>
               <td className="px-4 py-3 text-gray-900">{d.nome}</td>
+              <td className="px-4 py-3 text-gray-700">{d.rm || <span className="text-gray-400 italic">—</span>}</td>
               <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatCurrency(d.valorTotal)}</td>
               <td className="px-4 py-3 text-right text-gray-700">{formatCurrency(d.valorAssinatura)}</td>
               <td className="px-4 py-3"><CategoriaBadge value={d.categoria} /></td>
@@ -283,7 +285,7 @@ function AddPixTab({ getToken, events, eventsLoading, onSuccess }) {
 
 // ====================== TAB: Cadastrar Perfil (form + table com edit/delete) ======================
 function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
-  const empty = { editing: false, email: '', nome: '', tipoContribuicao: 'Pontual', estadoAssinatura: 'N/A', valorAssinatura: '0' }
+  const empty = { editing: false, email: '', nome: '', rm: '', tipoContribuicao: 'Pontual', estadoAssinatura: 'N/A', valorAssinatura: '0' }
   const [form, setForm] = useState(empty)
   const [loading, setLoading] = useState(false)
   const [feedback, setFeedback] = useState(null)
@@ -293,6 +295,7 @@ function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
       editing: true,
       email: donor.email,
       nome: donor.nome,
+      rm: donor.rm || '',
       tipoContribuicao: donor.tipoContribuicao,
       estadoAssinatura: donor.estadoAssinatura,
       valorAssinatura: String(donor.valorAssinatura),
@@ -333,6 +336,7 @@ function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
         body: JSON.stringify({
           email: form.email,
           nome: form.nome,
+          rm: form.rm,
           tipoContribuicao: form.tipoContribuicao,
           estadoAssinatura: form.estadoAssinatura,
           valorAssinatura: parseFloat(form.valorAssinatura) || 0,
@@ -380,6 +384,15 @@ function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
             <label className="block text-sm font-medium text-gray-700">Nome completo</label>
             <input type="text" required value={form.nome}
               onChange={(e) => setForm({ ...form, nome: e.target.value })}
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" />
+          </div>
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-gray-700">
+              RM <span className="text-gray-400 font-normal">(Responsável pelo Relacionamento)</span>
+            </label>
+            <input type="text" value={form.rm}
+              onChange={(e) => setForm({ ...form, rm: e.target.value })}
+              placeholder="Nome ou email do RM dentro do Patronos (opcional)"
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" />
           </div>
           <div>
@@ -430,6 +443,7 @@ function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
                 <tr>
                   <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
                   <th className="px-4 py-3 text-left font-semibold text-gray-700">Nome</th>
+                  <th className="px-4 py-3 text-left font-semibold text-gray-700">RM</th>
                   <th className="px-4 py-3 text-left font-semibold text-gray-700">Tipo</th>
                   <th className="px-4 py-3 text-left font-semibold text-gray-700">Status</th>
                   <th className="px-4 py-3 text-right font-semibold text-gray-700">Assinatura</th>
@@ -441,6 +455,7 @@ function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
                   <tr key={d.email} className={form.email === d.email ? 'bg-orange-50' : 'hover:bg-gray-50'}>
                     <td className="px-4 py-3 font-mono text-xs text-gray-700">{d.email}</td>
                     <td className="px-4 py-3 text-gray-900">{d.nome}</td>
+                    <td className="px-4 py-3 text-gray-700">{d.rm || <span className="text-gray-400 italic">—</span>}</td>
                     <td className="px-4 py-3 text-gray-700">{d.tipoContribuicao}</td>
                     <td className="px-4 py-3 text-gray-700">{d.estadoAssinatura}</td>
                     <td className="px-4 py-3 text-right text-gray-700">{formatCurrency(d.valorAssinatura)}</td>

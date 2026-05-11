@@ -17,6 +17,7 @@ export default async function handler(req, res) {
         SELECT
           email,
           nome,
+          rm,
           valor_total,
           valor_assinatura,
           categoria,
@@ -29,6 +30,7 @@ export default async function handler(req, res) {
       const donors = r.rows.map((row) => ({
         email: row.email,
         nome: row.nome,
+        rm: row.rm || '',
         valorTotal: parseFloat(row.valor_total) || 0,
         valorAssinatura: parseFloat(row.valor_assinatura) || 0,
         categoria: row.categoria,
@@ -46,7 +48,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'POST') {
-    const { email, nome, tipoContribuicao, estadoAssinatura, valorAssinatura } = req.body || {};
+    const { email, nome, rm, tipoContribuicao, estadoAssinatura, valorAssinatura } = req.body || {};
 
     if (!email || typeof email !== 'string') {
       return res.status(400).json({ error: 'email is required' });
@@ -54,6 +56,9 @@ export default async function handler(req, res) {
     if (!nome || typeof nome !== 'string') {
       return res.status(400).json({ error: 'nome is required' });
     }
+
+    // RM é opcional. String vazia → NULL no banco (sem RM atribuído).
+    const rmValue = (typeof rm === 'string' && rm.trim()) ? rm.trim() : null;
 
     const validTipos = ['Pontual', 'Recorrente'];
     const tipo = validTipos.includes(tipoContribuicao) ? tipoContribuicao : 'Pontual';
@@ -66,15 +71,16 @@ export default async function handler(req, res) {
 
     try {
       await pool.query(
-        `INSERT INTO donors (email, nome, tipo_contribuicao, estado_assinatura, valor_assinatura)
-         VALUES ($1, $2, $3, $4, $5)
+        `INSERT INTO donors (email, nome, rm, tipo_contribuicao, estado_assinatura, valor_assinatura)
+         VALUES ($1, $2, $3, $4, $5, $6)
          ON CONFLICT (email) DO UPDATE SET
            nome              = EXCLUDED.nome,
+           rm                = EXCLUDED.rm,
            tipo_contribuicao = EXCLUDED.tipo_contribuicao,
            estado_assinatura = EXCLUDED.estado_assinatura,
            valor_assinatura  = EXCLUDED.valor_assinatura,
            updated_at        = NOW()`,
-        [email.trim(), nome.trim(), tipo, estado, valorA]
+        [email.trim(), nome.trim(), rmValue, tipo, estado, valorA]
       );
       return res.status(200).json({ ok: true });
     } catch (err) {
