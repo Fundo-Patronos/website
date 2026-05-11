@@ -20,6 +20,7 @@ const TABS = [
   { id: 'add-profile', label: 'Cadastrar Perfil'   },
   { id: 'doare',       label: 'Doa.re (Import CSV)'},
   { id: 'rules',       label: 'Regras de Categoria'},
+  { id: 'admins',      label: 'Admins'             },
 ]
 
 // Formata número compacto (R$ 215.964,93 → "R$ 216k")
@@ -1166,6 +1167,173 @@ function RulesTab({ getToken, onChanged }) {
   )
 }
 
+// ====================== TAB: Admins ======================
+function AdminsTab({ getToken }) {
+  const [admins, setAdmins] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [email, setEmail] = useState('')
+  const [feedback, setFeedback] = useState(null)
+  const [submitting, setSubmitting] = useState(false)
+
+  const load = useCallback(async () => {
+    setLoading(true)
+    try {
+      const token = await getToken()
+      const r = await fetch('/api/admin/admins', { headers: { Authorization: `Bearer ${token}` } })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || 'Erro')
+      setAdmins(data.admins)
+    } catch (err) {
+      setFeedback({ type: 'error', msg: err.message })
+    } finally {
+      setLoading(false)
+    }
+  }, [getToken])
+
+  useEffect(() => { load() }, [load])
+
+  const handleAdd = async (e) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setFeedback(null)
+    try {
+      const token = await getToken()
+      const r = await fetch('/api/admin/admins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ email }),
+      })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || 'Erro')
+      setFeedback({ type: 'success', msg: `${data.email} agora é admin.` })
+      setEmail('')
+      load()
+    } catch (err) {
+      setFeedback({ type: 'error', msg: err.message })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const handleRemove = async (a) => {
+    if (a.isCurrentUser) return
+    if (!window.confirm(`Remover ${a.email} da lista de admins?`)) return
+    try {
+      const token = await getToken()
+      const r = await fetch(`/api/admin/admins?email=${encodeURIComponent(a.email)}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || 'Erro')
+      setFeedback({
+        type: data.warning ? 'warning' : 'success',
+        msg: data.warning || `${a.email} removido da lista de admins.`,
+      })
+      load()
+    } catch (err) {
+      setFeedback({ type: 'error', msg: err.message })
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <form onSubmit={handleAdd} className="rounded-lg border border-gray-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-gray-900">Adicionar admin</h3>
+        <p className="mt-1 mb-4 text-sm text-gray-600">
+          O novo admin precisa fazer login uma vez em <code className="bg-gray-100 px-1">/doador/login</code> com esse email
+          (qualquer método: Google, email/senha ou magic link) — depois ele já consegue acessar <code className="bg-gray-100 px-1">/admin</code>.
+        </p>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="novo-admin@exemplo.com"
+            className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+          />
+          <button type="submit" disabled={submitting}
+            className="rounded-md py-2.5 px-6 text-sm font-semibold text-white shadow-sm disabled:opacity-50"
+            style={{ background: BRAND_GRADIENT }}>
+            {submitting ? 'Adicionando...' : 'Adicionar'}
+          </button>
+        </div>
+        {feedback && (
+          <div className={`mt-3 flex items-start gap-2 rounded-md p-3 text-sm ${
+            feedback.type === 'success' ? 'bg-green-50 text-green-800' :
+            feedback.type === 'warning' ? 'bg-amber-50 text-amber-800' :
+            'bg-red-50 text-red-800'
+          }`}>
+            {feedback.type === 'success'
+              ? <CheckCircleIcon className="h-5 w-5 flex-shrink-0" />
+              : <ExclamationTriangleIcon className="h-5 w-5 flex-shrink-0" />}
+            <span>{feedback.msg}</span>
+          </div>
+        )}
+      </form>
+
+      <div>
+        <h3 className="mb-2 text-sm font-semibold text-gray-700">Admins atuais</h3>
+        {loading ? (
+          <p className="text-gray-600">Carregando...</p>
+        ) : !admins.length ? (
+          <p className="text-gray-600">Nenhum admin na tabela (mas <code className="bg-gray-100 px-1">ADMIN_EMAILS</code> env var continua valendo).</p>
+        ) : (
+          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+            <table className="min-w-full divide-y divide-gray-200 text-sm">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
+                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Adicionado por</th>
+                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Quando</th>
+                  <th className="px-4 py-3 text-center font-semibold text-gray-700">Ações</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 bg-white">
+                {admins.map((a) => (
+                  <tr key={a.email} className="hover:bg-gray-50">
+                    <td className="px-4 py-3">
+                      <div className="font-mono text-xs text-gray-700">{a.email}</div>
+                      <div className="mt-1 flex gap-1">
+                        {a.isCurrentUser && (
+                          <span className="inline-flex rounded-full bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-700">você</span>
+                        )}
+                        {a.isBootstrap && (
+                          <span className="inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700" title="Também em ADMIN_EMAILS env var">
+                            env
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-gray-700">{a.addedBy || '—'}</td>
+                    <td className="px-4 py-3 text-gray-700 text-xs">{new Date(a.addedAt).toLocaleString('pt-BR')}</td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-center">
+                        <button
+                          onClick={() => handleRemove(a)}
+                          disabled={a.isCurrentUser}
+                          title={a.isCurrentUser ? 'Não pode remover você mesmo' : 'Remover admin'}
+                          className="rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-red-600 disabled:opacity-30 disabled:hover:bg-transparent disabled:cursor-not-allowed">
+                          <TrashIcon className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="px-4 py-2 text-xs text-gray-500">
+              {admins.length} admin{admins.length === 1 ? '' : 's'} ·
+              Etiqueta <span className="rounded bg-blue-50 px-1 text-blue-700">env</span> = também no <code>ADMIN_EMAILS</code> (mesmo se removido aqui, mantém acesso).
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 // ====================== PÁGINA ======================
 export default function Admin() {
   const { user, loading: authLoading, signOut } = useAuth()
@@ -1280,6 +1448,9 @@ export default function Admin() {
         )}
         {activeTab === 'rules' && (
           <RulesTab getToken={getToken} onChanged={reloadAll} />
+        )}
+        {activeTab === 'admins' && (
+          <AdminsTab getToken={getToken} />
         )}
       </div>
     </Shell>
