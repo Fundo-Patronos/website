@@ -83,5 +83,27 @@ export default async function handler(req, res) {
     }
   }
 
+  if (req.method === 'DELETE') {
+    const { email } = req.query;
+    if (!email || typeof email !== 'string') {
+      return res.status(400).json({ error: 'email query param is required' });
+    }
+    try {
+      const r = await pool.query(
+        `DELETE FROM donors WHERE LOWER(email) = LOWER($1) RETURNING email`,
+        [email.trim()]
+      );
+      if (r.rowCount === 0) {
+        return res.status(404).json({ error: 'Profile not found' });
+      }
+      // Eventos (donation_events) com esse email ficam órfãos por design —
+      // não cascadeia delete porque o event log é imutável (audit trail).
+      return res.status(200).json({ ok: true, deletedEmail: r.rows[0].email });
+    } catch (err) {
+      console.error('DELETE /api/admin/donors error:', err.message);
+      return res.status(500).json({ error: 'Database error' });
+    }
+  }
+
   return res.status(405).json({ error: 'Method not allowed' });
 }
