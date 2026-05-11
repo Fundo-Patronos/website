@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Navigate, Link } from 'react-router-dom'
+import Papa from 'papaparse'
 import { useAuth } from '../contexts/AuthContext'
 import {
   ArrowLeftOnRectangleIcon,
@@ -8,14 +9,36 @@ import {
   PencilSquareIcon,
   TrashIcon,
   XMarkIcon,
+  ArrowUpTrayIcon,
+  DocumentArrowUpIcon,
 } from '@heroicons/react/24/outline'
 
 const TABS = [
   { id: 'donors',      label: 'Doadores'           },
   { id: 'add-pix',     label: 'Adicionar PIX'      },
   { id: 'add-profile', label: 'Cadastrar Perfil'   },
+  { id: 'doare',       label: 'Doa.re (Import CSV)'},
   { id: 'rules',       label: 'Regras de Categoria'},
 ]
+
+// Parser de número Brasileiro: "1.062,05" → 1062.05
+function parseBRNumber(s) {
+  if (s == null || s === '') return null
+  if (typeof s === 'number') return s
+  const cleaned = String(s).replace(/\./g, '').replace(',', '.').trim()
+  const n = parseFloat(cleaned)
+  return Number.isFinite(n) ? n : null
+}
+
+// ISO "2026-05-09T00:00:00.000Z" → "2026-05-09"
+function isoToDate(s) {
+  if (!s) return null
+  try {
+    return new Date(s).toISOString().split('T')[0]
+  } catch {
+    return null
+  }
+}
 
 const BRAND_GRADIENT = 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)'
 
@@ -483,6 +506,333 @@ function AddProfileTab({ getToken, donors, donorsLoading, onSuccess }) {
   )
 }
 
+// ====================== TAB: Doa.re (Import CSV) ======================
+function DoareTab({ getToken, onSuccess }) {
+  const [step, setStep] = useState('idle') // idle | parsing | preview | importing | done
+  const [preview, setPreview] = useState(null)
+  const [error, setError] = useState(null)
+  const [dragging, setDragging] = useState(false)
+  const [profilesResult, setProfilesResult] = useState(null)
+  const [eventsResult, setEventsResult] = useState(null)
+  const fileInputRef = useRef(null)
+
+  const reset = () => {
+    setStep('idle')
+    setPreview(null)
+    setError(null)
+    setProfilesResult(null)
+    setEventsResult(null)
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+
+  const handleFile = async (file) => {
+    if (!file) return
+    setError(null)
+    setStep('parsing')
+    setPreview(null)
+    setProfilesResult(null)
+    setEventsResult(null)
+
+    try {
+      const text = await file.text()
+      const parsed = Papa.parse(text, {
+        header: true,
+        skipEmptyLines: true,
+      })
+
+      // PapaParse não dá fatal error pra warnings; só logamos
+      if (parsed.errors.length > 0) {
+        console.warn('CSV parse warnings:', parsed.errors.slice(0, 5))
+      }
+
+      // Mapeia as colunas do CSV pra shape esperado pelo backend
+      const rows = parsed.data.map((row) => ({
+        id: row['ID'],
+        email: row['Email'],
+        nome: row['Nome'],
+        tipo: row['Tipo'],
+        status: row['Status'],
+        valorBruto: parseBRNumber(row['Valor Bruto']),
+        valorLiquido: parseBRNumber(row['Valor Líquido']),
+        dataPagamento: isoToDate(row['Data de pagamento']),
+        periodicidade: row['Periodicidade (Assinatura)'] || null,
+        idAssinatura: row['ID Assinatura'] || null,
+      }))
+
+      const token = await getToken()
+      const r = await fetch('/api/admin/doare-preview', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ rows }),
+      })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || 'Erro ao analisar')
+      setPreview(data)
+      setStep('preview')
+    } catch (err) {
+      console.error(err)
+      setError(err.message)
+      setStep('idle')
+    }
+  }
+
+  const handleCommit = async (mode) => {
+    setError(null)
+    setStep('importing')
+    try {
+      const token = await getToken()
+      const body = mode === 'profiles'
+        ? { mode: 'profiles', profiles: preview.newProfiles }
+        : { mode: 'events',   events: preview.newEvents   }
+      const r = await fetch('/api/admin/doare-commit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(body),
+      })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || 'Erro ao salvar')
+      if (mode === 'profiles') setProfilesResult(data)
+      else setEventsResult(data)
+      setStep('preview')
+      onSuccess?.()
+    } catch (err) {
+      setError(err.message)
+      setStep('preview')
+    }
+  }
+
+  // Drag and drop handlers
+  const handleDragOver = (e) => { e.preventDefault(); setDragging(true) }
+  const handleDragLeave = (e) => { e.preventDefault(); setDragging(false) }
+  const handleDrop = (e) => {
+    e.preventDefault()
+    setDragging(false)
+    const file = e.dataTransfer.files?.[0]
+    if (file) handleFile(file)
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* DROP ZONE */}
+      {step === 'idle' || step === 'parsing' ? (
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={() => fileInputRef.current?.click()}
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 transition-colors ${
+            dragging ? 'border-orange-500 bg-orange-50' : 'border-gray-300 bg-white hover:border-gray-400'
+          }`}
+        >
+          <ArrowUpTrayIcon className="h-12 w-12 text-gray-400" />
+          <p className="mt-4 text-sm font-medium text-gray-700">
+            {step === 'parsing' ? 'Analisando CSV...' : 'Arraste o CSV doa.re aqui ou clique para selecionar'}
+          </p>
+          <p className="mt-1 text-xs text-gray-500">Apenas linhas com Status "Paga" são consideradas</p>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".csv,text/csv"
+            className="hidden"
+            onChange={(e) => handleFile(e.target.files?.[0])}
+          />
+        </div>
+      ) : (
+        <div className="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4">
+          <div className="flex items-center gap-3">
+            <DocumentArrowUpIcon className="h-6 w-6 text-orange-500" />
+            <span className="text-sm font-medium text-gray-700">CSV analisado — confira preview abaixo</span>
+          </div>
+          <button
+            onClick={reset}
+            className="text-sm text-gray-600 hover:text-gray-900"
+          >
+            Recomeçar
+          </button>
+        </div>
+      )}
+
+      {error && (
+        <div className="flex items-start gap-2 rounded-md bg-red-50 p-3 text-sm text-red-800">
+          <ExclamationTriangleIcon className="h-5 w-5 flex-shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
+
+      {/* PREVIEW STATS */}
+      {preview && (
+        <>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <StatCard label="Linhas totais" value={preview.stats.totalRows} />
+            <StatCard label="Não pagas (ignoradas)" value={preview.stats.skippedNotPaid} tone={preview.stats.skippedNotPaid > 0 ? 'warning' : 'neutral'} />
+            <StatCard label="Emails únicos" value={preview.stats.uniqueEmails} />
+            <StatCard label="Linhas válidas" value={preview.stats.validRows} tone="success" />
+          </div>
+
+          {/* PERFIS */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-gray-900">
+                Perfis novos a inserir: <span className="text-orange-600">{preview.stats.newProfileCount}</span>
+              </h3>
+              <span className="text-sm text-gray-500">{preview.stats.existingProfileCount} já cadastrados (não tocados)</span>
+            </div>
+
+            {profilesResult ? (
+              <div className="flex items-start gap-2 rounded-md bg-green-50 p-3 text-sm text-green-800">
+                <CheckCircleIcon className="h-5 w-5 flex-shrink-0" />
+                <span>✓ {profilesResult.inserted} perfis inseridos | {profilesResult.skipped} pulados (já existiam) | {profilesResult.failed} falhas</span>
+              </div>
+            ) : preview.newProfiles.length > 0 ? (
+              <>
+                <DoareProfilesTable profiles={preview.newProfiles} />
+                <button
+                  onClick={() => handleCommit('profiles')}
+                  disabled={step === 'importing'}
+                  className="w-full rounded-md py-2.5 text-sm font-semibold text-white shadow-sm disabled:opacity-50 sm:w-auto sm:px-6"
+                  style={{ background: BRAND_GRADIENT }}
+                >
+                  {step === 'importing' ? 'Inserindo...' : `Inserir ${preview.newProfiles.length} perfis novos`}
+                </button>
+              </>
+            ) : (
+              <p className="text-sm text-gray-600">Nenhum perfil novo — todos os emails já estão cadastrados.</p>
+            )}
+          </section>
+
+          {/* EVENTOS */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-gray-900">
+                Transações novas a inserir: <span className="text-orange-600">{preview.stats.newEventCount}</span>
+              </h3>
+              <span className="text-sm text-gray-500">{preview.stats.existingEventCount} já registradas (dedup por ID)</span>
+            </div>
+
+            {eventsResult ? (
+              <div className="flex items-start gap-2 rounded-md bg-green-50 p-3 text-sm text-green-800">
+                <CheckCircleIcon className="h-5 w-5 flex-shrink-0" />
+                <span>✓ {eventsResult.inserted} eventos inseridos | {eventsResult.skipped} pulados | {eventsResult.failed} falhas</span>
+              </div>
+            ) : preview.newEvents.length > 0 ? (
+              <>
+                <DoareEventsTable events={preview.newEvents} />
+                {!profilesResult && preview.newProfiles.length > 0 && (
+                  <p className="text-xs text-amber-700 bg-amber-50 p-2 rounded">
+                    ⚠️ Tem perfis novos não inseridos acima. Eventos podem ser inseridos mesmo assim, mas ficam órfãos até o perfil ser cadastrado.
+                  </p>
+                )}
+                <button
+                  onClick={() => handleCommit('events')}
+                  disabled={step === 'importing'}
+                  className="w-full rounded-md py-2.5 text-sm font-semibold text-white shadow-sm disabled:opacity-50 sm:w-auto sm:px-6"
+                  style={{ background: BRAND_GRADIENT }}
+                >
+                  {step === 'importing' ? 'Inserindo...' : `Inserir ${preview.newEvents.length} transações novas`}
+                </button>
+              </>
+            ) : (
+              <p className="text-sm text-gray-600">Nenhuma transação nova — todas já estão registradas.</p>
+            )}
+          </section>
+        </>
+      )}
+    </div>
+  )
+}
+
+function StatCard({ label, value, tone = 'neutral' }) {
+  const colors = {
+    neutral: 'border-gray-200 bg-white text-gray-900',
+    success: 'border-green-200 bg-green-50 text-green-900',
+    warning: 'border-amber-200 bg-amber-50 text-amber-900',
+  }[tone]
+  return (
+    <div className={`rounded-lg border p-4 ${colors}`}>
+      <p className="text-xs uppercase tracking-wide opacity-70">{label}</p>
+      <p className="mt-1 text-2xl font-bold">{value}</p>
+    </div>
+  )
+}
+
+function DoareProfilesTable({ profiles }) {
+  const PREVIEW_LIMIT = 50
+  const shown = profiles.slice(0, PREVIEW_LIMIT)
+  return (
+    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+      <table className="min-w-full divide-y divide-gray-200 text-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">Nome</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">Tipo</th>
+            <th className="px-4 py-3 text-right font-semibold text-gray-700">Assinatura</th>
+            <th className="px-4 py-3 text-right font-semibold text-gray-700">Total</th>
+            <th className="px-4 py-3 text-right font-semibold text-gray-700"># Tx</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100 bg-white">
+          {shown.map((p) => (
+            <tr key={p.email} className="hover:bg-gray-50">
+              <td className="px-4 py-3 font-mono text-xs text-gray-700">{p.email}</td>
+              <td className="px-4 py-3 text-gray-900">{p.nome}</td>
+              <td className="px-4 py-3">
+                <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${
+                  p.tipoContribuicao === 'Recorrente' ? 'bg-purple-50 text-purple-700' : 'bg-gray-100 text-gray-700'
+                }`}>{p.tipoContribuicao}</span>
+              </td>
+              <td className="px-4 py-3 text-right text-gray-700">{formatCurrency(p.valorAssinatura)}</td>
+              <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatCurrency(p.totalAmount)}</td>
+              <td className="px-4 py-3 text-right text-gray-500">{p.transactionCount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {profiles.length > PREVIEW_LIMIT && (
+        <p className="px-4 py-2 text-xs text-gray-500">
+          Mostrando primeiros {PREVIEW_LIMIT} de {profiles.length}. Todos serão inseridos.
+        </p>
+      )}
+    </div>
+  )
+}
+
+function DoareEventsTable({ events }) {
+  const PREVIEW_LIMIT = 50
+  const shown = events.slice(0, PREVIEW_LIMIT)
+  return (
+    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+      <table className="min-w-full divide-y divide-gray-200 text-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">Data</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">Tipo</th>
+            <th className="px-4 py-3 text-right font-semibold text-gray-700">Valor</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-700">ID doa.re</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100 bg-white">
+          {shown.map((e) => (
+            <tr key={e.sourceId} className="hover:bg-gray-50">
+              <td className="px-4 py-3 text-gray-700">{e.occurredAt}</td>
+              <td className="px-4 py-3 font-mono text-xs text-gray-700">{e.email}</td>
+              <td className="px-4 py-3 text-gray-700">{e.tipo}</td>
+              <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatCurrency(e.amount)}</td>
+              <td className="px-4 py-3 font-mono text-xs text-gray-400">{e.sourceId.slice(0, 8)}…</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {events.length > PREVIEW_LIMIT && (
+        <p className="px-4 py-2 text-xs text-gray-500">
+          Mostrando primeiros {PREVIEW_LIMIT} de {events.length}. Todos serão inseridos.
+        </p>
+      )}
+    </div>
+  )
+}
+
 // ====================== TAB: Regras de Categoria ======================
 function RulesTab({ getToken, onChanged }) {
   const [rules, setRules] = useState(null)
@@ -682,6 +1032,9 @@ export default function Admin() {
         )}
         {activeTab === 'add-profile' && (
           <AddProfileTab getToken={getToken} donors={donors} donorsLoading={donorsLoading} onSuccess={reloadAll} />
+        )}
+        {activeTab === 'doare' && (
+          <DoareTab getToken={getToken} onSuccess={reloadAll} />
         )}
         {activeTab === 'rules' && (
           <RulesTab getToken={getToken} onChanged={reloadAll} />
