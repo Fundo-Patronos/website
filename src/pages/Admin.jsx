@@ -14,12 +14,32 @@ import {
 } from '@heroicons/react/24/outline'
 
 const TABS = [
+  { id: 'dashboard',   label: 'Dashboard'          },
   { id: 'donors',      label: 'Doadores'           },
   { id: 'add-pix',     label: 'Adicionar PIX'      },
   { id: 'add-profile', label: 'Cadastrar Perfil'   },
   { id: 'doare',       label: 'Doa.re (Import CSV)'},
   { id: 'rules',       label: 'Regras de Categoria'},
 ]
+
+// Formata número compacto (R$ 215.964,93 → "R$ 216k")
+function formatCompact(n) {
+  if (n == null || !Number.isFinite(n)) return '—'
+  const abs = Math.abs(n)
+  if (abs >= 1_000_000) return `R$ ${(n / 1_000_000).toFixed(1)}M`
+  if (abs >= 1_000)     return `R$ ${Math.round(n / 1000)}k`
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(n)
+}
+
+const MONTH_LABELS_PT = {
+  '01': 'Jan', '02': 'Fev', '03': 'Mar', '04': 'Abr',
+  '05': 'Mai', '06': 'Jun', '07': 'Jul', '08': 'Ago',
+  '09': 'Set', '10': 'Out', '11': 'Nov', '12': 'Dez',
+}
+function monthLabel(yyyymm) {
+  const [y, m] = yyyymm.split('-')
+  return `${MONTH_LABELS_PT[m]}/${y.slice(2)}`
+}
 
 // Parser de número Brasileiro: "1.062,05" → 1062.05
 function parseBRNumber(s) {
@@ -81,6 +101,225 @@ function Feedback({ feedback }) {
         ? <CheckCircleIcon className="h-5 w-5 flex-shrink-0" />
         : <ExclamationTriangleIcon className="h-5 w-5 flex-shrink-0" />}
       <span>{feedback.msg}</span>
+    </div>
+  )
+}
+
+// ====================== TAB: Dashboard ======================
+function DashboardTab({ getToken }) {
+  const [stats, setStats] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      setLoading(true)
+      try {
+        const token = await getToken()
+        const r = await fetch('/api/admin/stats', { headers: { Authorization: `Bearer ${token}` } })
+        const data = await r.json()
+        if (!r.ok) throw new Error(data.error || 'Erro')
+        if (!cancelled) setStats(data)
+      } catch (err) {
+        if (!cancelled) setError(err.message)
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    })()
+    return () => { cancelled = true }
+  }, [getToken])
+
+  if (loading) return <p className="text-gray-600">Carregando dashboard...</p>
+  if (error) return <p className="text-red-600">Erro: {error}</p>
+  if (!stats) return null
+
+  return (
+    <div className="space-y-8">
+      {/* Stat cards */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <DashCard label="Total captado" value={formatCompact(stats.totals.lifetimeRaised)} sub={`${stats.totals.eventCount} doações`} highlight />
+        <DashCard label="Este ano" value={formatCompact(stats.totals.yearRaised)} />
+        <DashCard label="Este mês" value={formatCompact(stats.totals.monthRaised)} />
+        <DashCard label="Ticket médio" value={formatCurrency(stats.totals.avgDonation)} />
+        <DashCard label="Doadores cadastrados" value={stats.totals.donorCount} />
+        <DashCard label="Assinantes ativos" value={stats.totals.subscriberCount} sub={`de ${stats.totals.donorCount}`} />
+        <DashCard label="Doadores com doação" value={stats.totals.withDonationsCount} sub={`${Math.round(stats.totals.withDonationsCount / Math.max(stats.totals.donorCount, 1) * 100)}% do total`} />
+        <DashCard label="Emails órfãos" value={stats.totals.orphanDonorCount} sub="eventos sem perfil" tone={stats.totals.orphanDonorCount > 0 ? 'warning' : 'neutral'} />
+      </div>
+
+      {/* Monthly timeline */}
+      <section className="rounded-lg border border-gray-200 bg-white p-6">
+        <h3 className="mb-4 text-lg font-semibold text-gray-900">Captação mensal — últimos 12 meses</h3>
+        <MonthlyTimeline timeline={stats.monthlyTimeline} />
+      </section>
+
+      {/* Two-column: distributions */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <section className="rounded-lg border border-gray-200 bg-white p-6">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900">Distribuição por categoria</h3>
+          <DistributionBars
+            items={stats.byCategory}
+            getLabel={(r) => r.categoria}
+            getCount={(r) => r.count}
+            getTotal={(r) => r.total}
+            colorOf={(r) =>
+              r.categoria === 'Patrono'   ? BRAND_GRADIENT :
+              r.categoria === 'Associado' ? 'linear-gradient(90deg, #ff9700, #ff6253)' :
+                                            'linear-gradient(90deg, #d1d5db, #9ca3af)'
+            }
+          />
+        </section>
+
+        <section className="rounded-lg border border-gray-200 bg-white p-6">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900">Distribuição por fonte</h3>
+          <DistributionBars
+            items={stats.bySource}
+            getLabel={(r) => r.source}
+            getCount={(r) => r.count}
+            getTotal={(r) => r.total}
+            colorOf={(r) =>
+              r.source === 'doare' ? 'linear-gradient(90deg, #c964e2, #fc4696)' :
+              r.source === 'pix'   ? 'linear-gradient(90deg, #ff9700, #ff6253)' :
+                                     'linear-gradient(90deg, #9ca3af, #6b7280)'
+            }
+          />
+        </section>
+      </div>
+
+      {/* Two-column: top donors + recent events */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <section className="rounded-lg border border-gray-200 bg-white p-4">
+          <h3 className="mb-3 text-base font-semibold text-gray-900">Top 10 doadores</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <tbody className="divide-y divide-gray-100">
+                {stats.topDonors.map((d, i) => (
+                  <tr key={d.email}>
+                    <td className="py-2 pr-2 text-right text-xs text-gray-400 w-6">{i + 1}</td>
+                    <td className="py-2 pr-3">
+                      <div className="font-medium text-gray-900">{d.nome}</div>
+                      <div className="font-mono text-xs text-gray-500">{d.email}</div>
+                    </td>
+                    <td className="py-2 px-2"><CategoriaBadge value={d.categoria} /></td>
+                    <td className="py-2 pl-2 text-right font-semibold text-gray-900">{formatCurrency(d.valorTotal)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="rounded-lg border border-gray-200 bg-white p-4">
+          <h3 className="mb-3 text-base font-semibold text-gray-900">Eventos recentes</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <tbody className="divide-y divide-gray-100">
+                {stats.recentEvents.map((e) => (
+                  <tr key={e.id}>
+                    <td className="py-2 pr-3 text-gray-700 whitespace-nowrap">{e.occurredAt}</td>
+                    <td className="py-2 pr-2 font-mono text-xs text-gray-700 truncate max-w-[180px]" title={e.email}>{e.email}</td>
+                    <td className="py-2 pr-2">
+                      <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${
+                        e.source === 'doare' ? 'bg-purple-50 text-purple-700' :
+                        e.source === 'pix' ? 'bg-orange-50 text-orange-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>{e.source}</span>
+                    </td>
+                    <td className="py-2 pl-2 text-right font-semibold text-gray-900 whitespace-nowrap">{formatCurrency(e.amount)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+function DashCard({ label, value, sub, tone = 'neutral', highlight = false }) {
+  const toneClasses = {
+    neutral: 'border-gray-200 bg-white',
+    warning: 'border-amber-200 bg-amber-50',
+  }[tone]
+  return (
+    <div className={`rounded-lg border p-4 ${toneClasses}`}
+      style={highlight ? { background: BRAND_GRADIENT, borderColor: 'transparent' } : undefined}>
+      <p className={`text-xs uppercase tracking-wide ${highlight ? 'text-white/80' : 'text-gray-500'}`}>{label}</p>
+      <p className={`mt-1 text-2xl font-bold ${highlight ? 'text-white' : 'text-gray-900'}`}>{value}</p>
+      {sub && <p className={`mt-1 text-xs ${highlight ? 'text-white/70' : 'text-gray-500'}`}>{sub}</p>}
+    </div>
+  )
+}
+
+function MonthlyTimeline({ timeline }) {
+  if (!timeline?.length) return <p className="text-gray-500 text-sm">Sem dados.</p>
+  const maxTotal = Math.max(...timeline.map((m) => m.total), 1)
+  const grandTotal = timeline.reduce((s, m) => s + m.total, 0)
+  return (
+    <div>
+      <div className="flex items-end gap-1 h-48 border-b border-gray-200">
+        {timeline.map((m) => {
+          const heightPct = (m.total / maxTotal) * 100
+          return (
+            <div key={m.month} className="flex flex-1 flex-col items-center justify-end h-full group relative">
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                {formatCurrency(m.total)} · {m.count} doação{m.count === 1 ? '' : 'ões'}
+              </div>
+              <div
+                className="w-full rounded-t transition-all"
+                style={{
+                  height: `${heightPct}%`,
+                  minHeight: m.total > 0 ? '2px' : '0',
+                  background: BRAND_GRADIENT,
+                  opacity: m.total > 0 ? 1 : 0.15,
+                }}
+              />
+            </div>
+          )
+        })}
+      </div>
+      <div className="flex gap-1 mt-2">
+        {timeline.map((m) => (
+          <div key={m.month} className="flex-1 text-center text-xs text-gray-500">
+            {monthLabel(m.month)}
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 text-xs text-gray-500">
+        Total no período: <strong>{formatCurrency(grandTotal)}</strong>
+        {' · '}
+        {timeline.reduce((s, m) => s + m.count, 0)} doações
+      </p>
+    </div>
+  )
+}
+
+function DistributionBars({ items, getLabel, getCount, getTotal, colorOf }) {
+  if (!items?.length) return <p className="text-gray-500 text-sm">Sem dados.</p>
+  const maxTotal = Math.max(...items.map(getTotal), 1)
+  return (
+    <div className="space-y-3">
+      {items.map((item) => {
+        const total = getTotal(item)
+        const widthPct = (total / maxTotal) * 100
+        return (
+          <div key={getLabel(item)}>
+            <div className="flex items-baseline justify-between text-sm mb-1">
+              <span className="font-medium text-gray-900 capitalize">{getLabel(item)}</span>
+              <span className="text-gray-600">
+                <strong>{formatCurrency(total)}</strong>
+                <span className="ml-2 text-xs text-gray-500">{getCount(item)} {getCount(item) === 1 ? 'item' : 'itens'}</span>
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
+              <div className="h-full rounded-full transition-all"
+                style={{ width: `${Math.max(widthPct, 3)}%`, background: colorOf(item) }} />
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -930,7 +1169,7 @@ function RulesTab({ getToken, onChanged }) {
 // ====================== PÁGINA ======================
 export default function Admin() {
   const { user, loading: authLoading, signOut } = useAuth()
-  const [activeTab, setActiveTab] = useState('donors')
+  const [activeTab, setActiveTab] = useState('dashboard')
   const [donors, setDonors] = useState(null)
   const [donorsLoading, setDonorsLoading] = useState(true)
   const [events, setEvents] = useState(null)
@@ -1024,6 +1263,9 @@ export default function Admin() {
           </nav>
         </div>
 
+        {activeTab === 'dashboard' && (
+          <DashboardTab getToken={getToken} />
+        )}
         {activeTab === 'donors' && (
           <DonorsTab donors={donors} loading={donorsLoading} />
         )}
