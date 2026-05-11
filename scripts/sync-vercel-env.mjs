@@ -23,6 +23,10 @@ const VARS_TO_SYNC = [
   'VITE_FIREBASE_STORAGE_BUCKET',
   'VITE_FIREBASE_MESSAGING_SENDER_ID',
   'VITE_FIREBASE_APP_ID',
+  // Server-side (admin API)
+  'ADMIN_EMAILS',
+  'FIREBASE_ADMIN_CLIENT_EMAIL',
+  'FIREBASE_ADMIN_PRIVATE_KEY',
 ];
 
 // NOTE: 'preview' está intencionalmente fora.
@@ -33,10 +37,11 @@ const VARS_TO_SYNC = [
 // Pra adicionar em preview manualmente: Vercel UI ou `vercel env add NAME preview <branch> --value V --yes`
 const ENVS = ['production'];
 
-function run(args) {
+function run(args, input) {
   return spawnSync('npx', ['vercel', ...args], {
     encoding: 'utf-8',
     shell: true,
+    input,
   });
 }
 
@@ -54,11 +59,13 @@ for (const name of VARS_TO_SYNC) {
     run(['env', 'rm', name, env, '--yes']);
   }
 
-  // Add — uma chamada por env, valor via flag (modo não-interativo)
+  // Add — uma chamada por env, valor via stdin pipe
+  // (stdin é mais robusto que --value pra valores longos como private keys —
+  // evita escape de chars especiais na linha de comando)
   const okEnvs = [];
   const badEnvs = [];
   for (const env of ENVS) {
-    const res = run(['env', 'add', name, env, '--value', value, '--yes']);
+    const res = run(['env', 'add', name, env], value);
     if (res.status === 0) {
       okEnvs.push(env);
     } else {
