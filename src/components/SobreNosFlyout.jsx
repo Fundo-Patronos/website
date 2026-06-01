@@ -45,13 +45,13 @@ const resourceItems = [
 const featuredPosts = [
   {
     id: 1,
-    title: 'Consulte o nosso Relatório Anual 2024',
-    href: '#',
-    date: 'Abril 2024',
-    datetime: '2024-04',
+    title: 'Consulte o nosso Relatório Anual 2025',
+    href: '/Relatorios Anuais/Fundo Patronos - Relatorio Anual 2025.pdf',
+    date: 'Maio 2026',
+    datetime: '2026-05',
     category: { title: 'Transparência', href: '#' },
-    imageUrl: '/Relatorios Anuais/Cover - Fundo Patronos - Relatorio Anual 2024.jpeg',
-    description: 'Baixe nosso Relatório Anual 2024 e conheça todos os avanços e conquistas que alcançamos no último ano, incluindo projetos apoiados, recursos investidos e impactos gerados na comunidade acadêmica.',
+    imageUrl: '/Relatorios Anuais/Cover - Fundo Patronos - Relatorio Anual 2025.png',
+    description: 'Baixe nosso Relatório Anual 2025 e conheça todos os avanços e conquistas que alcançamos no último ano, incluindo projetos apoiados, recursos investidos e impactos gerados na comunidade acadêmica.',
   },
   {
     id: 2,
@@ -179,7 +179,12 @@ export default function SobreNosFlyout({ isOpen, onClose, onMouseEnter, onMouseL
                       </a>
                     </div>
                     <h4 className="mt-2 text-sm leading-6 font-semibold text-gray-900">
-                      <a href={post.href} onClick={onClose}>
+                      <a
+                        href={post.href}
+                        onClick={onClose}
+                        target={post.href.startsWith('/') ? '_blank' : undefined}
+                        rel={post.href.startsWith('/') ? 'noopener noreferrer' : undefined}
+                      >
                         <span className="absolute inset-0" />
                         {post.title}
                       </a>

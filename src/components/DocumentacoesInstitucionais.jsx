@@ -29,6 +29,16 @@ const posts = [
     datetime: '2024',
     category: { title: 'Ética', href: '#' },
   },
+  {
+    id: 4,
+    title: 'Demonstrativo Financeiro',
+    href: '/Docs%20Institucionais/Demonstrativo%20Financeiro%20-%202025.pdf',
+    description: 'Demonstrativo financeiro do Fundo Patrimonial Patronos referente ao exercício de 2025, apresentando o desempenho dos recursos e a prestação de contas aos doadores e à comunidade.',
+    imageUrl: '/Illustrative%20Pictures/Docs%20Institucionais/di-4.jpg',
+    date: '2025',
+    datetime: '2025',
+    category: { title: 'Finanças', href: '#' },
+  },
 ]
 
 export default function DocumentacoesInstitucionais() {
@@ -40,7 +50,7 @@ export default function DocumentacoesInstitucionais() {
             Documentos Institucionais
           </h2>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {posts.map((post) => (
             <article key={post.id} className="flex flex-col items-start justify-between">
               <div className="relative w-full">
@@ -65,12 +75,12 @@ export default function DocumentacoesInstitucionais() {
                 </div>
                 <div className="group relative grow">
                   <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                    <a href={post.href}>
+                    <a href={post.href} target="_blank" rel="noopener noreferrer">
                       <span className="absolute inset-0" />
                       {post.title}
                     </a>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm/6 text-gray-600">{post.description}</p>
+                  <p className="mt-5 text-sm/6 text-gray-600">{post.description}</p>
                 </div>
               </div>
             </article>

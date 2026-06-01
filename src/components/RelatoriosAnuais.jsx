@@ -35,6 +35,15 @@ const posts = [
     category: { title: 'Relatório', href: '#' },
     imageUrl: '/Relatorios%20Anuais/Cover%20-%20Fundo%20Patronos%20-%20Relatorio%20Anual%202024.jpeg',
   },
+  {
+    id: 5,
+    title: 'Relatório Anual 2025',
+    href: '/Relatorios%20Anuais/Fundo%20Patronos%20-%20Relatorio%20Anual%202025.pdf',
+    date: 'Maio 2026',
+    datetime: '2026-05',
+    category: { title: 'Relatório', href: '#' },
+    imageUrl: '/Relatorios%20Anuais/Cover%20-%20Fundo%20Patronos%20-%20Relatorio%20Anual%202025.png',
+  },
 ]
 
 export default function RelatoriosAnuais() {
@@ -75,8 +84,10 @@ export default function RelatoriosAnuais() {
                   <div className="mt-4">
                     <a
                       href={post.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all"
-                      style={{ 
+                      style={{
                         background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',
                         focusVisibleOutlineColor: '#ff9700'
                       }}
