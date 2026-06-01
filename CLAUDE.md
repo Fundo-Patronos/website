@@ -112,10 +112,25 @@ GOOGLE_SHEETS_SPREADSHEET_ID
 ### Known Issues to Avoid
 - Avoid complex dynamic icon rendering patterns (e.g., `const IconComponent = item.icon`) - can cause crashes
 - Test new components in isolation before page integration
+- `src/components/Navbar.jsx` declares a `featuredPosts` array (lines ~50–71) that is **never rendered** — the live Sobre Nós flyout content lives in `src/components/SobreNosFlyout.jsx`. Don't waste time editing the Navbar array
+- `src/App-backup.jsx` is a stale backup; the live router is `src/App.jsx`
 
 ### Vercel Configuration
 - `vercel.json` handles SPA routing and API pass-through
 - Use `vercel dev` locally to test serverless functions
+- The repo is linked to a Vercel project (`.vercel/project.json`). Push to `main` auto-deploys to production; PRs get preview deployments commented by the Vercel bot
+
+### Adding Annual Reports and Institutional Documents
+The Transparência page renders two data-driven tile grids; new entries are added by appending to a local `posts` array.
+
+- **Annual report** (`src/components/RelatoriosAnuais.jsx`): append to `posts`. Paths use **URL-encoding** (`%20` for spaces, `%C3%B3` for "ó"). The 2021–2023 PDFs carry a legacy typo `Relat%C3%B3trio` — preserve it for those years, use correct `Relatorio` for new years. The page header promises *"divulgados em maio do ano seguinte"* — use `Maio YYYY+1` for new tiles even though older entries say "Abril"
+- **Institutional doc** (`src/components/DocumentacoesInstitucionais.jsx`): append to `posts` with URL-encoded paths. Illustrative images live at `/Illustrative Pictures/Docs Institucionais/di-N.jpg`. Grid is `lg:grid-cols-4`
+- **Sobre Nós flyout featured tile** (`src/components/SobreNosFlyout.jsx`): when a new annual report ships, update the first `featuredPosts` entry. **Watch out:** this file uses **literal spaces** in image/PDF paths (no `%20`), unlike the Transparência components
+- All PDF tile anchors set `target="_blank" rel="noopener noreferrer"`. The flyout anchor opens local `/`-rooted links in a new tab via a conditional, so the second tile (with `href="#"`) keeps current behavior
+- File-naming conventions in `public/`:
+  - Covers: `Cover - Fundo Patronos - Relatorio Anual YYYY.png` (2024 is `.jpeg`)
+  - Report PDFs: `Fundo Patronos - Relatorio Anual YYYY.pdf`
+  - Institutional PDFs: free-form (each doc has its own filename, see existing entries)
 
 ### Category Badge Styling (Donor Portal)
 - **Patrono**: Full gradient background
