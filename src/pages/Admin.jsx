@@ -188,6 +188,15 @@ function DashboardTab({ getToken }) {
         </section>
       </div>
 
+      {/* Domínios de email */}
+      <section className="rounded-lg border border-gray-200 bg-white p-6">
+        <h3 className="mb-4 text-lg font-semibold text-gray-900">
+          Distribuição por domínio de email
+          <span className="ml-2 text-sm font-normal text-gray-500">({stats.byDomain?.length || 0} domínios)</span>
+        </h3>
+        <DomainBars items={stats.byDomain || []} totalDonors={stats.totals.donorCount} />
+      </section>
+
       {/* Two-column: top donors + recent events */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-lg border border-gray-200 bg-white p-4">
@@ -326,6 +335,69 @@ function MonthlyTimeline({ timeline }) {
           {timeline.reduce((s, m) => s + m.count, 0)} doações
         </div>
       </div>
+    </div>
+  )
+}
+
+function DomainBars({ items, totalDonors }) {
+  const [showAll, setShowAll] = useState(false)
+  if (!items?.length) return <p className="text-gray-500 text-sm">Sem dados.</p>
+
+  const TOP_N = 15
+  const visible = showAll ? items : items.slice(0, TOP_N)
+  const hiddenCount = items.length - visible.length
+  const hiddenTotal = items.slice(TOP_N).reduce((s, i) => s + i.total, 0)
+  const hiddenDonors = items.slice(TOP_N).reduce((s, i) => s + i.count, 0)
+
+  const maxCount = Math.max(...items.map((i) => i.count), 1)
+
+  // Cor por domínio: gradiente da marca pra topo, azul pra empresas (.com.br/.org), verde pra .org
+  const colorOfDomain = (domain) => {
+    if (domain.endsWith('.org') || domain.includes('patronos')) return 'linear-gradient(90deg, #10b981, #059669)'
+    if (domain.endsWith('.com.br') || domain.includes('itau') || domain.includes('bcg')) return 'linear-gradient(90deg, #3b82f6, #2563eb)'
+    if (domain === 'gmail.com' || domain === 'hotmail.com' || domain === 'yahoo.com.br' || domain === 'outlook.com')
+      return 'linear-gradient(90deg, #ff9700, #ff6253)'
+    return 'linear-gradient(90deg, #c964e2, #fc4696)'
+  }
+
+  return (
+    <div>
+      <div className="space-y-2">
+        {visible.map((d) => {
+          const widthPct = (d.count / maxCount) * 100
+          const pctOfTotal = totalDonors > 0 ? (d.count / totalDonors * 100) : 0
+          return (
+            <div key={d.domain} className="grid grid-cols-12 gap-2 items-center text-sm">
+              <div className="col-span-3 font-mono text-xs text-gray-700 truncate" title={d.domain}>
+                {d.domain}
+              </div>
+              <div className="col-span-6">
+                <div className="h-3 rounded-full bg-gray-100 overflow-hidden">
+                  <div className="h-full rounded-full transition-all"
+                    style={{ width: `${Math.max(widthPct, 2)}%`, background: colorOfDomain(d.domain) }} />
+                </div>
+              </div>
+              <div className="col-span-1 text-right text-sm font-semibold text-gray-900">{d.count}</div>
+              <div className="col-span-2 text-right text-xs text-gray-500">
+                {pctOfTotal.toFixed(1)}% · {formatCurrency(d.total)}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {hiddenCount > 0 && !showAll && (
+        <button onClick={() => setShowAll(true)}
+          className="mt-4 w-full rounded-md border border-dashed border-gray-300 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+          + {hiddenCount} outros domínios ({hiddenDonors} doadores · {formatCurrency(hiddenTotal)}) — clique pra ver todos
+        </button>
+      )}
+      {showAll && items.length > TOP_N && (
+        <button onClick={() => setShowAll(false)}
+          className="mt-4 w-full rounded-md border border-dashed border-gray-300 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+          Ocultar — mostrar só top {TOP_N}
+        </button>
+      )}
     </div>
   )
 }

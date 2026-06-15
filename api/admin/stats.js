@@ -23,6 +23,7 @@ export default async function handler(req, res) {
       topDonors,
       recentEvents,
       newDonorsByMonth,
+      byDomain,
     ] = await Promise.all([
       // Totais agregados (uma única query com várias agregações)
       pool.query(`
@@ -117,6 +118,18 @@ export default async function handler(req, res) {
         GROUP BY m.month_start
         ORDER BY m.month_start
       `),
+
+      // Distribuição por domínio de email (junta perfis com valor agregado)
+      pool.query(`
+        SELECT
+          SPLIT_PART(LOWER(d.email), '@', 2)                  AS domain,
+          COUNT(*)::int                                       AS count,
+          COALESCE(SUM(ds.valor_total), 0)::numeric           AS total
+        FROM donors d
+        LEFT JOIN donor_summary ds ON LOWER(ds.email) = LOWER(d.email)
+        GROUP BY SPLIT_PART(LOWER(d.email), '@', 2)
+        ORDER BY count DESC
+      `),
     ]);
 
     // Donor counts em uma query separada (mais clean que misturar nos totals)
@@ -180,6 +193,11 @@ export default async function handler(req, res) {
         amount: parseFloat(r.amount),
         occurredAt: new Date(r.occurred_at).toISOString().split('T')[0],
         source: r.source,
+      })),
+      byDomain: byDomain.rows.map((r) => ({
+        domain: r.domain || '(sem domínio)',
+        count: r.count,
+        total: parseFloat(r.total),
       })),
     });
   } catch (err) {
