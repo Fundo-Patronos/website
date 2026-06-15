@@ -57,7 +57,7 @@ export default async function handler(req, res) {
         ORDER BY total DESC
       `),
 
-      // Timeline mensal (últimos 12 meses, preenche meses zerados pra grafico contínuo)
+      // Timeline mensal (últimos 12 meses, com breakdown por source)
       pool.query(`
         WITH months AS (
           SELECT generate_series(
@@ -68,8 +68,13 @@ export default async function handler(req, res) {
         )
         SELECT
           TO_CHAR(m.month_start, 'YYYY-MM') AS month,
-          COALESCE(COUNT(e.id), 0)::int     AS count,
-          COALESCE(SUM(e.amount), 0)::numeric AS total
+          COALESCE(COUNT(e.id), 0)::int                                                   AS count,
+          COALESCE(SUM(e.amount), 0)::numeric                                             AS total,
+          COALESCE(SUM(CASE WHEN e.source = 'doare' THEN e.amount END), 0)::numeric        AS total_doare,
+          COALESCE(SUM(CASE WHEN e.source = 'pix'   THEN e.amount END), 0)::numeric        AS total_pix,
+          COALESCE(SUM(CASE WHEN e.source NOT IN ('doare','pix') THEN e.amount END), 0)::numeric AS total_outros,
+          COALESCE(COUNT(CASE WHEN e.source = 'doare' THEN 1 END), 0)::int                AS count_doare,
+          COALESCE(COUNT(CASE WHEN e.source = 'pix'   THEN 1 END), 0)::int                AS count_pix
         FROM months m
         LEFT JOIN donation_events e
           ON DATE_TRUNC('month', e.occurred_at) = m.month_start
@@ -153,6 +158,11 @@ export default async function handler(req, res) {
         month: r.month,
         count: r.count,
         total: parseFloat(r.total),
+        totalDoare: parseFloat(r.total_doare),
+        totalPix: parseFloat(r.total_pix),
+        totalOutros: parseFloat(r.total_outros),
+        countDoare: r.count_doare,
+        countPix: r.count_pix,
       })),
       newDonorsByMonth: newDonorsByMonth.rows.map((r) => ({
         month: r.month,

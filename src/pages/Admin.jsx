@@ -258,25 +258,40 @@ function MonthlyTimeline({ timeline }) {
   if (!timeline?.length) return <p className="text-gray-500 text-sm">Sem dados.</p>
   const maxTotal = Math.max(...timeline.map((m) => m.total), 1)
   const grandTotal = timeline.reduce((s, m) => s + m.total, 0)
+  const grandDoare  = timeline.reduce((s, m) => s + (m.totalDoare || 0), 0)
+  const grandPix    = timeline.reduce((s, m) => s + (m.totalPix   || 0), 0)
+  const grandOutros = timeline.reduce((s, m) => s + (m.totalOutros|| 0), 0)
+
+  const COLOR_DOARE  = 'linear-gradient(180deg, #c964e2, #fc4696)'
+  const COLOR_PIX    = 'linear-gradient(180deg, #ff9700, #ff6253)'
+  const COLOR_OUTROS = 'linear-gradient(180deg, #9ca3af, #6b7280)'
+
   return (
     <div>
-      <div className="flex items-end gap-1 h-48 border-b border-gray-200">
+      <div className="flex items-end gap-1 h-56 border-b border-gray-200">
         {timeline.map((m) => {
           const heightPct = (m.total / maxTotal) * 100
+          // Dentro de cada barra, segmentos proporcionais ao total daquele mês
+          const totalThis = m.total || 1
+          const pctDoare  = (m.totalDoare  || 0) / totalThis * 100
+          const pctPix    = (m.totalPix    || 0) / totalThis * 100
+          const pctOutros = (m.totalOutros || 0) / totalThis * 100
           return (
             <div key={m.month} className="flex flex-1 flex-col items-center justify-end h-full group relative">
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                {formatCurrency(m.total)} · {m.count} doação{m.count === 1 ? '' : 'ões'}
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 space-y-0.5">
+                <div className="font-semibold">{formatCurrency(m.total)}</div>
+                {m.totalDoare  > 0 && <div>doa.re: {formatCurrency(m.totalDoare)} ({m.countDoare})</div>}
+                {m.totalPix    > 0 && <div>pix: {formatCurrency(m.totalPix)} ({m.countPix})</div>}
+                {m.totalOutros > 0 && <div>outros: {formatCurrency(m.totalOutros)}</div>}
+                <div className="text-gray-300">{m.count} doação{m.count === 1 ? '' : 'ões'}</div>
               </div>
-              <div
-                className="w-full rounded-t transition-all"
-                style={{
-                  height: `${heightPct}%`,
-                  minHeight: m.total > 0 ? '2px' : '0',
-                  background: BRAND_GRADIENT,
-                  opacity: m.total > 0 ? 1 : 0.15,
-                }}
-              />
+              <div className="w-full flex flex-col-reverse overflow-hidden rounded-t transition-all"
+                style={{ height: `${heightPct}%`, minHeight: m.total > 0 ? '2px' : '0' }}>
+                {pctDoare > 0 && <div style={{ flexBasis: `${pctDoare}%`, background: COLOR_DOARE }} />}
+                {pctPix   > 0 && <div style={{ flexBasis: `${pctPix}%`,   background: COLOR_PIX }} />}
+                {pctOutros > 0 && <div style={{ flexBasis: `${pctOutros}%`, background: COLOR_OUTROS }} />}
+                {m.total === 0 && <div className="bg-gray-200 opacity-30" style={{ flexBasis: '100%' }} />}
+              </div>
             </div>
           )
         })}
@@ -288,11 +303,29 @@ function MonthlyTimeline({ timeline }) {
           </div>
         ))}
       </div>
-      <p className="mt-3 text-xs text-gray-500">
-        Total no período: <strong>{formatCurrency(grandTotal)}</strong>
-        {' · '}
-        {timeline.reduce((s, m) => s + m.count, 0)} doações
-      </p>
+
+      {/* Legenda */}
+      <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-600">
+        <div className="flex items-center gap-2">
+          <span className="inline-block h-3 w-3 rounded" style={{ background: COLOR_DOARE }} />
+          <span>doa.re — <strong className="text-gray-900">{formatCurrency(grandDoare)}</strong></span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-block h-3 w-3 rounded" style={{ background: COLOR_PIX }} />
+          <span>pix — <strong className="text-gray-900">{formatCurrency(grandPix)}</strong></span>
+        </div>
+        {grandOutros > 0 && (
+          <div className="flex items-center gap-2">
+            <span className="inline-block h-3 w-3 rounded" style={{ background: COLOR_OUTROS }} />
+            <span>outros — <strong className="text-gray-900">{formatCurrency(grandOutros)}</strong></span>
+          </div>
+        )}
+        <div className="ml-auto text-gray-500">
+          Total no período: <strong className="text-gray-900">{formatCurrency(grandTotal)}</strong>
+          {' · '}
+          {timeline.reduce((s, m) => s + m.count, 0)} doações
+        </div>
+      </div>
     </div>
   )
 }
