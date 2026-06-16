@@ -1,0 +1,115 @@
+// /api/admin/donors
+//
+// GET  → lista todos os doadores (via donor_summary view)
+// POST → upsert de perfil (campos manuais: nome, tipo_contribuicao, etc.)
+//        valor_total, data_primeira_doacao e categoria são COMPUTADOS, não enviados.
+
+import { pool } from '../_lib/db.js';
+import { requireAdmin } from '../_lib/auth.js';
+
+export default async function handler(req, res) {
+  const admin = await requireAdmin(req, res);
+  if (!admin) return;
+
+  if (req.method === 'GET') {
+    try {
+      const r = await pool.query(`
+        SELECT
+          email,
+          nome,
+          rm,
+          valor_total,
+          valor_assinatura,
+          categoria,
+          tipo_contribuicao,
+          data_primeira_doacao,
+          estado_assinatura
+        FROM donor_summary
+        ORDER BY valor_total DESC NULLS LAST, nome ASC
+      `);
+      const donors = r.rows.map((row) => ({
+        email: row.email,
+        nome: row.nome,
+        rm: row.rm || '',
+        valorTotal: parseFloat(row.valor_total) || 0,
+        valorAssinatura: parseFloat(row.valor_assinatura) || 0,
+        categoria: row.categoria,
+        tipoContribuicao: row.tipo_contribuicao,
+        dataPrimeiraDoacao: row.data_primeira_doacao
+          ? new Date(row.data_primeira_doacao).toISOString().split('T')[0]
+          : null,
+        estadoAssinatura: row.estado_assinatura,
+      }));
+      return res.status(200).json({ donors });
+    } catch (err) {
+      console.error('GET /api/admin/donors error:', err.message);
+      return res.status(500).json({ error: 'Database error' });
+    }
+  }
+
+  if (req.method === 'POST') {
+    const { email, nome, rm, tipoContribuicao, estadoAssinatura, valorAssinatura } = req.body || {};
+
+    if (!email || typeof email !== 'string') {
+      return res.status(400).json({ error: 'email is required' });
+    }
+    if (!nome || typeof nome !== 'string') {
+      return res.status(400).json({ error: 'nome is required' });
+    }
+
+    // RM é opcional. String vazia → NULL no banco (sem RM atribuído).
+    const rmValue = (typeof rm === 'string' && rm.trim()) ? rm.trim() : null;
+
+    const validTipos = ['Pontual', 'Recorrente'];
+    const tipo = validTipos.includes(tipoContribuicao) ? tipoContribuicao : 'Pontual';
+
+    const validEstados = ['Ativa', 'Pausada', 'Cancelada', 'N/A'];
+    const estado = validEstados.includes(estadoAssinatura) ? estadoAssinatura : 'N/A';
+
+    const vAssin = parseFloat(valorAssinatura);
+    const valorA = Number.isFinite(vAssin) && vAssin >= 0 ? vAssin : 0;
+
+    try {
+      await pool.query(
+        `INSERT INTO donors (email, nome, rm, tipo_contribuicao, estado_assinatura, valor_assinatura)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (email) DO UPDATE SET
+           nome              = EXCLUDED.nome,
+           rm                = EXCLUDED.rm,
+           tipo_contribuicao = EXCLUDED.tipo_contribuicao,
+           estado_assinatura = EXCLUDED.estado_assinatura,
+           valor_assinatura  = EXCLUDED.valor_assinatura,
+           updated_at        = NOW()`,
+        [email.trim(), nome.trim(), rmValue, tipo, estado, valorA]
+      );
+      return res.status(200).json({ ok: true });
+    } catch (err) {
+      console.error('POST /api/admin/donors error:', err.message);
+      return res.status(500).json({ error: 'Database error' });
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    const { email } = req.query;
+    if (!email || typeof email !== 'string') {
+      return res.status(400).json({ error: 'email query param is required' });
+    }
+    try {
+      const r = await pool.query(
+        `DELETE FROM donors WHERE LOWER(email) = LOWER($1) RETURNING email`,
+        [email.trim()]
+      );
+      if (r.rowCount === 0) {
+        return res.status(404).json({ error: 'Profile not found' });
+      }
+      // Eventos (donation_events) com esse email ficam órfãos por design —
+      // não cascadeia delete porque o event log é imutável (audit trail).
+      return res.status(200).json({ ok: true, deletedEmail: r.rows[0].email });
+    } catch (err) {
+      console.error('DELETE /api/admin/donors error:', err.message);
+      return res.status(500).json({ error: 'Database error' });
+    }
+  }
+
+  return res.status(405).json({ error: 'Method not allowed' });
+}

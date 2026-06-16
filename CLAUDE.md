@@ -132,6 +132,41 @@ The Transparência page renders two data-driven tile grids; new entries are adde
   - Report PDFs: `Fundo Patronos - Relatorio Anual YYYY.pdf`
   - Institutional PDFs: free-form (each doc has its own filename, see existing entries)
 
+### Vercel CLI workflow (env vars, redeploys)
+
+Setup once per machine:
+```bash
+npx vercel login           # interactive: choose GitHub, complete browser OAuth
+npx vercel link --project patronos-website --yes
+```
+
+Sync env vars from local `.env.local` to Vercel production:
+```bash
+node --env-file=.env.local scripts/sync-vercel-env.mjs
+```
+The script whitelists which vars to sync (see `VARS_TO_SYNC` at the top). It does NOT touch `VERCEL_TOKEN`, `TEST_USER_EMAIL`, or anything CLI-only.
+
+Force a redeploy of the latest production deployment (needed when env vars change, since `VITE_*` vars are baked into the bundle at build time):
+```bash
+npx vercel ls                                # find latest deployment URL
+npx vercel redeploy <deployment-url>         # rebuild with current env vars
+```
+
+**Known CLI quirk:** `vercel env add NAME preview --value V --yes` fails with `git_branch_required` in v53.3.2. The sync script intentionally only targets `production` because of this. To add to preview, use the Vercel UI or specify a git branch: `vercel env add NAME preview <branch> --value V --yes`.
+
+### Database (Railway Postgres)
+
+`api/donor-data.js` reads from a Postgres `donors` table on Railway, not Google Sheets. Schema and 15 fictitious seed rows in `scripts/setup-db.mjs`. Run once to provision a new DB:
+```bash
+node --env-file=.env.local scripts/setup-db.mjs
+```
+The script is idempotent (CREATE IF NOT EXISTS + UPSERT). The donor whose email matches `TEST_USER_EMAIL` is named "Renan Nardoni (Teste)" — useful for end-to-end login tests.
+
+Test the API handler locally without `vercel dev`:
+```bash
+node --env-file=.env.local scripts/test-api.mjs
+```
+
 ### Category Badge Styling (Donor Portal)
 - **Patrono**: Full gradient background
 - **Associado**: Gradient border with white background, gradient text
