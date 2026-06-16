@@ -19,6 +19,7 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import DoadorLogin from './pages/DoadorLogin'
 import DoadorDashboard from './pages/DoadorDashboard'
+import Admin from './pages/Admin'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -33,6 +34,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <DoadorDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
               </ProtectedRoute>
             }
           />

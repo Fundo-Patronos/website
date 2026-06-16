@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { EnvelopeIcon, LockClosedIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
@@ -26,6 +26,10 @@ const GoogleIcon = () => (
 
 export default function DoadorLogin() {
   const navigate = useNavigate()
+  const location = useLocation()
+  // Pra onde mandar depois do login. Default = /doador, mas se a pessoa veio
+  // de /admin (ou outra rota protegida), volta pra lá.
+  const from = location.state?.from?.pathname || '/doador'
   const { user, signInWithGoogle, signInWithEmail, registerWithEmail, sendMagicLink, resetPassword } = useAuth()
 
   const [mode, setMode] = useState('login') // 'login', 'register', 'magic-link', 'reset'
@@ -37,9 +41,9 @@ export default function DoadorLogin() {
 
   useEffect(() => {
     if (user) {
-      navigate('/doador')
+      navigate(from, { replace: true })
     }
-  }, [user, navigate])
+  }, [user, navigate, from])
 
   const handleGoogleSignIn = async () => {
     setLoading(true)

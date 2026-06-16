@@ -1,152 +1,87 @@
 /* eslint-disable no-undef */
-// Vercel Serverless Function for fetching donor data from Google Sheets
+// Vercel Serverless Function — busca dados do doador no Postgres (Railway).
+//
+// Endpoint: GET /api/donor-data?email=<email>
+// Resposta 200: { email, nome, valorTotal, valorAssinatura, categoria, tipoContribuicao, dataPrimeiraDoacao, estadoAssinatura }
+// Resposta 404: { error: 'Donor not found' }
+// Resposta 500: { error: 'Server configuration error' | 'Database error' | 'Internal server error' }
+
+import pg from 'pg';
+const { Pool } = pg;
+
+// Reusa o pool entre invocações da mesma instância warm da função.
+// Em dev (HMR/vercel dev), guarda no globalThis pra não vazar conexões a cada hot reload.
+const pool = globalThis.__pgPool ?? new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+  max: 5,                       // máximo de conexões por instância
+  idleTimeoutMillis: 30_000,
+  connectionTimeoutMillis: 10_000,
+});
+if (process.env.NODE_ENV !== 'production') {
+  globalThis.__pgPool = pool;
+}
+
 export default async function handler(req, res) {
-  // Only allow GET requests
   if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' })
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email } = req.query
+  const { email } = req.query;
+  if (!email || typeof email !== 'string') {
+    return res.status(400).json({ error: 'Email parameter is required' });
+  }
 
-  if (!email) {
-    return res.status(400).json({ error: 'Email parameter is required' })
+  if (!process.env.DATABASE_URL) {
+    console.error('Missing DATABASE_URL');
+    return res.status(500).json({ error: 'Server configuration error' });
   }
 
   try {
-    // Google Sheets API configuration
-    const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_SPREADSHEET_ID
-    const PRIVATE_KEY = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n')
-    const CLIENT_EMAIL = process.env.GOOGLE_SHEETS_CLIENT_EMAIL
+    // Lê do donor_summary (view): JOIN de donors (perfil manual) com
+    // SUM(donation_events) — valor_total, data_primeira_doacao e categoria
+    // são computados, não armazenados.
+    const result = await pool.query(
+      `SELECT
+         email,
+         nome,
+         valor_total,
+         valor_assinatura,
+         categoria,
+         tipo_contribuicao,
+         data_primeira_doacao,
+         estado_assinatura
+       FROM donor_summary
+       WHERE LOWER(email) = LOWER($1)
+       LIMIT 1`,
+      [email.trim()]
+    );
 
-    if (!SPREADSHEET_ID || !PRIVATE_KEY || !CLIENT_EMAIL) {
-      console.error('Missing Google Sheets configuration')
-      return res.status(500).json({ error: 'Server configuration error' })
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Donor not found' });
     }
 
-    // Create JWT for Google Sheets API authentication
-    const jwt = await createJWT(CLIENT_EMAIL, PRIVATE_KEY)
-    const accessToken = await getAccessToken(jwt)
+    const row = result.rows[0];
 
-    // Fetch data from Google Sheets
-    const range = 'Sheet1!A:H' // Columns A through H
-    const sheetsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}`
-
-    const response = await fetch(sheetsUrl, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error('Google Sheets API error:', errorText)
-      return res.status(500).json({ error: 'Failed to fetch data from spreadsheet' })
-    }
-
-    const data = await response.json()
-    const rows = data.values || []
-
-    if (rows.length < 2) {
-      return res.status(404).json({ error: 'No data found in spreadsheet' })
-    }
-
-    // Find donor by email (case-insensitive)
-    const donorRow = rows.slice(1).find(row => {
-      const rowEmail = row[0]?.toLowerCase().trim()
-      return rowEmail === email.toLowerCase().trim()
-    })
-
-    if (!donorRow) {
-      return res.status(404).json({ error: 'Donor not found' })
-    }
-
-    // Map row data to object
-    // Expected columns: Email, Nome, Valor Total, Valor Assinatura, Categoria, Tipo, Data Primeira Doacao, Estado Assinatura
+    // Mapeia snake_case (Postgres) → camelCase (frontend).
+    // Mantém o mesmo formato da versão anterior (Google Sheets) pra não quebrar o dashboard.
     const donorData = {
-      email: donorRow[0] || '',
-      nome: donorRow[1] || '',
-      valorTotal: parseFloat(donorRow[2]) || 0,
-      valorAssinatura: parseFloat(donorRow[3]) || 0,
-      categoria: donorRow[4] || 'Amigo',
-      tipoContribuicao: donorRow[5] || 'Pontual',
-      dataPrimeiraDoacao: donorRow[6] || '',
-      estadoAssinatura: donorRow[7] || 'N/A',
-    }
+      email: row.email || '',
+      nome: row.nome || '',
+      valorTotal: parseFloat(row.valor_total) || 0,
+      valorAssinatura: parseFloat(row.valor_assinatura) || 0,
+      categoria: row.categoria || 'Amigo',
+      tipoContribuicao: row.tipo_contribuicao || 'Pontual',
+      dataPrimeiraDoacao: row.data_primeira_doacao
+        ? new Date(row.data_primeira_doacao).toISOString().split('T')[0]
+        : '',
+      estadoAssinatura: row.estado_assinatura || 'N/A',
+    };
 
-    // Add cache headers
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300')
-
-    return res.status(200).json(donorData)
-  } catch (error) {
-    console.error('Error in donor-data API:', error)
-    return res.status(500).json({ error: 'Internal server error' })
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
+    return res.status(200).json(donorData);
+  } catch (err) {
+    console.error('Database error:', err.message);
+    return res.status(500).json({ error: 'Database error' });
   }
-}
-
-// Helper function to create a JWT for Google API authentication
-async function createJWT(clientEmail, privateKey) {
-  const header = {
-    alg: 'RS256',
-    typ: 'JWT',
-  }
-
-  const now = Math.floor(Date.now() / 1000)
-  const payload = {
-    iss: clientEmail,
-    scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-    aud: 'https://oauth2.googleapis.com/token',
-    iat: now,
-    exp: now + 3600, // 1 hour
-  }
-
-  const encodedHeader = base64UrlEncode(JSON.stringify(header))
-  const encodedPayload = base64UrlEncode(JSON.stringify(payload))
-  const signatureInput = `${encodedHeader}.${encodedPayload}`
-
-  const signature = await signRS256(signatureInput, privateKey)
-  const encodedSignature = base64UrlEncode(signature)
-
-  return `${signatureInput}.${encodedSignature}`
-}
-
-// Helper function to get access token from Google
-async function getAccessToken(jwt) {
-  const response = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-      assertion: jwt,
-    }),
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-    throw new Error(`Failed to get access token: ${errorText}`)
-  }
-
-  const data = await response.json()
-  return data.access_token
-}
-
-// Base64 URL encode helper
-function base64UrlEncode(data) {
-  let base64
-  if (typeof data === 'string') {
-    base64 = Buffer.from(data).toString('base64')
-  } else {
-    base64 = Buffer.from(data).toString('base64')
-  }
-  return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
-}
-
-// Sign data with RS256 using Node.js crypto
-async function signRS256(data, privateKey) {
-  const crypto = await import('crypto')
-  const sign = crypto.createSign('RSA-SHA256')
-  sign.update(data)
-  sign.end()
-  return sign.sign(privateKey)
 }
