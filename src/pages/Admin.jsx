@@ -11,7 +11,28 @@ import {
   XMarkIcon,
   ArrowUpTrayIcon,
   DocumentArrowUpIcon,
+  ArrowDownTrayIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
 } from '@heroicons/react/24/outline'
+
+// Dispara download de CSV no browser. Adiciona BOM pra Excel ler UTF-8 certo.
+function downloadCSV(filename, headers, rows) {
+  const escape = (v) => {
+    const s = v == null ? '' : String(v)
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s
+  }
+  const csv = [headers.map(escape).join(','), ...rows.map((r) => r.map(escape).join(','))].join('\n')
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}
 
 const TABS = [
   { id: 'dashboard',   label: 'Dashboard'          },
@@ -88,6 +109,29 @@ function CategoriaBadge({ value }) {
     <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700">
       Amigo
     </span>
+  )
+}
+
+function SortableTH({ label, col, sortBy, onToggle, align = 'left' }) {
+  const active = sortBy.col === col
+  const justify = align === 'right' ? 'justify-end' : 'justify-start'
+  return (
+    <th className={`px-4 py-3 font-semibold text-gray-700 ${align === 'right' ? 'text-right' : 'text-left'}`}>
+      <button
+        type="button"
+        onClick={() => onToggle(col)}
+        className={`flex w-full items-center gap-1 ${justify} ${active ? 'text-orange-600' : 'text-gray-700 hover:text-gray-900'}`}
+      >
+        <span>{label}</span>
+        {active ? (
+          sortBy.dir === 'asc'
+            ? <ChevronUpIcon className="h-3.5 w-3.5" />
+            : <ChevronDownIcon className="h-3.5 w-3.5" />
+        ) : (
+          <span className="text-gray-300 text-xs">⇅</span>
+        )}
+      </button>
+    </th>
   )
 }
 
@@ -478,8 +522,45 @@ function AddPixTab({ getToken, events, eventsLoading, onSuccess }) {
   const [form, setForm] = useState(empty)
   const [loading, setLoading] = useState(false)
   const [feedback, setFeedback] = useState(null)
+  // sortBy = { col: 'occurredAt' | 'amount' | 'email' | 'source' | 'id', dir: 'asc' | 'desc' }
+  const [sortBy, setSortBy] = useState({ col: 'occurredAt', dir: 'desc' })
 
   const isEditing = form.id !== null
+
+  const sortedEvents = (() => {
+    if (!events) return []
+    const arr = [...events]
+    const { col, dir } = sortBy
+    arr.sort((a, b) => {
+      let va = a[col], vb = b[col]
+      // strings — compare insensível
+      if (typeof va === 'string') { va = va.toLowerCase(); vb = (vb || '').toLowerCase() }
+      if (va < vb) return dir === 'asc' ? -1 : 1
+      if (va > vb) return dir === 'asc' ? 1 : -1
+      return 0
+    })
+    return arr
+  })()
+
+  const toggleSort = (col) => {
+    setSortBy((prev) => prev.col === col
+      ? { col, dir: prev.dir === 'asc' ? 'desc' : 'asc' }
+      : { col, dir: col === 'occurredAt' || col === 'amount' || col === 'id' ? 'desc' : 'asc' }
+    )
+  }
+
+  const handleExportCSV = () => {
+    const headers = ['ID', 'Data', 'Email', 'Valor', 'Fonte']
+    const rows = sortedEvents.map((e) => [
+      e.id,
+      e.occurredAt,
+      e.email,
+      e.amount.toFixed(2).replace('.', ','),
+      e.source,
+    ])
+    const stamp = new Date().toISOString().slice(0, 10)
+    downloadCSV(`eventos_${stamp}.csv`, headers, rows)
+  }
 
   const handleEdit = (event) => {
     setForm({ id: event.id, email: event.email, amount: String(event.amount), date: event.occurredAt })
@@ -595,7 +676,16 @@ function AddPixTab({ getToken, events, eventsLoading, onSuccess }) {
 
       {/* Tabela de eventos */}
       <div>
-        <h3 className="mb-2 text-sm font-semibold text-gray-700">Histórico de eventos PIX</h3>
+        <div className="mb-2 flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-gray-700">Histórico de eventos</h3>
+          {events && events.length > 0 && (
+            <button onClick={handleExportCSV}
+              className="flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50">
+              <ArrowDownTrayIcon className="h-4 w-4" />
+              Exportar CSV
+            </button>
+          )}
+        </div>
         {eventsLoading ? (
           <p className="text-gray-600">Carregando...</p>
         ) : !events?.length ? (
@@ -605,16 +695,16 @@ function AddPixTab({ getToken, events, eventsLoading, onSuccess }) {
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-3 text-left font-semibold text-gray-700">ID</th>
-                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Data</th>
-                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
-                  <th className="px-4 py-3 text-right font-semibold text-gray-700">Valor</th>
-                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Fonte</th>
+                  <SortableTH label="ID"    col="id"          sortBy={sortBy} onToggle={toggleSort} />
+                  <SortableTH label="Data"  col="occurredAt"  sortBy={sortBy} onToggle={toggleSort} />
+                  <SortableTH label="Email" col="email"       sortBy={sortBy} onToggle={toggleSort} />
+                  <SortableTH label="Valor" col="amount"      sortBy={sortBy} onToggle={toggleSort} align="right" />
+                  <SortableTH label="Fonte" col="source"      sortBy={sortBy} onToggle={toggleSort} />
                   <th className="px-4 py-3 text-center font-semibold text-gray-700">Ações</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 bg-white">
-                {events.map((ev) => (
+                {sortedEvents.map((ev) => (
                   <tr key={ev.id} className={form.id === ev.id ? 'bg-orange-50' : 'hover:bg-gray-50'}>
                     <td className="px-4 py-3 font-mono text-xs text-gray-500">#{ev.id}</td>
                     <td className="px-4 py-3 text-gray-700">{ev.occurredAt}</td>
