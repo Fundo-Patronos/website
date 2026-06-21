@@ -8,13 +8,14 @@ import CentroCTA from '../components/CentroCTA'
 function TrilhaDeCarreiras() {
   const stats = [
     { label: 'Duplas Formadas', value: '+300' },
-    { label: 'Sessões de Mentoria', value: '5' },
+    { label: 'Duplas em 2026', value: '50' },
+    { label: 'Reuniões + Eventos Especiais', value: '3+' },
     { label: 'Índice de Satisfação', value: '89%' },
-    { label: 'Áreas de Conhecimento', value: 'Todas' },
   ]
 
   const paragraphs = [
-    'Programa de mentoria de 5 meses para estudantes da Unicamp em fase final de graduação e pós-graduação. Conecta jovens talentos com profissionais experientes através de um processo sofisticado de matching, facilitando a transição do ambiente acadêmico para o mercado de trabalho.',
+    'O edital para a edição de 2026 está aberto! Nesta edição, formaremos 50 duplas de mentoria, que percorrerão sua jornada ao longo de 3 reuniões estruturadas e eventos especiais, conectando estudantes da Unicamp a profissionais experientes.',
+    'Programa de mentoria para estudantes da Unicamp em fase final de graduação e pós-graduação. Conecta jovens talentos com profissionais experientes através de um processo sofisticado de matching, facilitando a transição do ambiente acadêmico para o mercado de trabalho.',
     'Abrange 12 especialidades (Tecnologia, Sustentabilidade, Liderança, Finanças) e 13 indústrias (Startups, Mercado Financeiro, Setor Público, Terceiro Setor). Nosso algoritmo de pareamento conecta estudantes com mentores baseado nos interesses dos participantes e na experiência prática dos orientadores.',
     'Totalmente remoto e acessível a todos os cursos da Unicamp. Prepara estudantes para processos seletivos e decisões de carreira através de orientações personalizadas, oferecendo ferramentas estratégicas para alcançar objetivos profissionais com direcionamento especializado.'
   ]
@@ -65,8 +66,8 @@ function TrilhaDeCarreiras() {
   return (
     <div className="min-h-screen">
       <ImpactoHero
-        announcementText="Trilhas sempre abertas para novos participantes"
-        announcementLink="#"
+        announcementText="Edital 2026 aberto: inscrições para a nova edição"
+        announcementLink="https://tally.so/r/mYxxxB"
         title="Trilha de Carreiras"
         description="Desenvolva suas competências através de trilhas estruturadas e personalizadas, desenhadas para impulsionar sua carreira profissional."
         primaryButtonText="Inscrição de Estudantes"
