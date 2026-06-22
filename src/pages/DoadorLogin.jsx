@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { EnvelopeIcon, LockClosedIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 const GoogleIcon = () => (
   <svg className="h-5 w-5" viewBox="0 0 24 24">
@@ -30,11 +30,9 @@ export default function DoadorLogin() {
   // Pra onde mandar depois do login. Default = /doador, mas se a pessoa veio
   // de /admin (ou outra rota protegida), volta pra lá.
   const from = location.state?.from?.pathname || '/doador'
-  const { user, signInWithGoogle, signInWithEmail, registerWithEmail, sendMagicLink, resetPassword } = useAuth()
+  const { user, signInWithGoogle, sendMagicLink } = useAuth()
 
-  const [mode, setMode] = useState('login') // 'login', 'register', 'magic-link', 'reset'
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -57,26 +55,16 @@ export default function DoadorLogin() {
     }
   }
 
-  const handleEmailSubmit = async (e) => {
+  const handleMagicLink = async (e) => {
     e.preventDefault()
     setLoading(true)
     setError('')
     setSuccess('')
 
     try {
-      if (mode === 'login') {
-        await signInWithEmail(email, password)
-      } else if (mode === 'register') {
-        await registerWithEmail(email, password)
-      } else if (mode === 'magic-link') {
-        await sendMagicLink(email)
-        setSuccess('Link de acesso enviado! Verifique seu email.')
-        setEmail('')
-      } else if (mode === 'reset') {
-        await resetPassword(email)
-        setSuccess('Email de recuperacao enviado! Verifique sua caixa de entrada.')
-        setEmail('')
-      }
+      await sendMagicLink(email)
+      setSuccess('Link de acesso enviado! Verifique seu email.')
+      setEmail('')
     } catch (err) {
       setError(getErrorMessage(err.code))
     } finally {
@@ -88,10 +76,6 @@ export default function DoadorLogin() {
     const messages = {
       'auth/invalid-email': 'Email invalido.',
       'auth/user-disabled': 'Esta conta foi desativada.',
-      'auth/user-not-found': 'Usuario nao encontrado.',
-      'auth/wrong-password': 'Senha incorreta.',
-      'auth/email-already-in-use': 'Este email ja esta em uso.',
-      'auth/weak-password': 'A senha deve ter pelo menos 6 caracteres.',
       'auth/popup-closed-by-user': 'Login cancelado.',
       'auth/network-request-failed': 'Erro de conexao. Verifique sua internet.',
     }
@@ -138,37 +122,6 @@ export default function DoadorLogin() {
               </div>
             </div>
 
-            {/* Mode Tabs */}
-            <div className="flex rounded-lg bg-gray-100 p-1 mb-6">
-              <button
-                type="button"
-                onClick={() => { setMode('login'); setError(''); setSuccess(''); }}
-                className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${
-                  mode === 'login' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Login
-              </button>
-              <button
-                type="button"
-                onClick={() => { setMode('register'); setError(''); setSuccess(''); }}
-                className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${
-                  mode === 'register' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Cadastrar
-              </button>
-              <button
-                type="button"
-                onClick={() => { setMode('magic-link'); setError(''); setSuccess(''); }}
-                className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${
-                  mode === 'magic-link' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Link Magico
-              </button>
-            </div>
-
             {/* Error Message */}
             {error && (
               <div className="mb-4 flex items-center gap-x-2 rounded-lg bg-red-50 p-3 text-sm text-red-700">
@@ -184,8 +137,8 @@ export default function DoadorLogin() {
               </div>
             )}
 
-            {/* Email/Password Form */}
-            <form onSubmit={handleEmailSubmit} className="space-y-4">
+            {/* Magic Link Form */}
+            <form onSubmit={handleMagicLink} className="space-y-4">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                   Email
@@ -208,53 +161,9 @@ export default function DoadorLogin() {
                 </div>
               </div>
 
-              {(mode === 'login' || mode === 'register') && (
-                <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                    Senha
-                  </label>
-                  <div className="relative mt-1">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <LockClosedIcon className="h-5 w-5 text-gray-400" />
-                    </div>
-                    <input
-                      id="password"
-                      name="password"
-                      type="password"
-                      autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="block w-full rounded-lg border border-gray-300 py-3 pl-10 pr-3 text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
-                      placeholder={mode === 'register' ? 'Minimo 6 caracteres' : '********'}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {mode === 'login' && (
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    onClick={() => { setMode('reset'); setError(''); setSuccess(''); }}
-                    className="text-sm text-orange-600 hover:text-orange-500"
-                  >
-                    Esqueceu a senha?
-                  </button>
-                </div>
-              )}
-
-              {mode === 'reset' && (
-                <p className="text-sm text-gray-600">
-                  Digite seu email para receber um link de recuperacao de senha.
-                </p>
-              )}
-
-              {mode === 'magic-link' && (
-                <p className="text-sm text-gray-600">
-                  Enviaremos um link de acesso para seu email. Nao precisa de senha!
-                </p>
-              )}
+              <p className="text-sm text-gray-600">
+                Enviaremos um link de acesso para seu email. Nao precisa de senha!
+              </p>
 
               <button
                 type="submit"
@@ -270,27 +179,11 @@ export default function DoadorLogin() {
                     </svg>
                     Processando...
                   </span>
-                ) : mode === 'login' ? (
-                  'Entrar'
-                ) : mode === 'register' ? (
-                  'Criar Conta'
-                ) : mode === 'magic-link' ? (
-                  'Enviar Link'
                 ) : (
-                  'Recuperar Senha'
+                  'Enviar Link'
                 )}
               </button>
             </form>
-
-            {mode === 'reset' && (
-              <button
-                type="button"
-                onClick={() => { setMode('login'); setError(''); setSuccess(''); }}
-                className="mt-4 w-full text-sm text-gray-600 hover:text-gray-900"
-              >
-                Voltar ao login
-              </button>
-            )}
           </div>
 
           <p className="text-center text-sm text-gray-500">
