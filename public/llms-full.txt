@@ -99,8 +99,8 @@ Com um fundo patrimonial, esse mesmo R$ 1 milhão é investido para gerar rendim
 **Descrição**: Programa de mentoria de 5 meses para estudantes da Unicamp em fase final de graduação e pós-graduação. Conecta jovens talentos com profissionais experientes através de um processo sofisticado de matching, facilitando a transição do ambiente acadêmico para o mercado de trabalho.
 
 **Estatísticas**:
-- +300 duplas formadas
-- 5 sessões de mentoria
+- +400 duplas formadas
+- 3 sessões de mentoria
 - 89% índice de satisfação
 - Todas as áreas do conhecimento
 
@@ -119,7 +119,7 @@ Com um fundo patrimonial, esse mesmo R$ 1 milhão é investido para gerar rendim
 - E outros 9 setores
 
 **Características**:
-- Totalmente remoto
+- Formato híbrido
 - Acessível a todos os cursos da Unicamp
 - Algoritmo de pareamento baseado em interesses e experiência
 - Materiais de apoio antes de cada sessão
@@ -210,7 +210,7 @@ Com um fundo patrimonial, esse mesmo R$ 1 milhão é investido para gerar rendim
 - Mentores de todas as áreas e indústrias
 
 **Trilha de Carreiras**:
-- +300 duplas formadas
+- +400 duplas formadas
 - 89% de satisfação
 
 **Decola Extras**:
