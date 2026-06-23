@@ -28,6 +28,23 @@ npm run lint     # Run ESLint
   - `/doador/login` - Public login page
   - `/doador` - Protected dashboard (requires authentication)
 
+Page filenames don't map 1:1 to URLs — most live under `/sobre-nos/*` or `/impacto/*` prefixes:
+| Route | Page component |
+|-------|----------------|
+| `/` | `Home.jsx` |
+| `/sobre-nos/fundo` | `Fundo.jsx` |
+| `/sobre-nos/nossa-missao` | `NossaMissao.jsx` |
+| `/sobre-nos/transparencia` | `Transparencia.jsx` |
+| `/sobre-nos/contato` | `Contato.jsx` |
+| `/impacto/extras` | `Extras.jsx` |
+| `/impacto/carreira` | `Carreira.jsx` |
+| `/impacto/trilhas` | `TrilhaDeCarreiras.jsx` |
+| `/impacto/centro` | `CentroDeCarreiras.jsx` |
+| `/impacto/talentos` | `Talentos.jsx` |
+| `/impacto/pesquisa` | `Pesquisa.jsx` |
+| `/parceiros` | `Parceiros.jsx` |
+| `/blog`, `/blog/:slug` | `Blog.jsx`, `BlogPost.jsx` |
+
 ### Key Directories
 - `src/pages/` - Route-level page components
 - `src/components/` - Reusable UI components (Hero, CTA, FAQ sections, etc.)
@@ -48,8 +65,15 @@ Protected routes use `ProtectedRoute` component.
 
 ### Donor Portal Backend
 - **API Route**: `/api/donor-data.js` (Vercel serverless function)
-- **Data Source**: Google Sheets via service account
-- **Lookup**: Email-based (case-insensitive)
+- **Data Source**: Railway Postgres (`donor_summary` view), looked up by email (case-insensitive). The Google Sheets path is fully retired — see Database section below.
+
+### Admin Portal
+A separate authenticated area at `/admin` (`src/pages/Admin.jsx`, gated by the same `ProtectedRoute`) backed by serverless functions under `api/admin/`. Every handler calls `requireAdmin(req, res)` from `api/_lib/auth.js` as its first line.
+
+- **Admin auth is two-layered** (`api/_lib/auth.js → isAdmin`): (1) `ADMIN_EMAILS` env var = zero-DB emergency bootstrap; (2) the `admins` Postgres table managed through the UI. Either match grants access. If the DB is down, only the env-var admins keep access. `ProtectedRoute` only checks *logged-in*, not *admin* — the admin gate is server-side per endpoint.
+- **Shared libs** (`api/_lib/`): `db.js` exports a singleton `pg` `pool` (cached on `globalThis` in dev to survive hot reload — both `donor-data.js` and every admin handler import this); `auth.js` exports `verifyIdToken`, `isAdmin`, `requireAdmin`.
+- **Endpoints**: `stats.js` (dashboard aggregations, all queries `Promise.all`'d), `donors.js`, `donations.js` (append donation events), `admins.js` (CRUD; refuses to remove yourself to avoid lockout), `category-rules.js` (edit the Patrono/Associado thresholds), `doare-preview.js` + `doare-commit.js` (the doa.re CSV import flow, below).
+- **doa.re CSV import** is a two-step preview→commit: the client parses the doa.re CSV (PapaParse), POSTs rows to `doare-preview` which filters `Status === 'Paga'`, infers profile type, and dedups against `donors` (by email) and `donation_events` (by `source_id`); the user reviews, then `doare-commit` inserts (`ON CONFLICT DO NOTHING` + the unique index = defense-in-depth against re-uploading the same CSV).
 
 ## Brand Guidelines
 
@@ -89,10 +113,12 @@ VITE_FIREBASE_APP_ID
 
 ### Server-side (Vercel)
 ```
-GOOGLE_SHEETS_PRIVATE_KEY
-GOOGLE_SHEETS_CLIENT_EMAIL
-GOOGLE_SHEETS_SPREADSHEET_ID
+DATABASE_URL                  # Railway Postgres connection string (used by api/_lib/db.js + donor-data.js)
+FIREBASE_ADMIN_CLIENT_EMAIL   # Firebase Admin SDK — verifies ID tokens server-side
+FIREBASE_ADMIN_PRIVATE_KEY    # stored with literal \n; auth.js does .replace(/\\n/g, '\n')
+ADMIN_EMAILS                  # comma-separated bootstrap admin list (see Admin Portal)
 ```
+(The legacy `GOOGLE_SHEETS_*` vars are no longer used — the backend is Postgres now.)
 
 ## Important Links
 
@@ -161,6 +187,15 @@ npx vercel redeploy <deployment-url>         # rebuild with current env vars
 node --env-file=.env.local scripts/setup-db.mjs
 ```
 The script is idempotent (CREATE IF NOT EXISTS + UPSERT). The donor whose email matches `TEST_USER_EMAIL` is named "Renan Nardoni (Teste)" — useful for end-to-end login tests.
+
+**Data model** (don't read donation totals off `donors` — that column is legacy):
+- `donors` — donor profiles (email, nome, type). Source of identity, not of money.
+- `donation_events` — immutable append-only log, one row per donation (PIX, doa.re, …). Has a unique partial index `(source, source_id) WHERE source_id IS NOT NULL` for import dedup.
+- `category_rules` — singleton row (id=1) holding the editable `min_patrono` / `min_associado` thresholds (defaults R$ 5k / R$ 1k).
+- `admins` — DB-managed admin allowlist (`active` flag).
+- `donor_summary` **view** — the read model the app actually queries: JOINs `donors` + `SUM(donation_events.amount)` and derives `categoria` (Patrono/Associado/Amigo) live from `category_rules`. Both `donor-data.js` and `admin/stats.js` read this.
+
+**Migration scripts** (each `node --env-file=.env.local scripts/<name>`, all idempotent — run in this order on a fresh DB): `setup-db.mjs` → `migrate-to-events.mjs` (creates `donation_events`, `category_rules`, `donor_summary`) → `add-event-dedup-index.mjs` → `add-admins-table.mjs` (seeds from `ADMIN_EMAILS`) → `add-rm-column.mjs`. Bulk importers: `import-pix-historical.py`, `import-profiles.py`. Cleanup test data with `cleanup-fixtures.mjs`.
 
 Test the API handler locally without `vercel dev`:
 ```bash
