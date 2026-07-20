@@ -49,7 +49,8 @@ export function AuthProvider({ children }) {
             window.history.replaceState(null, '', window.location.pathname)
           })
           .catch((error) => {
-            setError(error.message)
+            console.error('[auth] signInWithEmailLink failed:', error)
+            setError(error.code || error.message)
           })
       }
     }
