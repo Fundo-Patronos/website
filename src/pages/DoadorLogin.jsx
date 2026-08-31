@@ -118,7 +118,7 @@ export default function DoadorLogin() {
               Área do Doador
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Acesse sua área exclusiva para visualizar suas contribuições
+              Acesse a sua Área do Doador para visualizar suas contribuições
             </p>
           </div>
 

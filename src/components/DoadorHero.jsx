@@ -7,7 +7,7 @@ export default function DoadorHero({ name }) {
         Olá, {firstName}!
       </h1>
       <p className="mt-2 text-lg leading-8 text-gray-600">
-        Bem-vindo à sua área exclusiva. Aqui você pode acompanhar suas contribuições.
+        Bem-vindo à sua Área do Doador. Aqui você pode acompanhar suas contribuições.
       </p>
     </div>
   )
