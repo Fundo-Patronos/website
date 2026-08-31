@@ -192,7 +192,7 @@ The script is idempotent (CREATE IF NOT EXISTS + UPSERT). The donor whose email 
 - `donors` — donor profiles (email, nome, type). Source of identity, not of money.
 - `donation_events` — immutable append-only log, one row per donation (PIX, doa.re, …). Has a unique partial index `(source, source_id) WHERE source_id IS NOT NULL` for import dedup.
 - `category_tiers` — the 6 official donation categories from the Relatório Anual (Amigo ≥ 5k, Aliado ≥ 10k, Protetor ≥ 20k, Patrono ≥ 50k, Patrono Associado ≥ 100k, Patrono Benemérito ≥ 300k). Names/benefits fixed; `min_valor` editable via admin. Donors below Amigo get `categoria = NULL` ("sem categoria").
-- `category_rules` — **deprecated** legacy singleton (old 3-category model); still in the DB but nothing reads it.
+- `category_rules` — **deprecated** legacy singleton (old 3-category model). The app no longer reads it; only the bootstrap scripts (`migrate-to-events.mjs`, `add-rm-column.mjs`) still reference it when provisioning a **fresh** DB, and both skip their view recreation once `category_tiers` exists.
 - `admins` — DB-managed admin allowlist (`active` flag).
 - `donor_summary` **view** — the read model the app actually queries: JOINs `donors` + `SUM(donation_events.amount)` and picks `categoria` as the highest `category_tiers` row whose `min_valor` was reached (NULL below the lowest). Both `donor-data.js` and `admin/stats.js` read this. Public tier list served by `GET /api/categories` (no auth — content is public in the annual report).
 

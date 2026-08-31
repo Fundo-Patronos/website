@@ -100,30 +100,39 @@ async function main() {
     // 5. View donor_summary — JOIN profile + agregação de eventos + categoria computada
     // (DROP + CREATE em vez de CREATE OR REPLACE porque a lista de colunas pode mudar
     //  entre versões; OR REPLACE não permite alterar a lista de colunas.)
-    await client.query(`DROP VIEW IF EXISTS donor_summary`);
-    await client.query(`
-      CREATE VIEW donor_summary AS
-      SELECT
-        d.email,
-        d.nome,
-        d.rm,
-        d.tipo_contribuicao,
-        d.estado_assinatura,
-        d.valor_assinatura,
-        COALESCE(SUM(e.amount), 0)::NUMERIC(12,2) AS valor_total,
-        MIN(e.occurred_at)                        AS data_primeira_doacao,
-        CASE
-          WHEN COALESCE(SUM(e.amount), 0) >= (SELECT min_patrono   FROM category_rules WHERE id = 1)
-            THEN 'Patrono'
-          WHEN COALESCE(SUM(e.amount), 0) >= (SELECT min_associado FROM category_rules WHERE id = 1)
-            THEN 'Associado'
-          ELSE 'Amigo'
-        END                                       AS categoria
-      FROM donors d
-      LEFT JOIN donation_events e ON LOWER(e.donor_email) = LOWER(d.email)
-      GROUP BY d.email, d.nome, d.rm, d.tipo_contribuicao, d.estado_assinatura, d.valor_assinatura;
-    `);
-    console.log('✓ View donor_summary criada/atualizada');
+    //
+    // NOTA: esta definição (3 categorias via category_rules) é só o bootstrap de um
+    // banco novo. Depois que migrate-category-tiers.mjs roda, a view passa a ser
+    // definida lá (6 categorias oficiais) — e este script NÃO deve sobrescrevê-la.
+    const tiersExist = await client.query(`SELECT to_regclass('category_tiers') IS NOT NULL AS ok`);
+    if (tiersExist.rows[0].ok) {
+      console.log('⊘ category_tiers existe — view donor_summary é gerenciada por migrate-category-tiers.mjs; pulando recriação');
+    } else {
+      await client.query(`DROP VIEW IF EXISTS donor_summary`);
+      await client.query(`
+        CREATE VIEW donor_summary AS
+        SELECT
+          d.email,
+          d.nome,
+          d.rm,
+          d.tipo_contribuicao,
+          d.estado_assinatura,
+          d.valor_assinatura,
+          COALESCE(SUM(e.amount), 0)::NUMERIC(12,2) AS valor_total,
+          MIN(e.occurred_at)                        AS data_primeira_doacao,
+          CASE
+            WHEN COALESCE(SUM(e.amount), 0) >= (SELECT min_patrono   FROM category_rules WHERE id = 1)
+              THEN 'Patrono'
+            WHEN COALESCE(SUM(e.amount), 0) >= (SELECT min_associado FROM category_rules WHERE id = 1)
+              THEN 'Associado'
+            ELSE 'Amigo'
+          END                                       AS categoria
+        FROM donors d
+        LEFT JOIN donation_events e ON LOWER(e.donor_email) = LOWER(d.email)
+        GROUP BY d.email, d.nome, d.rm, d.tipo_contribuicao, d.estado_assinatura, d.valor_assinatura;
+      `);
+      console.log('✓ View donor_summary criada/atualizada');
+    }
 
     await client.query('COMMIT');
 
