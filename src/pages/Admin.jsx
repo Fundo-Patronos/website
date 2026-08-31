@@ -88,26 +88,34 @@ function formatCurrency(n) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n || 0)
 }
 
+// Categorias oficiais (Relatório Anual): Patrono e acima = gradiente cheio,
+// Aliado/Protetor = contorno, Amigo = cinza. Abaixo de Amigo a view retorna NULL.
+const TIERS_GRADIENT = ['Patrono', 'Patrono Associado', 'Patrono Benemérito']
+const TIERS_OUTLINE = ['Aliado', 'Protetor']
+
 function CategoriaBadge({ value }) {
-  if (value === 'Patrono') {
+  if (!value) {
+    return <span className="text-xs text-gray-400">—</span>
+  }
+  if (TIERS_GRADIENT.includes(value)) {
     return (
-      <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold text-white"
+      <span className="inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-semibold text-white"
         style={{ background: BRAND_GRADIENT }}>
-        Patrono
+        {value}
       </span>
     )
   }
-  if (value === 'Associado') {
+  if (TIERS_OUTLINE.includes(value)) {
     return (
-      <span className="inline-flex items-center rounded-full border-2 px-2.5 py-0.5 text-xs font-semibold bg-white text-orange-600"
+      <span className="inline-flex items-center whitespace-nowrap rounded-full border-2 px-2.5 py-0.5 text-xs font-semibold bg-white text-orange-600"
         style={{ borderColor: '#ff6253' }}>
-        Associado
+        {value}
       </span>
     )
   }
   return (
-    <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700">
-      Amigo
+    <span className="inline-flex items-center whitespace-nowrap rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700">
+      {value}
     </span>
   )
 }
@@ -205,13 +213,14 @@ function DashboardTab({ getToken }) {
           <h3 className="mb-4 text-lg font-semibold text-gray-900">Distribuição por categoria</h3>
           <DistributionBars
             items={stats.byCategory}
-            getLabel={(r) => r.categoria}
+            getLabel={(r) => r.categoria || 'Sem categoria'}
             getCount={(r) => r.count}
             getTotal={(r) => r.total}
             colorOf={(r) =>
-              r.categoria === 'Patrono'   ? BRAND_GRADIENT :
-              r.categoria === 'Associado' ? 'linear-gradient(90deg, #ff9700, #ff6253)' :
-                                            'linear-gradient(90deg, #d1d5db, #9ca3af)'
+              TIERS_GRADIENT.includes(r.categoria) ? BRAND_GRADIENT :
+              TIERS_OUTLINE.includes(r.categoria)  ? 'linear-gradient(90deg, #ff9700, #ff6253)' :
+              r.categoria === 'Amigo'              ? 'linear-gradient(90deg, #fbbf24, #fb923c)' :
+                                                     'linear-gradient(90deg, #d1d5db, #9ca3af)'
             }
           />
         </section>
@@ -1270,10 +1279,10 @@ function DoareEventsTable({ events }) {
 
 // ====================== TAB: Regras de Categoria ======================
 function RulesTab({ getToken, onChanged }) {
-  const [rules, setRules] = useState(null)
-  const [minPatrono, setMinPatrono] = useState('')
-  const [minAssociado, setMinAssociado] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [tiers, setTiers] = useState([])
+  const [edits, setEdits] = useState({}) // { [id]: "valor digitado" }
+  const [savingId, setSavingId] = useState(null)
+  const [loading, setLoading] = useState(true)
   const [feedback, setFeedback] = useState(null)
 
   const load = useCallback(async () => {
@@ -1283,9 +1292,8 @@ function RulesTab({ getToken, onChanged }) {
       const r = await fetch('/api/admin/category-rules', { headers: { Authorization: `Bearer ${token}` } })
       const data = await r.json()
       if (!r.ok) throw new Error(data.error || 'Erro')
-      setRules(data)
-      setMinPatrono(String(data.minPatrono))
-      setMinAssociado(String(data.minAssociado))
+      setTiers(data.categorias)
+      setEdits({})
     } catch (err) {
       setFeedback({ type: 'error', msg: err.message })
     } finally {
@@ -1295,69 +1303,82 @@ function RulesTab({ getToken, onChanged }) {
 
   useEffect(() => { load() }, [load])
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+  const handleSave = async (tier) => {
+    const raw = edits[tier.id]
+    const mv = parseFloat(raw)
+    if (!Number.isFinite(mv) || mv <= 0) {
+      setFeedback({ type: 'error', msg: 'Valor mínimo deve ser um número positivo.' })
+      return
+    }
+    setSavingId(tier.id)
     setFeedback(null)
     try {
       const token = await getToken()
       const r = await fetch('/api/admin/category-rules', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ minPatrono: parseFloat(minPatrono), minAssociado: parseFloat(minAssociado) }),
+        body: JSON.stringify({ id: tier.id, minValor: mv }),
       })
       const data = await r.json()
       if (!r.ok) throw new Error(data.error || 'Erro')
-      setFeedback({ type: 'success', msg: 'Regras atualizadas. Categorias recalculam automaticamente.' })
-      setRules(data)
+      setFeedback({ type: 'success', msg: `${tier.nome} atualizado. Categorias recalculam automaticamente.` })
+      await load()
       onChanged?.()
     } catch (err) {
       setFeedback({ type: 'error', msg: err.message })
     } finally {
-      setLoading(false)
+      setSavingId(null)
     }
   }
 
   return (
-    <div className="mx-auto max-w-xl">
-      <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
-        <h3 className="text-lg font-semibold text-gray-900">Thresholds de categoria</h3>
-        <p className="text-sm text-gray-600">A categoria de cada doador é <strong>computada</strong> a partir do valor total:</p>
-        <ul className="ml-5 list-disc text-sm text-gray-600">
-          <li><strong>Patrono</strong> se valor_total ≥ <code className="bg-gray-100 px-1">min_patrono</code></li>
-          <li><strong>Associado</strong> se ≥ <code className="bg-gray-100 px-1">min_associado</code> e &lt; <code className="bg-gray-100 px-1">min_patrono</code></li>
-          <li><strong>Amigo</strong> caso contrário</li>
-        </ul>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">min_patrono (R$)</label>
-            <input type="number" step="0.01" min="0.01" required value={minPatrono}
-              onChange={(e) => setMinPatrono(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">min_associado (R$)</label>
-            <input type="number" step="0.01" min="0.01" required value={minAssociado}
-              onChange={(e) => setMinAssociado(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" />
-          </div>
-        </div>
-
-        {rules && (
-          <p className="text-xs text-gray-500">
-            Atual: Patrono ≥ {formatCurrency(rules.minPatrono)} | Associado ≥ {formatCurrency(rules.minAssociado)}
-          </p>
-        )}
+    <div className="mx-auto max-w-3xl space-y-4">
+      <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-gray-900">Categorias oficiais de doação</h3>
+        <p className="mt-1 text-sm text-gray-600">
+          As 6 categorias do Relatório Anual. A categoria de cada doador é <strong>computada</strong> pelo
+          total acumulado: vale o maior tier cujo mínimo foi atingido. Abaixo de{' '}
+          <strong>{tiers[0] ? formatCurrency(tiers[0].minValor) : 'R$ 5.000'}</strong> o doador fica sem categoria.
+          Os nomes e benefícios são fixos; os valores mínimos são editáveis.
+        </p>
 
         <Feedback feedback={feedback} />
 
-        <button type="submit" disabled={loading}
-          className="w-full rounded-md py-2.5 text-sm font-semibold text-white shadow-sm disabled:opacity-50"
-          style={{ background: BRAND_GRADIENT }}>
-          {loading ? 'Salvando...' : 'Salvar regras'}
-        </button>
-      </form>
+        {loading ? (
+          <p className="mt-4 text-sm text-gray-500">Carregando...</p>
+        ) : (
+          <div className="mt-4 divide-y divide-gray-100">
+            {tiers.map((tier) => (
+              <div key={tier.id} className="flex flex-wrap items-center gap-3 py-3">
+                <div className="w-44 shrink-0">
+                  <CategoriaBadge value={tier.nome} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">mínimo R$</span>
+                  <input
+                    type="number" step="0.01" min="0.01"
+                    value={edits[tier.id] ?? String(tier.minValor)}
+                    onChange={(e) => setEdits({ ...edits, [tier.id]: e.target.value })}
+                    className="w-32 rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSave(tier)}
+                    disabled={savingId === tier.id || edits[tier.id] === undefined || parseFloat(edits[tier.id]) === tier.minValor}
+                    className="rounded-md px-3 py-1.5 text-xs font-semibold text-white shadow-sm disabled:opacity-40"
+                    style={{ background: BRAND_GRADIENT }}
+                  >
+                    {savingId === tier.id ? 'Salvando...' : 'Salvar'}
+                  </button>
+                </div>
+                <p className="w-full text-xs leading-5 text-gray-500 sm:w-auto sm:flex-1 sm:pl-2">
+                  {tier.beneficios.join(' · ')}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

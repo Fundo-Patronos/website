@@ -70,7 +70,7 @@ export default async function handler(req, res) {
       nome: row.nome || '',
       valorTotal: parseFloat(row.valor_total) || 0,
       valorAssinatura: parseFloat(row.valor_assinatura) || 0,
-      categoria: row.categoria || 'Amigo',
+      categoria: row.categoria || null,
       tipoContribuicao: row.tipo_contribuicao || 'Pontual',
       dataPrimeiraDoacao: row.data_primeira_doacao
         ? new Date(row.data_primeira_doacao).toISOString().split('T')[0]

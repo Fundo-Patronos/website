@@ -4,10 +4,10 @@ export default function DoadorHero({ name }) {
   return (
     <div className="mb-8">
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-        Ola, {firstName}!
+        Olá, {firstName}!
       </h1>
       <p className="mt-2 text-lg leading-8 text-gray-600">
-        Bem-vindo a sua area exclusiva. Aqui voce pode acompanhar suas contribuicoes.
+        Bem-vindo à sua área exclusiva. Aqui você pode acompanhar suas contribuições.
       </p>
     </div>
   )

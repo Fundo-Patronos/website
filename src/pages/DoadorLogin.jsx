@@ -30,7 +30,7 @@ export default function DoadorLogin() {
   // Pra onde mandar depois do login. Default = /doador, mas se a pessoa veio
   // de /admin (ou outra rota protegida), volta pra lá.
   const from = location.state?.from?.pathname || '/doador'
-  const { user, signInWithGoogle, sendMagicLink } = useAuth()
+  const { user, signInWithGoogle, sendMagicLink, error: authError } = useAuth()
 
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
@@ -49,7 +49,8 @@ export default function DoadorLogin() {
     try {
       await signInWithGoogle()
     } catch (err) {
-      setError(getErrorMessage(err.code))
+      console.error('[login] Google sign-in failed:', err)
+      setError(getErrorMessage(err))
     } finally {
       setLoading(false)
     }
@@ -66,20 +67,39 @@ export default function DoadorLogin() {
       setSuccess('Link de acesso enviado! Verifique seu email.')
       setEmail('')
     } catch (err) {
-      setError(getErrorMessage(err.code))
+      console.error('[login] sendMagicLink failed:', err)
+      setError(getErrorMessage(err))
     } finally {
       setLoading(false)
     }
   }
 
-  const getErrorMessage = (code) => {
+  // Aceita o objeto de erro do Firebase ou um code string (vindo do AuthContext).
+  // Erros não mapeados mostram o código técnico entre parênteses — sem isso a
+  // mensagem genérica esconde a causa e todo diagnóstico vira adivinhação.
+  const getErrorMessage = (err) => {
+    const code = typeof err === 'string' ? err : err?.code
     const messages = {
-      'auth/invalid-email': 'Email invalido.',
+      'auth/invalid-email': 'Email inválido.',
+      'auth/missing-email': 'Digite seu email.',
       'auth/user-disabled': 'Esta conta foi desativada.',
+      'auth/too-many-requests': 'Muitas tentativas. Aguarde alguns minutos e tente novamente.',
+      'auth/quota-exceeded': 'Limite de envio de emails atingido por hoje. Tente mais tarde.',
+      'auth/operation-not-allowed': 'Este método de login está desabilitado no momento.',
+      'auth/unauthorized-continue-uri': 'Domínio não autorizado para o link de acesso.',
+      'auth/invalid-continue-uri': 'Endereço de retorno do link inválido.',
+      'auth/popup-blocked': 'O navegador bloqueou a janela do Google. Libere popups e tente de novo.',
       'auth/popup-closed-by-user': 'Login cancelado.',
-      'auth/network-request-failed': 'Erro de conexao. Verifique sua internet.',
+      'auth/cancelled-popup-request': 'Login cancelado.',
+      'auth/network-request-failed': 'Erro de conexão. Verifique sua internet.',
+      'auth/expired-action-code': 'Este link de acesso expirou. Solicite um novo.',
+      'auth/invalid-action-code': 'Link de acesso inválido ou já utilizado. Solicite um novo.',
     }
-    return messages[code] || 'Ocorreu um erro. Tente novamente.'
+    if (code && messages[code]) return messages[code]
+    const detail = code || (typeof err === 'string' ? err : err?.message)
+    return detail
+      ? `Ocorreu um erro. Tente novamente. (${detail})`
+      : 'Ocorreu um erro. Tente novamente.'
   }
 
   return (
@@ -95,10 +115,10 @@ export default function DoadorLogin() {
               />
             </Link>
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">
-              Area do Doador
+              Área do Doador
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Acesse sua area exclusiva para visualizar suas contribuicoes
+              Acesse sua área exclusiva para visualizar suas contribuições
             </p>
           </div>
 
@@ -122,11 +142,12 @@ export default function DoadorLogin() {
               </div>
             </div>
 
-            {/* Error Message */}
-            {error && (
+            {/* Error Message — inclui falhas ao concluir o link mágico (via AuthContext),
+                que antes eram silenciosas (ex.: link expirado ou já utilizado) */}
+            {(error || authError) && (
               <div className="mb-4 flex items-center gap-x-2 rounded-lg bg-red-50 p-3 text-sm text-red-700">
                 <ExclamationCircleIcon className="h-5 w-5 flex-shrink-0" />
-                {error}
+                {error || getErrorMessage(authError)}
               </div>
             )}
 
@@ -162,7 +183,7 @@ export default function DoadorLogin() {
               </div>
 
               <p className="text-sm text-gray-600">
-                Enviaremos um link de acesso para seu email. Nao precisa de senha!
+                Enviaremos um link de acesso para seu email. Não precisa de senha!
               </p>
 
               <button
