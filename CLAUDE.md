@@ -72,7 +72,7 @@ A separate authenticated area at `/admin` (`src/pages/Admin.jsx`, gated by the s
 
 - **Admin auth is two-layered** (`api/_lib/auth.js → isAdmin`): (1) `ADMIN_EMAILS` env var = zero-DB emergency bootstrap; (2) the `admins` Postgres table managed through the UI. Either match grants access. If the DB is down, only the env-var admins keep access. `ProtectedRoute` only checks *logged-in*, not *admin* — the admin gate is server-side per endpoint.
 - **Shared libs** (`api/_lib/`): `db.js` exports a singleton `pg` `pool` (cached on `globalThis` in dev to survive hot reload — both `donor-data.js` and every admin handler import this); `auth.js` exports `verifyIdToken`, `isAdmin`, `requireAdmin`.
-- **Endpoints**: `stats.js` (dashboard aggregations, all queries `Promise.all`'d), `donors.js`, `donations.js` (append donation events), `admins.js` (CRUD; refuses to remove yourself to avoid lockout), `category-rules.js` (edit the Patrono/Associado thresholds), `doare-preview.js` + `doare-commit.js` (the doa.re CSV import flow, below).
+- **Endpoints**: `stats.js` (dashboard aggregations, all queries `Promise.all`'d), `donors.js`, `donations.js` (append donation events), `admins.js` (CRUD; refuses to remove yourself to avoid lockout), `category-rules.js` (edit the `min_valor` of the 6 official tiers in `category_tiers`), `doare-preview.js` + `doare-commit.js` (the doa.re CSV import flow, below).
 - **doa.re CSV import** is a two-step preview→commit: the client parses the doa.re CSV (PapaParse), POSTs rows to `doare-preview` which filters `Status === 'Paga'`, infers profile type, and dedups against `donors` (by email) and `donation_events` (by `source_id`); the user reviews, then `doare-commit` inserts (`ON CONFLICT DO NOTHING` + the unique index = defense-in-depth against re-uploading the same CSV).
 
 ## Brand Guidelines
@@ -191,21 +191,23 @@ The script is idempotent (CREATE IF NOT EXISTS + UPSERT). The donor whose email 
 **Data model** (don't read donation totals off `donors` — that column is legacy):
 - `donors` — donor profiles (email, nome, type). Source of identity, not of money.
 - `donation_events` — immutable append-only log, one row per donation (PIX, doa.re, …). Has a unique partial index `(source, source_id) WHERE source_id IS NOT NULL` for import dedup.
-- `category_rules` — singleton row (id=1) holding the editable `min_patrono` / `min_associado` thresholds (defaults R$ 5k / R$ 1k).
+- `category_tiers` — the 6 official donation categories from the Relatório Anual (Amigo ≥ 5k, Aliado ≥ 10k, Protetor ≥ 20k, Patrono ≥ 50k, Patrono Associado ≥ 100k, Patrono Benemérito ≥ 300k). Names/benefits fixed; `min_valor` editable via admin. Donors below Amigo get `categoria = NULL` ("sem categoria").
+- `category_rules` — **deprecated** legacy singleton (old 3-category model); still in the DB but nothing reads it.
 - `admins` — DB-managed admin allowlist (`active` flag).
-- `donor_summary` **view** — the read model the app actually queries: JOINs `donors` + `SUM(donation_events.amount)` and derives `categoria` (Patrono/Associado/Amigo) live from `category_rules`. Both `donor-data.js` and `admin/stats.js` read this.
+- `donor_summary` **view** — the read model the app actually queries: JOINs `donors` + `SUM(donation_events.amount)` and picks `categoria` as the highest `category_tiers` row whose `min_valor` was reached (NULL below the lowest). Both `donor-data.js` and `admin/stats.js` read this. Public tier list served by `GET /api/categories` (no auth — content is public in the annual report).
 
-**Migration scripts** (each `node --env-file=.env.local scripts/<name>`, all idempotent — run in this order on a fresh DB): `setup-db.mjs` → `migrate-to-events.mjs` (creates `donation_events`, `category_rules`, `donor_summary`) → `add-event-dedup-index.mjs` → `add-admins-table.mjs` (seeds from `ADMIN_EMAILS`) → `add-rm-column.mjs`. Bulk importers: `import-pix-historical.py`, `import-profiles.py`. Cleanup test data with `cleanup-fixtures.mjs`.
+**Migration scripts** (each `node --env-file=.env.local scripts/<name>`, all idempotent — run in this order on a fresh DB): `setup-db.mjs` → `migrate-to-events.mjs` (creates `donation_events`, `category_rules`, `donor_summary`) → `add-event-dedup-index.mjs` → `add-admins-table.mjs` (seeds from `ADMIN_EMAILS`) → `add-rm-column.mjs` → `migrate-category-tiers.mjs` (creates/seeds `category_tiers`, recreates `donor_summary` for the 6-tier model). Bulk importers: `import-pix-historical.py`, `import-profiles.py`. Cleanup test data with `cleanup-fixtures.mjs`.
 
 Test the API handler locally without `vercel dev`:
 ```bash
 node --env-file=.env.local scripts/test-api.mjs
 ```
 
-### Category Badge Styling (Donor Portal)
-- **Patrono**: Full gradient background
-- **Associado**: Gradient border with white background, gradient text
+### Category Badge Styling (Donor Portal + Admin)
+- **Patrono / Patrono Associado / Patrono Benemérito**: Full gradient background
+- **Aliado / Protetor**: Gradient border with white background, gradient text
 - **Amigo**: Subtle gray background
+- **NULL (below Amigo)**: no badge — render a plain "—"
 
 ## AI/LLM Documentation
 

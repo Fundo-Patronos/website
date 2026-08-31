@@ -36,15 +36,17 @@ export default async function handler(req, res) {
         FROM donation_events
       `),
 
-      // Distribuição por categoria (da view)
+      // Distribuição por categoria (da view). Ordena do tier mais alto para o
+      // mais baixo via category_tiers; NULL (sem categoria) por último.
       pool.query(`
         SELECT
-          categoria,
+          ds.categoria,
           COUNT(*)::int               AS count,
-          COALESCE(SUM(valor_total), 0)::numeric AS total
-        FROM donor_summary
-        GROUP BY categoria
-        ORDER BY CASE categoria WHEN 'Patrono' THEN 1 WHEN 'Associado' THEN 2 ELSE 3 END
+          COALESCE(SUM(ds.valor_total), 0)::numeric AS total
+        FROM donor_summary ds
+        LEFT JOIN category_tiers ct ON ct.nome = ds.categoria
+        GROUP BY ds.categoria, ct.min_valor
+        ORDER BY ct.min_valor DESC NULLS LAST
       `),
 
       // Distribuição por source (eventos)

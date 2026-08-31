@@ -26,7 +26,7 @@ export default function DoadorLayout({ children }) {
             />
           </Link>
           <div className="flex items-center gap-x-6">
-            <span className="text-sm font-semibold text-gray-900">Area do Doador</span>
+            <span className="text-sm font-semibold text-gray-900">Área do Doador</span>
             <button
               onClick={handleSignOut}
               className="flex items-center gap-x-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-700 hover:text-red-700 transition-colors"
@@ -43,7 +43,7 @@ export default function DoadorLayout({ children }) {
       <footer className="bg-white border-t border-gray-200 py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <p className="text-center text-sm leading-6 text-gray-600">
-            Associacao Fundo Patrimonial Patronos | CNPJ: 40.418.520/0001-33 | Jd. Nossa Senhora Auxiliadora, 257 - Campinas, SP
+            Associação Fundo Patrimonial Patronos | CNPJ: 40.418.520/0001-33 | Jd. Nossa Senhora Auxiliadora, 257 - Campinas, SP
           </p>
         </div>
       </footer>

@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext'
 import DoadorLayout from '../layouts/DoadorLayout'
 import DoadorHero from '../components/DoadorHero'
 import DoadorStats from '../components/DoadorStats'
+import DoadorCategorias from '../components/DoadorCategorias'
 import DoadorInfo from '../components/DoadorInfo'
 import DoadorCTA from '../components/DoadorCTA'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
@@ -63,12 +64,12 @@ export default function DoadorDashboard() {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100">
               <ExclamationTriangleIcon className="h-8 w-8 text-yellow-600" />
             </div>
-            <h2 className="mt-4 text-xl font-semibold text-gray-900">Doador nao encontrado</h2>
+            <h2 className="mt-4 text-xl font-semibold text-gray-900">Doador não encontrado</h2>
             <p className="mt-2 text-gray-600">
-              O email <span className="font-medium">{user?.email}</span> nao esta registrado em nossa base de doadores.
+              O email <span className="font-medium">{user?.email}</span> não está registrado em nossa base de doadores.
             </p>
             <p className="mt-4 text-sm text-gray-500">
-              Se voce ja fez uma doacao, por favor entre em contato conosco para verificarmos seu cadastro.
+              Se você já fez uma doação, por favor entre em contato conosco para verificarmos seu cadastro.
             </p>
             <a
               href="mailto:contato@patronos.org"
@@ -93,7 +94,7 @@ export default function DoadorDashboard() {
             </div>
             <h2 className="mt-4 text-xl font-semibold text-gray-900">Erro ao carregar dados</h2>
             <p className="mt-2 text-gray-600">
-              Ocorreu um erro ao buscar suas informacoes. Por favor, tente novamente mais tarde.
+              Ocorreu um erro ao buscar suas informações. Por favor, tente novamente mais tarde.
             </p>
             <button
               onClick={() => window.location.reload()}
@@ -113,6 +114,7 @@ export default function DoadorDashboard() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <DoadorHero name={donorData.nome} />
         <DoadorStats data={donorData} />
+        <DoadorCategorias data={donorData} />
         <DoadorInfo data={donorData} />
         <DoadorCTA />
       </div>

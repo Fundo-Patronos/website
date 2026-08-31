@@ -80,20 +80,20 @@ export default function DoadorLogin() {
   const getErrorMessage = (err) => {
     const code = typeof err === 'string' ? err : err?.code
     const messages = {
-      'auth/invalid-email': 'Email invalido.',
+      'auth/invalid-email': 'Email inválido.',
       'auth/missing-email': 'Digite seu email.',
       'auth/user-disabled': 'Esta conta foi desativada.',
       'auth/too-many-requests': 'Muitas tentativas. Aguarde alguns minutos e tente novamente.',
       'auth/quota-exceeded': 'Limite de envio de emails atingido por hoje. Tente mais tarde.',
-      'auth/operation-not-allowed': 'Este metodo de login esta desabilitado no momento.',
-      'auth/unauthorized-continue-uri': 'Dominio nao autorizado para o link de acesso.',
-      'auth/invalid-continue-uri': 'Endereco de retorno do link invalido.',
+      'auth/operation-not-allowed': 'Este método de login está desabilitado no momento.',
+      'auth/unauthorized-continue-uri': 'Domínio não autorizado para o link de acesso.',
+      'auth/invalid-continue-uri': 'Endereço de retorno do link inválido.',
       'auth/popup-blocked': 'O navegador bloqueou a janela do Google. Libere popups e tente de novo.',
       'auth/popup-closed-by-user': 'Login cancelado.',
       'auth/cancelled-popup-request': 'Login cancelado.',
-      'auth/network-request-failed': 'Erro de conexao. Verifique sua internet.',
+      'auth/network-request-failed': 'Erro de conexão. Verifique sua internet.',
       'auth/expired-action-code': 'Este link de acesso expirou. Solicite um novo.',
-      'auth/invalid-action-code': 'Link de acesso invalido ou ja utilizado. Solicite um novo.',
+      'auth/invalid-action-code': 'Link de acesso inválido ou já utilizado. Solicite um novo.',
     }
     if (code && messages[code]) return messages[code]
     const detail = code || (typeof err === 'string' ? err : err?.message)
@@ -115,10 +115,10 @@ export default function DoadorLogin() {
               />
             </Link>
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">
-              Area do Doador
+              Área do Doador
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Acesse sua area exclusiva para visualizar suas contribuicoes
+              Acesse sua área exclusiva para visualizar suas contribuições
             </p>
           </div>
 
@@ -183,7 +183,7 @@ export default function DoadorLogin() {
               </div>
 
               <p className="text-sm text-gray-600">
-                Enviaremos um link de acesso para seu email. Nao precisa de senha!
+                Enviaremos um link de acesso para seu email. Não precisa de senha!
               </p>
 
               <button
