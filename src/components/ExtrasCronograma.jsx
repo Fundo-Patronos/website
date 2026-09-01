@@ -1,15 +1,11 @@
 const steps = [
-  { name: '01/09', description: 'Início das inscrições', href: '#', status: 'complete' },
-  {
-    name: '10/09',
-    description: 'Prazo das inscrições dos projetos com revisão',
-    href: '#',
-    status: 'complete',
-  },
-  { name: '16/09', description: 'Live de Q&A', href: '#', status: 'complete' },
-  { name: '22/09', description: 'Fim das inscrições', href: '#', status: 'current' },
-  { name: '06/10', description: 'Divulgação selecionados para o pitch', href: '#', status: 'upcoming' },
-  { name: 'Novembro', description: 'Realização dos pitches', href: '#', status: 'upcoming' },
+  { name: '17/08', description: 'Início da divulgação', href: '#', status: 'complete' },
+  { name: '01/09', description: 'Início das inscrições', href: '#', status: 'current' },
+  { name: '16/09', description: 'Data limite para inscrições com revisão', href: '#', status: 'upcoming' },
+  { name: '30/09', description: 'Fechamento das inscrições', href: '#', status: 'upcoming' },
+  { name: '13/10', description: 'Divulgação dos aprovados para o Pitch', href: '#', status: 'upcoming' },
+  { name: '21-22/10', description: 'Pitch dos projetos', href: '#', status: 'upcoming' },
+  { name: 'Jan/Fev', description: 'Resultados', href: '#', status: 'upcoming' },
 ]
 
 function classNames(...classes) {
