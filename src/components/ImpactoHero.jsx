@@ -7,8 +7,12 @@ export default function ImpactoHero({
   primaryButtonLink,
   secondaryButtonText,
   secondaryButtonLink,
+  tertiaryButtonText,
+  tertiaryButtonLink,
   primaryButtonDisabled = false
 }) {
+  // Local file paths (e.g. PDFs/planilhas em /public) devem baixar; links externos abrem em nova aba.
+  const isLocalFile = (link) => Boolean(link) && link.startsWith('/')
   return (
     <div className="bg-white">
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -64,9 +68,21 @@ export default function ImpactoHero({
                   href={secondaryButtonLink}
                   target={secondaryButtonLink && secondaryButtonLink.startsWith('http') ? '_blank' : '_self'}
                   rel={secondaryButtonLink && secondaryButtonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  download={isLocalFile(secondaryButtonLink) ? true : undefined}
                   className="text-sm/6 font-semibold text-gray-900"
                 >
                   {secondaryButtonText} <span aria-hidden="true">→</span>
+                </a>
+              )}
+              {tertiaryButtonText && (
+                <a
+                  href={tertiaryButtonLink}
+                  target={tertiaryButtonLink && tertiaryButtonLink.startsWith('http') ? '_blank' : '_self'}
+                  rel={tertiaryButtonLink && tertiaryButtonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  download={isLocalFile(tertiaryButtonLink) ? true : undefined}
+                  className="text-sm/6 font-semibold text-gray-900"
+                >
+                  {tertiaryButtonText} <span aria-hidden="true">→</span>
                 </a>
               )}
             </div>

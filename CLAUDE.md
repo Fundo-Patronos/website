@@ -25,8 +25,9 @@ npm run lint     # Run ESLint
 ### Routing Structure (src/App.jsx)
 - **Main Website**: Routes under `/*` wrapped in `MainLayout` (Header + Footer)
 - **Donor Portal**: `/doador/*` routes outside MainLayout with Firebase authentication
-  - `/doador/login` - Public login page
-  - `/doador` - Protected dashboard (requires authentication)
+  - `/doador/login` - Public login page (`DoadorLogin.jsx`)
+  - `/doador` - Protected dashboard (`DoadorDashboard.jsx`, requires authentication)
+- **Admin Portal**: `/admin` (`Admin.jsx`) outside MainLayout, wrapped in `ProtectedRoute` (login-only gate; admin authorization is enforced server-side per endpoint — see Admin Portal below)
 
 Page filenames don't map 1:1 to URLs — most live under `/sobre-nos/*` or `/impacto/*` prefixes:
 | Route | Page component |
