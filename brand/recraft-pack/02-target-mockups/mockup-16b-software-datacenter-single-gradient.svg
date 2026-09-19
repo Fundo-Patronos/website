@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 1000" width="620" height="1000">
+  <title>Equipment rack, front elevation</title>
+  <defs>
+    <linearGradient id="patronos" gradientUnits="userSpaceOnUse"
+        x1="125.0" y1="125.0" x2="730.0" y2="730.0">
+      <stop offset="0%" stop-color="#ff9700"/>
+      <stop offset="33%" stop-color="#ff6253"/>
+      <stop offset="67%" stop-color="#fc4696"/>
+      <stop offset="100%" stop-color="#c964e2"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#patronos)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 160.00,90.00 L 460.00,90.00 L 460.00,850.00 L 160.00,850.00 Z" stroke-width="2.2"/>
+    <path d="M 172.00,102.00 L 448.00,102.00 L 448.00,838.00 L 172.00,838.00 Z" stroke-width="1.0"/>
+    <path d="M 182.00,116.00 L 438.00,116.00 L 438.00,146.33 L 182.00,146.33 Z" stroke-width="1.0"/>
+    <path d="M 192.00,121.00 L 248.50,121.00 L 248.50,141.33 L 192.00,141.33 Z" stroke-width="0.7"/>
+    <path d="M 257.50,121.00 L 314.00,121.00 L 314.00,141.33 L 257.50,141.33 Z" stroke-width="0.7"/>
+    <path d="M 323.00,121.00 L 379.50,121.00 L 379.50,141.33 L 323.00,141.33 Z" stroke-width="0.7"/>
+    <path d="M 388.50,121.00 L 445.00,121.00 L 445.00,141.33 L 388.50,141.33 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="131.17" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,155.33 L 438.00,155.33 L 438.00,185.67 L 182.00,185.67 Z" stroke-width="1.0"/>
+    <path d="M 192.00,160.33 L 248.50,160.33 L 248.50,180.67 L 192.00,180.67 Z" stroke-width="0.7"/>
+    <path d="M 257.50,160.33 L 314.00,160.33 L 314.00,180.67 L 257.50,180.67 Z" stroke-width="0.7"/>
+    <path d="M 323.00,160.33 L 379.50,160.33 L 379.50,180.67 L 323.00,180.67 Z" stroke-width="0.7"/>
+    <path d="M 388.50,160.33 L 445.00,160.33 L 445.00,180.67 L 388.50,180.67 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="170.50" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,194.67 L 438.00,194.67 L 438.00,225.00 L 182.00,225.00 Z" stroke-width="1.0"/>
+    <circle cx="194.00" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="200.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="211.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="223.00" r="3.67" stroke-width="0.7"/>
+    <path d="M 182.00,234.00 L 438.00,234.00 L 438.00,264.33 L 182.00,264.33 Z" stroke-width="1.0"/>
+    <path d="M 192.00,239.00 L 248.50,239.00 L 248.50,259.33 L 192.00,259.33 Z" stroke-width="0.7"/>
+    <path d="M 257.50,239.00 L 314.00,239.00 L 314.00,259.33 L 257.50,259.33 Z" stroke-width="0.7"/>
+    <path d="M 323.00,239.00 L 379.50,239.00 L 379.50,259.33 L 323.00,259.33 Z" stroke-width="0.7"/>
+    <path d="M 388.50,239.00 L 445.00,239.00 L 445.00,259.33 L 388.50,259.33 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="249.17" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,273.33 L 438.00,273.33 L 438.00,303.67 L 182.00,303.67 Z" stroke-width="1.0"/>
+    <path d="M 192.00,278.33 L 248.50,278.33 L 248.50,298.67 L 192.00,298.67 Z" stroke-width="0.7"/>
+    <path d="M 257.50,278.33 L 314.00,278.33 L 314.00,298.67 L 257.50,298.67 Z" stroke-width="0.7"/>
+    <path d="M 323.00,278.33 L 379.50,278.33 L 379.50,298.67 L 323.00,298.67 Z" stroke-width="0.7"/>
+    <path d="M 388.50,278.33 L 445.00,278.33 L 445.00,298.67 L 388.50,298.67 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="288.50" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,312.67 L 438.00,312.67 L 438.00,343.00 L 182.00,343.00 Z" stroke-width="1.0"/>
+    <path d="M 192.00,317.67 L 248.50,317.67 L 248.50,338.00 L 192.00,338.00 Z" stroke-width="0.7"/>
+    <path d="M 257.50,317.67 L 314.00,317.67 L 314.00,338.00 L 257.50,338.00 Z" stroke-width="0.7"/>
+    <path d="M 323.00,317.67 L 379.50,317.67 L 379.50,338.00 L 323.00,338.00 Z" stroke-width="0.7"/>
+    <path d="M 388.50,317.67 L 445.00,317.67 L 445.00,338.00 L 388.50,338.00 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="327.83" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,352.00 L 438.00,352.00 L 438.00,382.33 L 182.00,382.33 Z" stroke-width="1.0"/>
+    <circle cx="194.00" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="358.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="369.17" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="380.33" r="3.67" stroke-width="0.7"/>
+    <path d="M 182.00,391.33 L 438.00,391.33 L 438.00,421.67 L 182.00,421.67 Z" stroke-width="1.0"/>
+    <path d="M 192.00,396.33 L 248.50,396.33 L 248.50,416.67 L 192.00,416.67 Z" stroke-width="0.7"/>
+    <path d="M 257.50,396.33 L 314.00,396.33 L 314.00,416.67 L 257.50,416.67 Z" stroke-width="0.7"/>
+    <path d="M 323.00,396.33 L 379.50,396.33 L 379.50,416.67 L 323.00,416.67 Z" stroke-width="0.7"/>
+    <path d="M 388.50,396.33 L 445.00,396.33 L 445.00,416.67 L 388.50,416.67 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="406.50" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,430.67 L 438.00,430.67 L 438.00,461.00 L 182.00,461.00 Z" stroke-width="1.0"/>
+    <path d="M 192.00,435.67 L 248.50,435.67 L 248.50,456.00 L 192.00,456.00 Z" stroke-width="0.7"/>
+    <path d="M 257.50,435.67 L 314.00,435.67 L 314.00,456.00 L 257.50,456.00 Z" stroke-width="0.7"/>
+    <path d="M 323.00,435.67 L 379.50,435.67 L 379.50,456.00 L 323.00,456.00 Z" stroke-width="0.7"/>
+    <path d="M 388.50,435.67 L 445.00,435.67 L 445.00,456.00 L 388.50,456.00 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="445.83" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,470.00 L 438.00,470.00 L 438.00,500.33 L 182.00,500.33 Z" stroke-width="1.0"/>
+    <path d="M 192.00,475.00 L 248.50,475.00 L 248.50,495.33 L 192.00,495.33 Z" stroke-width="0.7"/>
+    <path d="M 257.50,475.00 L 314.00,475.00 L 314.00,495.33 L 257.50,495.33 Z" stroke-width="0.7"/>
+    <path d="M 323.00,475.00 L 379.50,475.00 L 379.50,495.33 L 323.00,495.33 Z" stroke-width="0.7"/>
+    <path d="M 388.50,475.00 L 445.00,475.00 L 445.00,495.33 L 388.50,495.33 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="485.17" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,509.33 L 438.00,509.33 L 438.00,539.67 L 182.00,539.67 Z" stroke-width="1.0"/>
+    <circle cx="194.00" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="515.33" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="526.50" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="537.67" r="3.67" stroke-width="0.7"/>
+    <path d="M 182.00,548.67 L 438.00,548.67 L 438.00,579.00 L 182.00,579.00 Z" stroke-width="1.0"/>
+    <path d="M 192.00,553.67 L 248.50,553.67 L 248.50,574.00 L 192.00,574.00 Z" stroke-width="0.7"/>
+    <path d="M 257.50,553.67 L 314.00,553.67 L 314.00,574.00 L 257.50,574.00 Z" stroke-width="0.7"/>
+    <path d="M 323.00,553.67 L 379.50,553.67 L 379.50,574.00 L 323.00,574.00 Z" stroke-width="0.7"/>
+    <path d="M 388.50,553.67 L 445.00,553.67 L 445.00,574.00 L 388.50,574.00 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="563.83" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,588.00 L 438.00,588.00 L 438.00,618.33 L 182.00,618.33 Z" stroke-width="1.0"/>
+    <path d="M 192.00,593.00 L 248.50,593.00 L 248.50,613.33 L 192.00,613.33 Z" stroke-width="0.7"/>
+    <path d="M 257.50,593.00 L 314.00,593.00 L 314.00,613.33 L 257.50,613.33 Z" stroke-width="0.7"/>
+    <path d="M 323.00,593.00 L 379.50,593.00 L 379.50,613.33 L 323.00,613.33 Z" stroke-width="0.7"/>
+    <path d="M 388.50,593.00 L 445.00,593.00 L 445.00,613.33 L 388.50,613.33 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="603.17" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,627.33 L 438.00,627.33 L 438.00,657.67 L 182.00,657.67 Z" stroke-width="1.0"/>
+    <path d="M 192.00,632.33 L 248.50,632.33 L 248.50,652.67 L 192.00,652.67 Z" stroke-width="0.7"/>
+    <path d="M 257.50,632.33 L 314.00,632.33 L 314.00,652.67 L 257.50,652.67 Z" stroke-width="0.7"/>
+    <path d="M 323.00,632.33 L 379.50,632.33 L 379.50,652.67 L 323.00,652.67 Z" stroke-width="0.7"/>
+    <path d="M 388.50,632.33 L 445.00,632.33 L 445.00,652.67 L 388.50,652.67 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="642.50" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,666.67 L 438.00,666.67 L 438.00,697.00 L 182.00,697.00 Z" stroke-width="1.0"/>
+    <circle cx="194.00" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="672.67" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="683.83" r="3.67" stroke-width="0.7"/>
+    <circle cx="194.00" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="222.75" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="251.50" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="280.25" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="309.00" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="337.75" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="366.50" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="395.25" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <circle cx="424.00" cy="695.00" r="3.67" stroke-width="0.7"/>
+    <path d="M 182.00,706.00 L 438.00,706.00 L 438.00,736.33 L 182.00,736.33 Z" stroke-width="1.0"/>
+    <path d="M 192.00,711.00 L 248.50,711.00 L 248.50,731.33 L 192.00,731.33 Z" stroke-width="0.7"/>
+    <path d="M 257.50,711.00 L 314.00,711.00 L 314.00,731.33 L 257.50,731.33 Z" stroke-width="0.7"/>
+    <path d="M 323.00,711.00 L 379.50,711.00 L 379.50,731.33 L 323.00,731.33 Z" stroke-width="0.7"/>
+    <path d="M 388.50,711.00 L 445.00,711.00 L 445.00,731.33 L 388.50,731.33 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="721.17" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,745.33 L 438.00,745.33 L 438.00,775.67 L 182.00,775.67 Z" stroke-width="1.0"/>
+    <path d="M 192.00,750.33 L 248.50,750.33 L 248.50,770.67 L 192.00,770.67 Z" stroke-width="0.7"/>
+    <path d="M 257.50,750.33 L 314.00,750.33 L 314.00,770.67 L 257.50,770.67 Z" stroke-width="0.7"/>
+    <path d="M 323.00,750.33 L 379.50,750.33 L 379.50,770.67 L 323.00,770.67 Z" stroke-width="0.7"/>
+    <path d="M 388.50,750.33 L 445.00,750.33 L 445.00,770.67 L 388.50,770.67 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="760.50" r="4.90" stroke-width="0.8"/>
+    <path d="M 182.00,784.67 L 438.00,784.67 L 438.00,815.00 L 182.00,815.00 Z" stroke-width="1.0"/>
+    <path d="M 192.00,789.67 L 248.50,789.67 L 248.50,810.00 L 192.00,810.00 Z" stroke-width="0.7"/>
+    <path d="M 257.50,789.67 L 314.00,789.67 L 314.00,810.00 L 257.50,810.00 Z" stroke-width="0.7"/>
+    <path d="M 323.00,789.67 L 379.50,789.67 L 379.50,810.00 L 323.00,810.00 Z" stroke-width="0.7"/>
+    <path d="M 388.50,789.67 L 445.00,789.67 L 445.00,810.00 L 388.50,810.00 Z" stroke-width="0.7"/>
+    <circle cx="428.00" cy="799.83" r="4.90" stroke-width="0.8"/>
+    <circle cx="186.00" cy="864.00" r="16.84" stroke-width="1.4"/>
+    <circle cx="186.00" cy="864.00" r="6.12" stroke-width="1.0"/>
+    <circle cx="434.00" cy="864.00" r="16.84" stroke-width="1.4"/>
+    <circle cx="434.00" cy="864.00" r="6.12" stroke-width="1.0"/>
+    <path d="M 60.00,900.00 L 560.00,900.00" stroke-width="1.2" stroke-dasharray="26 10 4 10"/>
+  </g>
+</svg>

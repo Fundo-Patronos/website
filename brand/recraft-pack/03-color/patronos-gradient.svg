@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520">
+  <title>Patronos brand gradient - reference card</title>
+  <defs>
+    <linearGradient id="patronos" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9700"/>
+      <stop offset="33%" stop-color="#ff6253"/>
+      <stop offset="67%" stop-color="#fc4696"/>
+      <stop offset="100%" stop-color="#c964e2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="520" fill="#ffffff"/>
+  <rect x="60" y="60" width="1080" height="150" fill="url(#patronos)"/>
+  <g font-family="Inter, Helvetica, Arial, sans-serif">
+    <g>
+      <rect x="60"  y="250" width="255" height="120" fill="#ff9700"/>
+      <rect x="335" y="250" width="255" height="120" fill="#ff6253"/>
+      <rect x="610" y="250" width="255" height="120" fill="#fc4696"/>
+      <rect x="885" y="250" width="255" height="120" fill="#c964e2"/>
+    </g>
+    <g font-size="30" font-weight="600" fill="#1a1a1a">
+      <text x="60"  y="425">#ff9700</text>
+      <text x="335" y="425">#ff6253</text>
+      <text x="610" y="425">#fc4696</text>
+      <text x="885" y="425">#c964e2</text>
+    </g>
+    <g font-size="21" fill="#6b7280">
+      <text x="60"  y="462">stop 0%</text>
+      <text x="335" y="462">stop 33%</text>
+      <text x="610" y="462">stop 67%</text>
+      <text x="885" y="462">stop 100%</text>
+      <text x="60"  y="500">linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)</text>
+    </g>
+  </g>
+</svg>

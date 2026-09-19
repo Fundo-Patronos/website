@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <title>Face-centred cubic unit cell, axonometric</title>
+  <defs>
+    <linearGradient id="patronos" gradientUnits="userSpaceOnUse"
+        x1="307.8" y1="307.8" x2="854.1" y2="854.1">
+      <stop offset="0%" stop-color="#ff9700"/>
+      <stop offset="33%" stop-color="#ff6253"/>
+      <stop offset="67%" stop-color="#fc4696"/>
+      <stop offset="100%" stop-color="#c964e2"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#patronos)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 550.50,801.50 L 880.50,702.50" stroke-width="1.5"/>
+    <path d="M 550.50,801.50 L 550.50,471.50" stroke-width="1.5"/>
+    <path d="M 550.50,801.50 L 312.90,669.50" stroke-width="1.5"/>
+    <path d="M 312.90,669.50 L 642.90,570.50" stroke-width="1.5"/>
+    <path d="M 312.90,669.50 L 312.90,339.50" stroke-width="1.5"/>
+    <path d="M 550.50,471.50 L 880.50,372.50" stroke-width="1.5"/>
+    <path d="M 550.50,471.50 L 312.90,339.50" stroke-width="1.5"/>
+    <path d="M 312.90,339.50 L 642.90,240.50" stroke-width="1.5"/>
+    <path d="M 880.50,702.50 L 880.50,372.50" stroke-width="1.5"/>
+    <path d="M 880.50,702.50 L 642.90,570.50" stroke-width="1.5"/>
+    <path d="M 642.90,570.50 L 642.90,240.50" stroke-width="1.5"/>
+    <path d="M 880.50,372.50 L 642.90,240.50" stroke-width="1.5"/>
+    <circle cx="550.50" cy="801.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="550.50" cy="801.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="312.90" cy="669.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="312.90" cy="669.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="550.50" cy="471.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="550.50" cy="471.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="312.90" cy="339.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="312.90" cy="339.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="880.50" cy="702.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="880.50" cy="702.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="642.90" cy="570.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="642.90" cy="570.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="880.50" cy="372.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="880.50" cy="372.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="642.90" cy="240.50" r="26.00" stroke-width="1.6"/>
+    <circle cx="642.90" cy="240.50" r="10.92" stroke-width="1.0"/>
+    <circle cx="715.50" cy="587.00" r="30.00" stroke-width="1.6"/>
+    <circle cx="715.50" cy="587.00" r="12.60" stroke-width="1.0"/>
+    <circle cx="477.90" cy="455.00" r="30.00" stroke-width="1.6"/>
+    <circle cx="477.90" cy="455.00" r="12.60" stroke-width="1.0"/>
+    <circle cx="596.70" cy="686.00" r="30.00" stroke-width="1.6"/>
+    <circle cx="596.70" cy="686.00" r="12.60" stroke-width="1.0"/>
+    <circle cx="596.70" cy="356.00" r="30.00" stroke-width="1.6"/>
+    <circle cx="596.70" cy="356.00" r="12.60" stroke-width="1.0"/>
+    <circle cx="431.70" cy="570.50" r="30.00" stroke-width="1.6"/>
+    <circle cx="431.70" cy="570.50" r="12.60" stroke-width="1.0"/>
+    <circle cx="761.70" cy="471.50" r="30.00" stroke-width="1.6"/>
+    <circle cx="761.70" cy="471.50" r="12.60" stroke-width="1.0"/>
+    <path d="M 715.50,587.00 L 550.50,801.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 715.50,587.00 L 550.50,471.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 715.50,587.00 L 880.50,702.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 715.50,587.00 L 880.50,372.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 477.90,455.00 L 312.90,669.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 477.90,455.00 L 312.90,339.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 477.90,455.00 L 642.90,570.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 477.90,455.00 L 642.90,240.50" stroke-width="0.9" stroke-dasharray="7 6"/>
+    <path d="M 550.50,801.50 L 1012.50,662.90" stroke-width="1.2" stroke-dasharray="16 8 3 8"/>
+    <path d="M 1020.84,651.65 L 1012.50,662.90" stroke-width="1.2"/>
+    <path d="M 1025.65,667.70 L 1012.50,662.90" stroke-width="1.2"/>
+    <text x="1045.07" y="663.13" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">a</text>
+    <path d="M 550.50,801.50 L 550.50,339.50" stroke-width="1.2" stroke-dasharray="16 8 3 8"/>
+    <path d="M 542.12,328.28 L 550.50,339.50" stroke-width="1.2"/>
+    <path d="M 558.88,328.28 L 550.50,339.50" stroke-width="1.2"/>
+    <text x="550.50" y="315.50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">b</text>
+    <path d="M 550.50,801.50 L 217.86,616.70" stroke-width="1.2" stroke-dasharray="16 8 3 8"/>
+    <path d="M 203.99,618.58 L 217.86,616.70" stroke-width="1.2"/>
+    <path d="M 212.12,603.93 L 217.86,616.70" stroke-width="1.2"/>
+    <text x="188.14" y="610.19" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">c</text>
+  </g>
+</svg>
