@@ -147,6 +147,11 @@ ADMIN_EMAILS                  # comma-separated bootstrap admin list (see Admin 
 - Use `vercel dev` locally to test serverless functions
 - The repo is linked to a Vercel project (`.vercel/project.json`). Push to `main` auto-deploys to production; PRs get preview deployments commented by the Vercel bot
 
+### Analytics (Google Analytics 4)
+- Measurement ID `G-SGSQQKK5TC`. The gtag.js snippet lives in `index.html`, placed right after `<meta charset="UTF-8" />` — Google's instructions say "immediately after `<head>`", but the charset declaration must stay first in the head; GA behaves identically either way
+- This is a Vite SPA with a single HTML entry document, so that one tag covers **every** route (`/`, `/sobre-nos/*`, `/impacto/*`, `/doador/*`, `/admin`). Never add a second tag — Google counts duplicates as doubled pageviews
+- **Route changes are not tracked by the snippet itself.** `gtag('config', ...)` fires one `page_view` on initial load; React Router navigations depend on GA4 Enhanced Measurement ("Page changes based on browser history events", enabled by default on the data stream). If route views stop appearing, check that toggle in the GA4 UI before adding code
+
 ### Adding Annual Reports and Institutional Documents
 The Transparência page renders two data-driven tile grids; new entries are added by appending to a local `posts` array.
 
