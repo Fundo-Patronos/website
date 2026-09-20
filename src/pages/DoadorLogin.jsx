@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 import { EnvelopeIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 const GoogleIcon = () => (

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline'
 
 export default function DoadorLayout({ children }) {

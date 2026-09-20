@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // src/ui holds unported Launch UI Pro TypeScript sources saved as .js — never imported, not parseable as JS
+  globalIgnores(['dist', 'src/ui']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -25,5 +26,10 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
+  },
+  {
+    // Vercel serverless functions run on Node, not in the browser
+    files: ['api/**/*.js'],
+    languageOptions: { globals: globals.node },
   },
 ])

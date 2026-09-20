@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 import DoadorLayout from '../layouts/DoadorLayout'
 import DoadorHero from '../components/DoadorHero'
 import DoadorStats from '../components/DoadorStats'

@@ -8,10 +8,6 @@ const steps = [
   { name: 'Jan/Fev', description: 'Resultados', href: '#', status: 'upcoming' },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function ExtrasCronograma() {
   return (
     <div className="bg-white py-12 sm:py-16">
