@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -35,21 +35,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-
-  # Lint is a separate, non-blocking job: it currently fails on main with
-  # pre-existing errors, and a check that is always red teaches reviewers to
-  # ignore red checks. Drop `continue-on-error` once the lint debt is paid.
-  lint:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci
       - run: npm run lint
