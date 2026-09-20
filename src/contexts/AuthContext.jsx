@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -12,12 +12,7 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth'
 import { auth } from '../lib/firebase'
-
-const AuthContext = createContext({})
-
-export function useAuth() {
-  return useContext(AuthContext)
-}
+import { AuthContext } from './auth-context'
 
 const actionCodeSettings = {
   url: typeof window !== 'undefined' ? `${window.location.origin}/doador/login` : '',

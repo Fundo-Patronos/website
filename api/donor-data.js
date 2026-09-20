@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // Vercel Serverless Function — busca dados do doador no Postgres (Railway).
 //
 // Endpoint: GET /api/donor-data?email=<email>

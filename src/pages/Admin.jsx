@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import Papa from 'papaparse'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 import {
   ArrowLeftOnRectangleIcon,
   ExclamationTriangleIcon,

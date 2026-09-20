@@ -30,7 +30,7 @@ import {
   GlobeAltIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, HeartIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, PhoneIcon } from '@heroicons/react/20/solid'
 
 // Sobre Nós flyout menu items
 const aboutItems = [
@@ -47,29 +47,6 @@ const resourceItems = [
   { name: 'Área do Doador', href: '/doador', icon: UsersIcon, isRouter: true },
 ]
 
-const featuredPosts = [
-  {
-    id: 1,
-    title: 'Consulte o nosso Relatório Anual 2024',
-    href: '#',
-    date: 'Março 2024',
-    datetime: '2024-03',
-    category: { title: 'Transparência', href: '#' },
-    imageUrl: 'https://picsum.photos/400/200?random=3',
-    description: 'Baixe nosso Relatório Anual 2024 e conheça todos os avanços e conquistas que alcançamos no último ano, incluindo projetos apoiados, recursos investidos e impactos gerados na comunidade acadêmica.',
-  },
-  {
-    id: 2,
-    title: 'Faça sua contribuição',
-    href: '#',
-    date: 'Sempre disponível',
-    datetime: '2024',
-    category: { title: 'Doação', href: '#' },
-    imageUrl: 'https://picsum.photos/400/200?random=4',
-    description: 'Transforme o futuro da educação superior no Brasil. Sua doação ao Fundo Patronos fortalece a pesquisa, apoia estudantes talentosos e contribui para o desenvolvimento de uma sociedade mais justa.',
-  },
-]
-
 // Impacto submenu items - matching desktop flyout
 const impactItems = [
   { name: 'Extracurriculares e Projetos de Extensão', href: '/impacto/extras', icon: AcademicCapIcon, isRouter: true },
@@ -77,11 +54,6 @@ const impactItems = [
   { name: 'Centro de Carreiras', href: '/impacto/centro', icon: BuildingLibraryIcon, isRouter: true },
   { name: 'Talentos e Bolsas', href: '/impacto/talentos', icon: UsersIcon, isRouter: true },
   { name: 'Pesquisa', href: '#', icon: ChartBarIcon, disabled: true },
-]
-
-const callsToAction = [
-  { name: 'Fale Conosco', href: '#', icon: PhoneIcon },
-  { name: 'Seja um Doador', href: '#', icon: HeartIcon },
 ]
 
 export default function Navbar() {

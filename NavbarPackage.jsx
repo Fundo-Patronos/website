@@ -204,7 +204,6 @@ export default function AdvancedNavbar({
   LinkComponent = 'a',
 
   // Callbacks
-  onMenuItemClick,
   onCtaClick,
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

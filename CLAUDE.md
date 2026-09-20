@@ -20,6 +20,12 @@ npm run preview  # Preview production build
 npm run lint     # Run ESLint
 ```
 
+There is **no test suite** (no test runner, no `test` script). Verification is `npm run lint` + `npm run build`, plus `scripts/test-api.mjs` for the donor API handler (see Database section).
+
+`vite.config.js` has no `/api` proxy, so under plain `npm run dev` every `/api/*` fetch fails — the Donor Portal, `/admin`, and the public tier list in `DoadorCategorias.jsx` all need `vercel dev`.
+
+Stack: React 19 + Vite 7 + Tailwind CSS 4 (configured via `@import "tailwindcss"` in `src/index.css` and `@tailwindcss/postcss`), React Router 7, plain JS/JSX (no TypeScript). `README.md` is outdated (lists `src/utils/` and `src/styles/`, which don't exist) — trust this file instead.
+
 ## Architecture
 
 ### Routing Structure (src/App.jsx)
@@ -50,8 +56,8 @@ Page filenames don't map 1:1 to URLs — most live under `/sobre-nos/*` or `/imp
 - `src/pages/` - Route-level page components
 - `src/components/` - Reusable UI components (Hero, CTA, FAQ sections, etc.)
 - `src/layouts/` - Layout wrappers (MainLayout, DoadorLayout)
-- `src/ui/` - Adapted Launch UI Pro primitives (Button, Card, Badge, Marquee, Section)
-- `src/contexts/` - React context providers (AuthContext for Firebase auth)
+- `src/ui/` - **Dead code**: Launch UI Pro TypeScript sources saved as `.js` (type annotations intact, deps like `class-variance-authority`/`@radix-ui` not installed). Nothing imports them and they don't parse as JS, so ESLint ignores the folder. Port properly before using
+- `src/contexts/` - `AuthContext.jsx` exports only `AuthProvider`; the context object lives in `auth-context.js` and the hook in `src/hooks/useAuth.js` (split so `react-refresh/only-export-components` passes). Import `useAuth` from `hooks/useAuth`
 - `src/lib/` - Utilities (firebase.js, theme.js, utils.js with `cn` helper)
 - `launch-ui-pro/` - Original Launch UI Pro component library (reference only)
 - `api/` - Vercel serverless functions
@@ -67,12 +73,18 @@ Protected routes use `ProtectedRoute` component.
 ### Donor Portal Backend
 - **API Route**: `/api/donor-data.js` (Vercel serverless function)
 - **Data Source**: Railway Postgres (`donor_summary` view), looked up by email (case-insensitive). The Google Sheets path is fully retired — see Database section below.
+- **Not token-authenticated**: `DoadorDashboard.jsx` calls `GET /api/donor-data?email=<user.email>` with no `Authorization` header, and the handler does not call `verifyIdToken` — it trusts the `email` query param. The only gate is the client-side `ProtectedRoute`. Responses are CDN-cached (`s-maxage=60`). Contrast with `api/admin/*`, where the client sends `Authorization: Bearer <Firebase ID token>` on every request. If you harden this endpoint, reuse `verifyIdToken` from `api/_lib/auth.js` and compare `decoded.email` to the requested email.
+- `donor-data.js` builds its **own** `pg` Pool inline instead of importing `api/_lib/db.js` (the two only share an instance in dev, via `globalThis.__pgPool`). Pool settings changes must be made in both places.
+
+### Blog
+Blog content is hardcoded in two places that must stay in sync: the `posts` array in `src/pages/Blog.jsx` (listing cards) and the `blogPosts` object keyed by slug in `src/pages/BlogPost.jsx` (full article bodies). There is no CMS or markdown pipeline.
 
 ### Admin Portal
 A separate authenticated area at `/admin` (`src/pages/Admin.jsx`, gated by the same `ProtectedRoute`) backed by serverless functions under `api/admin/`. Every handler calls `requireAdmin(req, res)` from `api/_lib/auth.js` as its first line.
 
 - **Admin auth is two-layered** (`api/_lib/auth.js → isAdmin`): (1) `ADMIN_EMAILS` env var = zero-DB emergency bootstrap; (2) the `admins` Postgres table managed through the UI. Either match grants access. If the DB is down, only the env-var admins keep access. `ProtectedRoute` only checks *logged-in*, not *admin* — the admin gate is server-side per endpoint.
-- **Shared libs** (`api/_lib/`): `db.js` exports a singleton `pg` `pool` (cached on `globalThis` in dev to survive hot reload — both `donor-data.js` and every admin handler import this); `auth.js` exports `verifyIdToken`, `isAdmin`, `requireAdmin`.
+- **Shared libs** (`api/_lib/`): `db.js` exports a singleton `pg` `pool` (cached on `globalThis` in dev to survive hot reload; imported by every admin handler and `auth.js` — but not by `donor-data.js`, see above); `auth.js` exports `verifyIdToken`, `isAdmin`, `requireAdmin`. Firebase Admin is initialised with `VITE_FIREBASE_PROJECT_ID`, so that client-prefixed var must also be set server-side on Vercel.
+- **Frontend is a single file**: `src/pages/Admin.jsx` (~1700 lines) holds every tab as a local component (`DashboardTab`, `DonorsTab`, `AddPixTab`, `AddProfileTab`, `DoareTab`, `RulesTab`, `AdminsTab`) plus shared helpers (`CategoriaBadge`, `SortableTH`, `Feedback`, `downloadCSV`). Tabs receive a `getToken` prop and attach the Bearer token themselves.
 - **Endpoints**: `stats.js` (dashboard aggregations, all queries `Promise.all`'d), `donors.js`, `donations.js` (append donation events), `admins.js` (CRUD; refuses to remove yourself to avoid lockout), `category-rules.js` (edit the `min_valor` of the 6 official tiers in `category_tiers`), `doare-preview.js` + `doare-commit.js` (the doa.re CSV import flow, below).
 - **doa.re CSV import** is a two-step preview→commit: the client parses the doa.re CSV (PapaParse), POSTs rows to `doare-preview` which filters `Status === 'Paga'`, infers profile type, and dedups against `donors` (by email) and `donation_events` (by `source_id`); the user reviews, then `doare-commit` inserts (`ON CONFLICT DO NOTHING` + the unique index = defense-in-depth against re-uploading the same CSV).
 
@@ -137,9 +149,11 @@ ADMIN_EMAILS                  # comma-separated bootstrap admin list (see Admin 
 - External links: always add `target="_blank" rel="noopener noreferrer"`
 
 ### Known Issues to Avoid
+- `eslint.config.js` has two scopes: browser globals for everything, plus a Node-globals override for `api/**/*.js`. `scripts/*.mjs` are outside the lint glob and `src/ui` is ignored (see Key Directories). `no-unused-vars` ignores names matching `^[A-Z_]`, so unused imported components/icons are *not* reported
+- `vercel.json` sets `Cross-Origin-Opener-Policy: same-origin-allow-popups` on all routes — required for the Firebase Google sign-in popup; don't tighten it to `same-origin`
 - Avoid complex dynamic icon rendering patterns (e.g., `const IconComponent = item.icon`) - can cause crashes
 - Test new components in isolation before page integration
-- `src/components/Navbar.jsx` declares a `featuredPosts` array (lines ~50–71) that is **never rendered** — the live Sobre Nós flyout content lives in `src/components/SobreNosFlyout.jsx`. Don't waste time editing the Navbar array
+- The Sobre Nós flyout's featured tiles live in `src/components/SobreNosFlyout.jsx`, not in `Navbar.jsx`
 - `src/App-backup.jsx` is a stale backup; the live router is `src/App.jsx`
 
 ### Vercel Configuration
