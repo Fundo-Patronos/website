@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1060" width="1200" height="1060">
   <title>Turbofan fan stage, dimensioned front elevation</title>
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 995.00,545.00 L 994.62,562.35 L 993.48,579.67" stroke="#df57c1" stroke-width="2.4"/>
@@ -455,8 +455,8 @@
     <path d="M 623.18,501.83 L 636.36,424.36 L 636.36,424.36" stroke="#fd517b" stroke-width="1.0"/>
     <path d="M 637.93,513.98 L 679.76,447.45 L 679.76,447.45" stroke="#fd4e84" stroke-width="1.0"/>
     <path d="M 646.92,530.86 L 711.01,485.40" stroke="#fc4a8c" stroke-width="1.0"/>
-    <path d="M 130.00,545.00 L 1070.00,545.00" stroke="#fd4d85" stroke-width="1.1" stroke-dasharray="26 10 4 10"/>
-    <path d="M 600.00,75.00 L 600.00,1015.00" stroke="#fd4d85" stroke-width="1.1" stroke-dasharray="26 10 4 10"/>
+    <path d="M 130.00,545.00 L 1070.00,545.00" stroke="#fd4c87" stroke-width="1.1" stroke-dasharray="26 10 4 10"/>
+    <path d="M 600.00,75.00 L 600.00,1015.00" stroke="#fd4c87" stroke-width="1.1" stroke-dasharray="26 10 4 10"/>
     <path d="M 205.00,90.00 L 995.00,90.00 L 995.00,90.00" stroke="#fd507e" stroke-width="1.1"/>
     <path d="M 193.78,98.38 L 205.00,90.00" stroke="#ff9209" stroke-width="1.1"/>
     <path d="M 193.78,81.62 L 205.00,90.00" stroke="#ff9207" stroke-width="1.1"/>
@@ -464,7 +464,7 @@
     <path d="M 1006.22,98.38 L 995.00,90.00" stroke="#fd4f80" stroke-width="1.1"/>
     <path d="M 205.00,545.00 L 205.00,35.40 L 205.00,35.40" stroke="#ff9700" stroke-width="0.8800000000000001"/>
     <path d="M 995.00,545.00 L 995.00,35.40 L 995.00,35.40" stroke="#fd5377" stroke-width="0.8800000000000001"/>
-    <text x="600.00" y="81.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="#ff6c43" stroke="none">Ø 2 360</text>
+    <text x="600.00" y="81.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="#ff6c44" stroke="none">Ø 2 360</text>
     <path d="M 474.00,1000.00 L 726.00,1000.00 L 726.00,1000.00" stroke="#ce61da" stroke-width="1.1"/>
     <path d="M 462.78,1008.38 L 474.00,1000.00" stroke="#e852b4" stroke-width="1.1"/>
     <path d="M 462.78,991.62 L 474.00,1000.00" stroke="#e852b3" stroke-width="1.1"/>
@@ -472,13 +472,11 @@
     <path d="M 737.22,1008.38 L 726.00,1000.00" stroke="#cd61db" stroke-width="1.1"/>
     <path d="M 474.00,545.00 L 474.00,1054.60 L 474.00,1054.60" stroke="#e255bd" stroke-width="0.8800000000000001"/>
     <path d="M 726.00,545.00 L 726.00,1054.60 L 726.00,1054.60" stroke="#c964e2" stroke-width="0.8800000000000001"/>
-    <text x="600.00" y="991.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="#db59c7" stroke="none">Ø 750</text>
+    <text x="600.00" y="991.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="#d85bcb" stroke="none">Ø 750</text>
     <path d="M 903.43,340.34 L 989.43,288.34" stroke="#fb4798" stroke-width="1.1"/>
     <path d="M 989.43,288.34 L 1099.43,288.34 L 1099.43,288.34" stroke="#f04da8" stroke-width="1.1"/>
     <path d="M 907.71,328.06 L 903.43,340.34" stroke="#fc4792" stroke-width="1.1"/>
     <path d="M 916.41,340.96 L 903.43,340.34" stroke="#fc4794" stroke-width="1.1"/>
-    <text x="1107.43" y="282.34" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="#f04da8" stroke="none">24 × PÁS</text>
-    <text x="600.00" y="1130.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="#cd62dd" stroke="none">ESTÁGIO DE FAN — VISTA FRONTAL</text>
-    <text x="600.00" y="1165.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="400" letter-spacing="0.06em" text-anchor="middle" fill="#c964e2" stroke="none">ESCALA 1:20   COTAS EM mm</text>
+    <text x="1107.43" y="282.34" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="#ed4fac" stroke="none">24 × PÁS</text>
   </g>
 </svg>

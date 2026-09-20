@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1060" width="1200" height="1060">
   <title>Turbofan fan stage, dimensioned front elevation</title>
   <defs>
     <linearGradient id="patronos" gradientUnits="userSpaceOnUse"
@@ -13,6 +13,4 @@
     <text x="600.00" y="81.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">Ø 2 360</text>
     <text x="600.00" y="991.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">Ø 750</text>
     <text x="1107.43" y="282.34" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="url(#patronos)" stroke="none">24 × PÁS</text>
-    <text x="600.00" y="1130.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">ESTÁGIO DE FAN — VISTA FRONTAL</text>
-    <text x="600.00" y="1165.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="400" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">ESCALA 1:20   COTAS EM mm</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1095" width="1200" height="1095">
   <title>Nine-engine octaweb, plan view</title>
   <defs>
     <linearGradient id="patronos" gradientUnits="userSpaceOnUse"
@@ -13,5 +13,4 @@
     <text x="600.00" y="101.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">Ø 3 700</text>
     <text x="600.00" y="1016.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">Ø 2 600 PCD</text>
     <text x="1046.90" y="374.10" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="url(#patronos)" stroke="none">9 × MOTOR</text>
-    <text x="600.00" y="1145.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">OCTAWEB — VISTA INFERIOR</text>
 </svg>

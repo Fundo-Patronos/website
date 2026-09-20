@@ -32,6 +32,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from artlib import Art, naca4, normalise, write_outlined, write_stroked  # noqa: E402
 from subjects_extra import EXTRA  # noqa: E402
+from subjects_ai import AI  # noqa: E402
+from subjects_humanities import HUMANITIES  # noqa: E402
+from subjects_math import MATH  # noqa: E402
+from subjects_mechanics import MECHANICS  # noqa: E402
+from subjects_medicine import MEDICINE  # noqa: E402
 from subjects_organic import ORGANIC  # noqa: E402
 
 
@@ -157,6 +162,11 @@ BUILDERS = {
     "mockup-05-chemistry-hex-lattice": lattice,
     **EXTRA,
     **ORGANIC,
+    **MATH,
+    **MECHANICS,
+    **AI,
+    **MEDICINE,
+    **HUMANITIES,
 }
 
 if __name__ == "__main__":

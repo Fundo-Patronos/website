@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1240" width="1080" height="1240">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1120" width="1080" height="1120">
   <title>Gas-generator rocket engine, longitudinal section</title>
   <defs>
     <linearGradient id="patronos" gradientUnits="userSpaceOnUse"
@@ -210,7 +210,5 @@
     <text x="834.00" y="262.04" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="url(#patronos)" stroke="none">GERADOR DE GÁS</text>
     <path d="M 416.12,207.80 L 826.00,207.80" stroke-width="0.9" stroke-dasharray="12 7"/>
     <text x="834.00" y="213.80" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="url(#patronos)" stroke="none">JUNTA CARDÃ</text>
-    <text x="540.00" y="1166.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">MOTOR-FOGUETE — CORTE LONGITUDINAL</text>
-    <text x="540.00" y="1196.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">ESCALA 1:10 · COTAS EM mm</text>
   </g>
 </svg>

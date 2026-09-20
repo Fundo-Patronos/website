@@ -13,7 +13,7 @@ from artlib import Art, naca_like, union_outline
 
 # --- 06. Turbofan, dimensioned --------------------------------------------
 def turbofan_dimensioned():
-    a = Art()
+    a = Art(1200, 1060)
     cx, cy = 600, 545
     R_case, R_tip, R_hub, R_spin = 395, 366, 126, 49
     for r, w in ((R_case, 2.4), (R_tip, 1.6), (R_hub, 1.6), (R_spin, 1.6), (26, 1.4)):
@@ -41,8 +41,6 @@ def turbofan_dimensioned():
     a.arrow(px, py, ang + math.pi, size=13, w=1.1)
     a.text(px + 204, py - 58, "24 × PÁS", size=22, anchor="start")
 
-    a.text(cx, cy + 585, "ESTÁGIO DE FAN — VISTA FRONTAL", size=25)
-    a.text(cx, cy + 620, "ESCALA 1:20   COTAS EM mm", size=17, weight=400)
     return a, "Turbofan fan stage, dimensioned front elevation"
 
 
@@ -211,7 +209,7 @@ def launch_vehicle():
     A 70 m x 3.7 m vehicle is 19:1. Drawn whole it is a hairline sliver; the
     break symbol is how a drafter compresses a long uniform run, so the stage
     joints and the engine bay stay readable at slide size."""
-    a = Art(690, 1240)
+    a = Art(690, 1170)
     B0, B1, GAP = 11.0, 26.0, 1.8                          # break window
 
     def ym(y):
@@ -295,8 +293,6 @@ def launch_vehicle():
         a.path([(CX - BODY_R * S + 2 * BODY_R * S * k / 12,
                  yb + yoff + (5 if k % 2 else -5)) for k in range(13)], w=1.2)
 
-    a.text(CX, 1196, "VEÍCULO LANÇADOR REUTILIZÁVEL", size=23)
-    a.text(CX, 1224, "ELEVAÇÃO · ESCALA 1:200 · COTAS EM mm", size=15, weight=400)
     return a, "Reusable two-stage launch vehicle, dimensioned elevation"
 
 
@@ -305,7 +301,7 @@ def octaweb(annotated=True):
 
     annotated=False drops the dimensions, leader and title, leaving the bare
     geometry for use as a large background element."""
-    a = Art()
+    a = Art(1200, 1095)
     cx, cy, S = 600, 585, 200
     R_ring, R_out, R_exit = 1.30, 1.85, 0.46
     for r, w, dash in ((R_out, 2.4, None), (R_out - 0.10, 1.4, None),
@@ -343,7 +339,6 @@ def octaweb(annotated=True):
     a.path([(px, py), (px + 70, py + 44), (px + 190, py + 44)], w=1.1)
     a.arrow(px, py, th + math.pi, size=13, w=1.1)
     a.text(px + 198, py + 38, "9 × MOTOR", size=21, anchor="start")
-    a.text(cx, cy + 560, "OCTAWEB — VISTA INFERIOR", size=24)
     return a, "Nine-engine octaweb, plan view"
 
 
@@ -355,7 +350,7 @@ def engine_section():
     actually accommodate. The contour is a real converging-diverging profile -
     a steep initial bell expansion tapering to the exit, a rounded throat, a
     straight chamber barrel - rather than a cone."""
-    a = Art(1080, 1240)
+    a = Art(1080, 1120)
     S, CX, Y0 = 268, 386, 985                             # px per metre
     T = lambda x, y: (CX + x * S, Y0 - y * S)
     R_EXIT, R_THR, R_CH = 0.460, 0.115, 0.220
@@ -457,8 +452,6 @@ def engine_section():
         a.path([(x0 + 6, T(0, y)[1]), (826, T(0, y)[1])], w=0.9, dash="12 7")
         a.text(834, T(0, y)[1] + 6, name, size=16, anchor="start")
 
-    a.text(540, 1166, "MOTOR-FOGUETE — CORTE LONGITUDINAL", size=22)
-    a.text(540, 1196, "ESCALA 1:10 · COTAS EM mm", size=15, weight=400)
     return a, "Gas-generator rocket engine, longitudinal section"
 
 
@@ -470,7 +463,7 @@ def server_rack():
     from the rest of the set. A rack is a real object with real dimensions
     (600 x 2000 mm, 44.45 mm per U), so it draws in the same CAD register as
     the rocket plates."""
-    a = Art(760, 1240)
+    a = Art(760, 1135)
     S, X0, Y0 = 0.40, 250, 1090                            # 0.40 px per mm
     U, WIDE = 44.45, 600.0
     T = lambda x, y: (X0 + x * S, Y0 - y * S)
@@ -529,8 +522,6 @@ def server_rack():
         a.path([T(-34, yb), T(-6, yb)], w=0.9)
         a.text(T(-42, yb)[0], T(0, yb)[1] + 6, f"{i + 1}U", size=15, anchor="end")
 
-    a.text(T(WIDE / 2, 0)[0], 1150, "RACK 42U — ELEVAÇÃO FRONTAL", size=23)
-    a.text(T(WIDE / 2, 0)[0], 1180, "COTAS EM mm", size=15, weight=400)
     return a, "42U server rack, dimensioned front elevation"
 
 

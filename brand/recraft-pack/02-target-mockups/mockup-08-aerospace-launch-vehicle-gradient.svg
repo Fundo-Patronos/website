@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 1240" width="690" height="1240">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 1170" width="690" height="1170">
   <title>Reusable two-stage launch vehicle, dimensioned elevation</title>
   <defs>
     <linearGradient id="patronos" gradientUnits="userSpaceOnUse"
-        x1="86.8" y1="86.8" x2="768.0" y2="768.0">
+        x1="86.8" y1="86.8" x2="741.3" y2="741.3">
       <stop offset="0%" stop-color="#ff9700"/>
       <stop offset="33%" stop-color="#ff6253"/>
       <stop offset="67%" stop-color="#fc4696"/>
@@ -106,7 +106,5 @@
     <text x="414.41" y="346.52" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing="0.06em" text-anchor="start" fill="url(#patronos)" stroke="none">COIFA Ø 5 200</text>
     <path d="M 277.59,905.66 L 283.32,915.66 L 289.06,905.66 L 294.79,915.66 L 300.53,905.66 L 306.26,915.66 L 312.00,905.66 L 317.73,915.66 L 323.47,905.66 L 329.20,915.66 L 334.94,905.66 L 340.67,915.66 L 346.41,905.66" stroke-width="1.2"/>
     <path d="M 277.59,877.66 L 283.32,887.66 L 289.06,877.66 L 294.79,887.66 L 300.53,877.66 L 306.26,887.66 L 312.00,877.66 L 317.73,887.66 L 323.47,877.66 L 329.20,887.66 L 334.94,877.66 L 340.67,887.66 L 346.41,877.66" stroke-width="1.2"/>
-    <text x="312.00" y="1196.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="23" font-weight="500" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">VEÍCULO LANÇADOR REUTILIZÁVEL</text>
-    <text x="312.00" y="1224.00" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" letter-spacing="0.06em" text-anchor="middle" fill="url(#patronos)" stroke="none">ELEVAÇÃO · ESCALA 1:200 · COTAS EM mm</text>
   </g>
 </svg>

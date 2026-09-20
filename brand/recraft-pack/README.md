@@ -17,8 +17,13 @@ recraft-pack/
 ├── PROMPTS.md              ← Recraft prompts, if you ever want to generate more
 └── tools/
     ├── artlib.py               plumbing: colour ramp, primitives, SVG writers
-    ├── subjects_extra.py       drawings 06–16
-    ├── subjects_organic.py     drawings 17–18 (growth-rule biology)
+    ├── subjects_extra.py       aerospace, software, genetics, chemistry
+    ├── subjects_organic.py     growth-rule biology (space colonisation)
+    ├── subjects_math.py        Fibonacci
+    ├── subjects_mechanics.py   fluid mechanics, gearing
+    ├── subjects_medicine.py    ECG, bone, bronchial tree, syringe
+    ├── subjects_humanities.py  colonnade, library, piano action, globe
+    ├── subjects_ai.py          neural network
     ├── make_mockups.py         drawings 01–05 + the registry; run this
     └── recolor_svg.py          repaints any foreign SVG in the brand gradient
 ```
@@ -33,31 +38,50 @@ python3 tools/make_mockups.py 02-target-mockups
 
 ## The subjects
 
-| # | Subject | Canvas | Annotated |
-|---|---|---|---|
-| 01 | Wing section, NACA 2412, spars and flow isolines | 1200² | dimension line |
-| 02 | Turbofan front elevation | 1200² | — |
-| 03 | Epitrochoid curve family | 1200² | — |
-| 04 | DNA double helix | 1200² | — |
-| 05 | Hexagonal molecular lattice | 1200² | — |
-| 06 | Turbofan fan stage, dimensioned | 1200² | full CAD plate |
-| 07 | 42U server rack, front elevation | 760×1240 | full CAD plate |
-| 08 | Reusable two-stage launch vehicle | 690×1240 | full CAD plate |
-| 09 | Nine-engine octaweb, plan | 1200² | full CAD plate |
-| 09b | Octaweb, **no annotation** — bare geometry | 1200² | — |
-| 10 | Plasmid map, features and restriction sites | 1200² | labels |
-| 11 | Nautilus, logarithmic spiral | 1200² | — |
-| 12 | Sunflower phyllotaxis, golden angle | 1200² | — |
-| 13 | Face-centred cubic unit cell | 1200² | axis labels |
-| 14 | Gas-generator rocket engine, longitudinal section | 1080×1240 | full CAD plate |
-| 15 | Cloud symbol | 1200×760 | — |
-| 16 | Datacentre rack row | 1200×860 | — |
-| 17 | Leaf with venation (space colonisation) | 820×1200 | — |
-| 18 | Pyramidal neuron: arbour, axon, boutons | 1200² | — |
+| # | Subject | Canvas |
+|---|---|---|
+| 01 | Wing section, NACA 2412, spars and flow isolines | 1200² |
+| 02 | Turbofan front elevation | 1200² |
+| 03 | Epitrochoid curve family | 1200² |
+| 04 | DNA double helix | 1200² |
+| 05 | Hexagonal molecular lattice | 1200² |
+| 06 | Turbofan fan stage, dimensioned | 1200×1060 |
+| 07 | 42U server rack, front elevation | 760×1135 |
+| 08 | Reusable two-stage launch vehicle | 690×1170 |
+| 09 | Nine-engine octaweb, plan | 1200×1095 |
+| 09b | Octaweb, bare geometry | 1200×1095 |
+| 10 | Plasmid map, features and restriction sites | 1200² |
+| 11 | Nautilus, logarithmic spiral | 1200² |
+| 12 | Sunflower phyllotaxis, golden angle | 1200² |
+| 13 | Face-centred cubic unit cell | 1200² |
+| 14 | Gas-generator rocket engine, section | 1080×1120 |
+| 15 | Cloud symbol | 1200×760 |
+| 16 | Datacentre rack row | 1200×860 |
+| 16b | Single equipment rack | 620×1000 |
+| 17 | Leaf with venation (space colonisation) | 820×1200 |
+| 18 | Pyramidal neuron: arbour, axon, boutons | 1200² |
+| 19 | Fibonacci: construction, growth, convergence | 1240×880 |
+| 20 | Classical colonnade, Doric, with entasis | 1500×900 |
+| 21 | Library reading room, plan | 1240² |
+| 22 | Grand piano action, section | 1240×860 |
+| 23 | Wireframe globe, orthographic | 1200² |
+| 24 | Electrocardiogram on standard paper | 1240×410 |
+| 25 | Long-bone cross-section, osteons and trabeculae | 1200² |
+| 26 | Bronchial tree | 1200² |
+| 27 | Hypodermic syringe, dimensioned | 1340×500 |
+| 28 | Venturi meter in section | 1200×860 |
+| 29 | Planetary gearset: sun, planets, internal ring | 1200² |
+| 30 | Neural network, weighted sparse edges | 1260×880 |
 
 Dropped along the way: a CFD streamline field (read as wallpaper, not a subject)
 and an open-wheel racing car (a hand-typed silhouette never came together at
 hairline weight).
+
+**These are illustrations, not drawing-office plates.** Title blocks, drawing
+names and scale notes were removed — a slide does not need "ESCALA 1:20 · COTAS
+EM mm" under the artwork. Dimension values and part callouts stay where they
+carry the technical read; where you want the shape and nothing else, 09b is the
+bare-geometry variant. When adding a subject, do not reintroduce a title block.
 
 **Organic subjects mostly do not need tracing.** Branching structure in nature is
 the output of a growth rule, not freehand drawing: 17 and 18 use space
