@@ -1,0 +1,38 @@
+# CI — runs on every pull request and on main.
+#
+# Until this existed, the only evidence that a Patronos Dev pull request worked
+# was the coding agent's own report from inside its run. This is the independent
+# check: same commands, fresh runner, nothing the agent can influence.
+#
+# It runs agent-written code (npm scripts), so it gets no secrets and a
+# read-only token. Keep it that way.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
