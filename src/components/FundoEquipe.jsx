@@ -1,24 +1,6 @@
 const pessoas = [
   // Conselho de Administração
   {
-    name: 'Agnes Querido',
-    role: 'Conselho de Administração',
-    imageUrl: '/Conselheiros/Agnes Blanco Querido.jpeg',
-    linkedinUrl: 'https://www.linkedin.com/in/agnesblancoquerido/',
-  },
-  {
-    name: 'Alexandre Oliveira',
-    role: 'Conselho de Administração',
-    imageUrl: '/Conselheiros/Alexandre Oliveira.jpeg',
-    linkedinUrl: 'https://www.linkedin.com/in/alexoliveira/',
-  },
-  {
-    name: 'Newton Freire',
-    role: 'Conselho de Administração',
-    imageUrl: '/Conselheiros/Newton Freire.jpeg',
-    linkedinUrl: 'https://www.linkedin.com/in/newtonfreire/',
-  },
-  {
     name: 'Rodrigo Ferroni',
     role: 'Conselho de Administração',
     imageUrl: '/Conselheiros/Rodrigo Ferroni.jpeg',
