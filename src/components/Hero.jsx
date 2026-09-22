@@ -45,7 +45,7 @@ export default function Hero() {
               <div className="relative w-full lg:max-w-lg lg:shrink-0 xl:max-w-xl">
                 <div className="-mt-8 sm:-mt-12 lg:-mt-10">
                 <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-6xl">
-                  Transformando o futuro da educação superior no Brasil
+                  Transformando o futuro da educação superior
                 </h1>
                 <p className="mt-8 text-lg leading-8 text-pretty text-gray-500 sm:max-w-md lg:max-w-none">
                   O Fundo Patrimonial Patronos apoia projetos inovadores na Unicamp, fortalecendo a pesquisa, ensino e extensão para gerar impacto positivo na sociedade brasileira.
