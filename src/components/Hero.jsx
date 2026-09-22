@@ -58,7 +58,7 @@ export default function Hero() {
                     className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
                     style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}
                   >
-                    Fazer Doação
+                    Doe agora
                   </a>
                   <a href="/sobre-nos/fundo" className="text-sm/6 font-semibold text-gray-900">
                     Conheça o Fundo <span aria-hidden="true">→</span>
