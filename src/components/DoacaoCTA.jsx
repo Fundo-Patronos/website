@@ -1,4 +1,6 @@
-export default function DoacaoCTA() {
+import { trackBeginCheckout } from '../lib/analytics'
+
+export default function DoacaoCTA({ eventLabel = "doacao_cta" }) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16 lg:px-8">
@@ -8,6 +10,7 @@ export default function DoacaoCTA() {
         <div className="mt-10 flex items-center gap-x-6">
           <a
             href="https://doa.re/patronos"
+            onClick={() => trackBeginCheckout(eventLabel)}
             className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{
               background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)',

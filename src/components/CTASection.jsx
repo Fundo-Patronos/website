@@ -1,4 +1,5 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { trackBeginCheckout } from '../lib/analytics'
 
 const benefits = [
   'Retornar valor à comunidade da Unicamp',
@@ -39,7 +40,7 @@ export default function CTASection() {
                 ))}
               </ul>
               <div className="mt-10 flex">
-                <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" className="text-sm leading-6 font-semibold" style={{color: '#ff9700'}}>
+                <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("home_cta")} className="text-sm leading-6 font-semibold" style={{color: '#ff9700'}}>
                   Fazer minha doação
                   <span aria-hidden="true"> →</span>
                 </a>

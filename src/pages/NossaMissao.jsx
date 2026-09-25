@@ -11,7 +11,7 @@ export default function NossaMissao() {
       <MissaoLideres />
       <MissaoFaraoDiferenca />
       <MissaoNoMundo />
-      <DoacaoCTA />
+      <DoacaoCTA eventLabel="pagina_nossa_missao_cta" />
     </>
   )
 }
