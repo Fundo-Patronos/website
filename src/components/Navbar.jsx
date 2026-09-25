@@ -13,6 +13,7 @@ import {
 } from '@headlessui/react'
 import SobreNosFlyout from './SobreNosFlyout'
 import ImpactoFlyout from './ImpactoFlyout'
+import { trackBeginCheckout } from '../lib/analytics'
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -176,7 +177,7 @@ export default function Navbar() {
           </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" className="rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}>
+          <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("header_menu")} className="rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}>
             Doar Agora <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -291,6 +292,7 @@ export default function Navbar() {
                   href="https://doa.re/patronos"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackBeginCheckout("header_menu_mobile")}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Doar Agora

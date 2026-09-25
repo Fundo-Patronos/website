@@ -13,7 +13,7 @@ export default function Transparencia() {
       <TransparenciaNewsletter />
       <DocumentacoesInstitucionais />
       <TransparenciaFAQ />
-      <DoacaoCTA />
+      <DoacaoCTA eventLabel="pagina_transparencia_cta" />
     </>
   )
 }

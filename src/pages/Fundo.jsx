@@ -13,7 +13,7 @@ export default function Fundo() {
       <FundoTimeline />
       <FundoGovernanca />
       <FundoEquipe />
-      <DoacaoCTA />
+      <DoacaoCTA eventLabel="pagina_fundo_cta" />
     </>
   )
 }
