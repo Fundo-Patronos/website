@@ -1,3 +1,5 @@
+import { trackBeginCheckout } from '../lib/analytics'
+
 export default function FundoHero() {
   return (
     <div className="relative isolate overflow-hidden bg-gradient-to-b from-red-100/20 pt-14">
@@ -19,6 +21,7 @@ export default function FundoHero() {
                 href="https://doa.re/patronos"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackBeginCheckout("pagina_fundo_hero")}
                 className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
                 style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}
               >

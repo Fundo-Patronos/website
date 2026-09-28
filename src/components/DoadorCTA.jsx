@@ -1,3 +1,5 @@
+import { trackBeginCheckout } from '../lib/analytics'
+
 export default function DoadorCTA() {
   return (
     <div className="mt-10 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-lg">
@@ -14,6 +16,7 @@ export default function DoadorCTA() {
             href="https://doa.re/patronos"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackBeginCheckout("pagina_doador_cta")}
             className="inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)' }}
           >

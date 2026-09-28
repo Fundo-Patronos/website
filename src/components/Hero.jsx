@@ -1,3 +1,5 @@
+import { trackBeginCheckout } from '../lib/analytics'
+
 export default function Hero() {
   return (
     <main>
@@ -55,6 +57,7 @@ export default function Hero() {
                     href="https://doa.re/patronos"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackBeginCheckout("home_hero")}
                     className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
                     style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}
                   >
