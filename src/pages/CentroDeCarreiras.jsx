@@ -29,9 +29,9 @@ function CentroDeCarreiras() {
       question: "Como posso me tornar um mentor residente?",
       answer: (
         <>
-          Profissionais interessados em se tornar mentores residentes podem se inscrever através do formulário disponível{' '}
+          Profissionais interessados em se tornar mentores residentes podem fazer o cadastro diretamente pelo Centro de Carreiras, disponível{' '}
           <a
-            href="https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form"
+            href="https://centro.patronos.org/auth/mentor"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-800 underline"
@@ -61,7 +61,7 @@ function CentroDeCarreiras() {
         primaryButtonText="Acessar Centro de Carreiras"
         primaryButtonLink="https://carreiras.patronos.org/"
         secondaryButtonText="Inscrição de Mentores"
-        secondaryButtonLink="https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form"
+        secondaryButtonLink="https://centro.patronos.org/auth/mentor"
       />
       <ImpactoAbout
         categoryText="Desenvolvimento Profissional"

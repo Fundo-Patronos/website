@@ -90,7 +90,7 @@ Com um fundo patrimonial, esse mesmo R$ 1 milhão é investido para gerar rendim
 
 **Elegibilidade**: Estudantes de graduação e pós-graduação da Unicamp de todos os cursos. Registro com email da DAC para validação automática.
 
-**Inscrição de Mentores**: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+**Inscrição de Mentores**: https://centro.patronos.org/auth/mentor
 
 ---
 
@@ -264,7 +264,7 @@ Estudantes de graduação e pós-graduação da Unicamp de todos os cursos. Regi
 Encontros de 30 minutos, agendados conforme disponibilidade do mentor. Conexões e reuniões ilimitadas.
 
 **Como posso me tornar um mentor residente?**
-Através do formulário: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+Através do Centro de Carreiras: https://centro.patronos.org/auth/mentor
 
 ### Sobre a Trilha de Carreiras
 
@@ -317,7 +317,7 @@ Sim, pode ser acumulada com outras bolsas como iniciação científica.
 
 ### Mentoria
 - Torne-se mentor no Centro de Carreiras
-- Inscrição: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+- Inscrição: https://centro.patronos.org/auth/mentor
 
 ---
 
@@ -377,7 +377,7 @@ Sim, pode ser acumulada com outras bolsas como iniciação científica.
 ### Links Externos
 - **Doação**: https://doa.re/patronos
 - **Centro de Carreiras (Plataforma)**: https://carreiras.patronos.org/
-- **Inscrição de Mentores**: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+- **Inscrição de Mentores**: https://centro.patronos.org/auth/mentor
 - **Newsletter**: https://tally.so/r/wvkW18
 
 ---
