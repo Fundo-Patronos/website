@@ -138,7 +138,7 @@ ADMIN_EMAILS                  # comma-separated bootstrap admin list (see Admin 
 - **Donation**: https://doa.re/patronos
 - **PIX Key**: operacoes@patronos.org
 - **Centro de Carreiras**: https://carreiras.patronos.org/
-- **Mentor Registration**: https://airtable.com/app4uSEqO2S03EO5X/pag4g0cv7spU3ZjtX/form
+- **Mentor Registration**: https://centro.patronos.org/auth/mentor
 
 ## Development Notes
 
