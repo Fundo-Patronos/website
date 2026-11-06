@@ -95,3 +95,7 @@ Estudantes de graduação e pós-graduação da Unicamp, com registro via email 
 - Parceiros: /parceiros
 - Blog: /blog
 - Contato: /sobre-nos/contato
+
+## Identidade visual
+
+A marca usa o símbolo oficial da árvore ao lado do nome Fundo Patronos, sem divisória. [Logotipo oficial](https://www.patronos.org/Logo-Patronos-Completo.svg).
