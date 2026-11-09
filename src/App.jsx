@@ -14,6 +14,7 @@ import CentroDeCarreiras from './pages/CentroDeCarreiras'
 import Talentos from './pages/Talentos'
 import Pesquisa from './pages/Pesquisa'
 import Parceiros from './pages/Parceiros'
+import HallDosDoadores from './pages/HallDosDoadores'
 import Contato from './pages/Contato'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
@@ -64,6 +65,7 @@ function App() {
                   <Route path="/impacto/talentos" element={<Talentos />} />
                   <Route path="/impacto/pesquisa" element={<Pesquisa />} />
                   <Route path="/parceiros" element={<Parceiros />} />
+                  <Route path="/hall-dos-doadores" element={<HallDosDoadores />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                 </Routes>
