@@ -175,6 +175,9 @@ export default function Navbar() {
           <Link to="/parceiros" className="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700 transition-colors px-2 py-1">
             Parceiros
           </Link>
+          <Link to="/hall-dos-doadores" className="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700 transition-colors px-2 py-1">
+            Hall dos Doadores
+          </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("header_menu")} className="rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}>
@@ -285,6 +288,13 @@ export default function Navbar() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Parceiros
+                </Link>
+
+                <Link
+                  to="/hall-dos-doadores"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Hall dos Doadores
                 </Link>
               </div>
               <div className="py-6">

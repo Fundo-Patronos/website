@@ -50,6 +50,7 @@ Page filenames don't map 1:1 to URLs — most live under `/sobre-nos/*` or `/imp
 | `/impacto/talentos` | `Talentos.jsx` |
 | `/impacto/pesquisa` | `Pesquisa.jsx` |
 | `/parceiros` | `Parceiros.jsx` |
+| `/hall-dos-doadores` | `HallDosDoadores.jsx` (reads public `GET /api/hall-dos-doadores`) |
 | `/blog`, `/blog/:slug` | `Blog.jsx`, `BlogPost.jsx` |
 
 ### Key Directories
