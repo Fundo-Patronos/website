@@ -461,7 +461,7 @@ const patronosConfig = {
   logoAlt: "Fundo Patrimonial Patronos",
   primaryColor: "linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)",
   ctaText: "Doar Agora",
-  ctaHref: "https://doa.re/patronos",
+  ctaHref: "https://doa.re/C1l9",
   ctaTarget: "_blank",
   menuItems: [
     // Your existing menu structure converted to new format

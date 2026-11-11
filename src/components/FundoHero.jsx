@@ -18,7 +18,7 @@ export default function FundoHero() {
             </p>
             <div className="mt-10 flex items-center gap-x-6">
               <a
-                href="https://doa.re/patronos"
+                href="https://doa.re/C1l9"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackBeginCheckout("pagina_fundo_hero")}

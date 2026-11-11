@@ -17,7 +17,7 @@ const faqs = [
   {
     question: 'Como posso apoiar o Fundo Patronos?',
     answer:
-      'Qualquer pessoa ou empresa pode apoiar nossa causa. Para pessoas físicas, a doação pode ser feita de duas maneiras: um valor determinado ou através de doações recorrentes através do site: https://doa.re/patronos. Empresas também podem contribuir através de parcerias estratégicas. Todas as doações são direcionadas para fortalecer nosso patrimônio e ampliar nosso impacto na comunidade acadêmica.',
+      'Qualquer pessoa ou empresa pode apoiar nossa causa. Para pessoas físicas, a doação pode ser feita de duas maneiras: um valor determinado ou através de doações recorrentes através do site: https://doa.re/C1l9. Empresas também podem contribuir através de parcerias estratégicas. Todas as doações são direcionadas para fortalecer nosso patrimônio e ampliar nosso impacto na comunidade acadêmica.',
   },
   {
     question: 'As doações para o Fundo Patronos oferecem incentivos fiscais?',

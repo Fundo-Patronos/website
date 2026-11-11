@@ -13,7 +13,7 @@ export default function DoadorCTA() {
         </div>
         <div className="mt-5">
           <a
-            href="https://doa.re/patronos"
+            href="https://doa.re/C1l9"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackBeginCheckout("pagina_doador_cta")}
