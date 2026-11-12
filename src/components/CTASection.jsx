@@ -40,7 +40,7 @@ export default function CTASection() {
                 ))}
               </ul>
               <div className="mt-10 flex">
-                <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("home_cta")} className="text-sm leading-6 font-semibold" style={{color: '#ff9700'}}>
+                <a href="https://doa.re/C1l9" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("home_cta")} className="text-sm leading-6 font-semibold" style={{color: '#ff9700'}}>
                   Fazer minha doação
                   <span aria-hidden="true"> →</span>
                 </a>

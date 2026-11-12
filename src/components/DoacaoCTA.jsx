@@ -9,7 +9,7 @@ export default function DoacaoCTA({ eventLabel = "doacao_cta" }) {
         </h2>
         <div className="mt-10 flex items-center gap-x-6">
           <a
-            href="https://doa.re/patronos"
+            href="https://doa.re/C1l9"
             onClick={() => trackBeginCheckout(eventLabel)}
             className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{

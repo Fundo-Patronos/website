@@ -177,7 +177,7 @@ export default function Navbar() {
           </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="https://doa.re/patronos" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("header_menu")} className="rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}>
+          <a href="https://doa.re/C1l9" target="_blank" rel="noopener noreferrer" onClick={() => trackBeginCheckout("header_menu")} className="rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)', focusVisibleOutlineColor: '#ff9700'}}>
             Doar Agora <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -289,7 +289,7 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="https://doa.re/patronos"
+                  href="https://doa.re/C1l9"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackBeginCheckout("header_menu_mobile")}

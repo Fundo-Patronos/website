@@ -135,7 +135,7 @@ ADMIN_EMAILS                  # comma-separated bootstrap admin list (see Admin 
 
 ## Important Links
 
-- **Donation**: https://doa.re/patronos
+- **Donation**: https://doa.re/C1l9
 - **PIX Key**: operacoes@patronos.org
 - **Centro de Carreiras**: https://carreiras.patronos.org/
 - **Mentor Registration**: https://centro.patronos.org/auth/mentor
