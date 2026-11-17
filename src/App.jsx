@@ -6,6 +6,7 @@ import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import Fundo from './pages/Fundo'
 import NossaMissao from './pages/NossaMissao'
+import NossaMarca from './pages/NossaMarca'
 import Transparencia from './pages/Transparencia'
 import Extras from './pages/Extras'
 import Carreira from './pages/Carreira'
@@ -55,6 +56,7 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/sobre-nos/fundo" element={<Fundo />} />
                   <Route path="/sobre-nos/nossa-missao" element={<NossaMissao />} />
+                  <Route path="/sobre-nos/nossa-marca" element={<NossaMarca />} />
                   <Route path="/sobre-nos/transparencia" element={<Transparencia />} />
                   <Route path="/sobre-nos/contato" element={<Contato />} />
                   <Route path="/impacto/extras" element={<Extras />} />
