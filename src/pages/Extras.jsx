@@ -57,12 +57,11 @@ function Extras() {
   return (
     <div className="min-h-screen">
       <ImpactoHero
-        announcementText="Inscrições abertas para o Edital Decola Extras 2027"
-        announcementLink="https://tally.so/r/KYjYRD"
+        announcementText="Inscrições encerradas para o Edital Decola Extras 2027"
         title="Extracurriculares e Projetos de Extensão"
         description="Apoiamos iniciativas estudantis que promovem inovação, empreendedorismo e impacto social na comunidade universitária da Unicamp."
-        primaryButtonText="Inscreva-se"
-        primaryButtonLink="https://tally.so/r/KYjYRD"
+        primaryButtonText="Inscrições encerradas"
+        primaryButtonDisabled
         secondaryButtonText="Ver Regulamento"
         secondaryButtonLink="/EDITAL DECOLA EXTRAS 2027.pdf"
         tertiaryButtonText="Cronograma Físico-Financeiro"

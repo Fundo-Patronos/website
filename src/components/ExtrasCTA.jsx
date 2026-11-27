@@ -3,20 +3,9 @@ export default function ExtrasCTA() {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
-          Transforme sua ideia em realidade. Inscreva seu projeto no Edital Decola Extras 2027.
+          As inscrições do Edital Decola Extras 2027 foram encerradas.
         </h2>
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-          <a
-            href="https://tally.so/r/KYjYRD"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2"
-            style={{
-              background: 'linear-gradient(135deg, #ff9700, #ff6253, #fc4696, #c964e2)'
-            }}
-          >
-            Inscreva-se
-          </a>
           <a
             href="/EDITAL DECOLA EXTRAS 2027.pdf"
             download
