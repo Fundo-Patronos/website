@@ -1,6 +1,7 @@
 import ImpactoHero from '../components/ImpactoHero'
 import ImpactoAbout from '../components/ImpactoAbout'
 import EscopoExtracurriculares from '../components/EscopoExtracurriculares'
+import ExtrasEquipes from '../components/ExtrasEquipes'
 import CriteriosAvaliacao from '../components/CriteriosAvaliacao'
 import ExtrasCronograma from '../components/ExtrasCronograma'
 import ImpactoFAQ from '../components/ImpactoFAQ'
@@ -75,6 +76,7 @@ function Extras() {
         imageUrl="/Escopo Extracurriculares/Baja 3 -Filtrada.jpg"
       />
       <EscopoExtracurriculares />
+      <ExtrasEquipes />
       <CriteriosAvaliacao />
       <ExtrasCronograma />
       <ImpactoFAQ faqs={faqs} title="Perguntas Frequentes" />
